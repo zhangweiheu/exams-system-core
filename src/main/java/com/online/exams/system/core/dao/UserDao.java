@@ -1,5 +1,6 @@
 package com.online.exams.system.core.dao;
 
+import com.online.exams.system.core.model.User;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -7,4 +8,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface UserDao {
+    User findUserByName(String name);
 }

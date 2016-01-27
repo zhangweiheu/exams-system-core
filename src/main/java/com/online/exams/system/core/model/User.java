@@ -7,7 +7,7 @@ import java.util.Date;
  * graduation.user  
  *
  * @author 36kr
- * @date 2016-1-25
+ * @date 2016-1-27
  *
  */
 public class User implements Serializable {
@@ -15,7 +15,7 @@ public class User implements Serializable {
     private Integer id;
 
     /** 用户名 */
-    private String name;
+    private String username;
 
     /** 密码 */
     private String password;
@@ -27,13 +27,22 @@ public class User implements Serializable {
     private String intro;
 
     /** 邮箱 */
-    private Integer email;
+    private String email;
 
     /** 手机号 */
-    private Integer phone;
+    private String phone;
 
     /** 微信 */
-    private Integer wechat;
+    private String wechat;
+
+    /**  */
+    private Integer totalScore;
+
+    /**  */
+    private Integer totalDone;
+
+    /**  */
+    private Integer averageScore;
 
     /** 创建时间 */
     private Date createAt;
@@ -51,12 +60,12 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+    public void setUsername(String username) {
+        this.username = username == null ? null : username.trim();
     }
 
     public String getPassword() {
@@ -83,28 +92,52 @@ public class User implements Serializable {
         this.intro = intro == null ? null : intro.trim();
     }
 
-    public Integer getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail(Integer email) {
-        this.email = email;
+    public void setEmail(String email) {
+        this.email = email == null ? null : email.trim();
     }
 
-    public Integer getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(Integer phone) {
-        this.phone = phone;
+    public void setPhone(String phone) {
+        this.phone = phone == null ? null : phone.trim();
     }
 
-    public Integer getWechat() {
+    public String getWechat() {
         return wechat;
     }
 
-    public void setWechat(Integer wechat) {
-        this.wechat = wechat;
+    public void setWechat(String wechat) {
+        this.wechat = wechat == null ? null : wechat.trim();
+    }
+
+    public Integer getTotalScore() {
+        return totalScore;
+    }
+
+    public void setTotalScore(Integer totalScore) {
+        this.totalScore = totalScore;
+    }
+
+    public Integer getTotalDone() {
+        return totalDone;
+    }
+
+    public void setTotalDone(Integer totalDone) {
+        this.totalDone = totalDone;
+    }
+
+    public Integer getAverageScore() {
+        return averageScore;
+    }
+
+    public void setAverageScore(Integer averageScore) {
+        this.averageScore = averageScore;
     }
 
     public Date getCreateAt() {

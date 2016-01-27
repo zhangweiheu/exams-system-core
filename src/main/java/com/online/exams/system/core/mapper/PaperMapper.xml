@@ -3,12 +3,13 @@
 <mapper namespace="com.online.exams.system.core.mapper.PaperMapper" >
   <resultMap id="BaseResultMap" type="com.online.exams.system.core.model.Paper" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="paper_id" property="paperId" jdbcType="INTEGER" />
     <result column="paper_type" property="paperType" jdbcType="TINYINT" />
-    <result column="difficulty" property="difficulty" jdbcType="INTEGER" />
+    <result column="difficulty" property="difficulty" jdbcType="TINYINT" />
+    <result column="total_points" property="totalPoints" jdbcType="INTEGER" />
     <result column="score" property="score" jdbcType="INTEGER" />
-    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="TINYINT" />
     <result column="create_at" property="createAt" jdbcType="TIMESTAMP" />
     <result column="update_at" property="updateAt" jdbcType="TIMESTAMP" />
   </resultMap>
@@ -71,7 +72,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, uid, paper_id, paper_type, difficulty, score, status, create_at, update_at
+    id, user_id, paper_id, paper_type, difficulty, total_points, score, status, create_at, 
+    update_at
   </sql>
   <select id="selectByCondition" resultMap="BaseResultMap" parameterType="com.online.exams.system.core.model.PaperCondition" >
     select
@@ -110,12 +112,14 @@
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into paper (uid, paper_id, paper_type, 
-      difficulty, score, status, 
-      create_at, update_at)
-    values (#{uid,jdbcType=INTEGER}, #{paperId,jdbcType=INTEGER}, #{paperType,jdbcType=TINYINT}, 
-      #{difficulty,jdbcType=INTEGER}, #{score,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
-      #{createAt,jdbcType=TIMESTAMP}, #{updateAt,jdbcType=TIMESTAMP})
+    insert into paper (user_id, paper_id, paper_type, 
+      difficulty, total_points, score, 
+      status, create_at, update_at
+      )
+    values (#{userId,jdbcType=INTEGER}, #{paperId,jdbcType=INTEGER}, #{paperType,jdbcType=TINYINT}, 
+      #{difficulty,jdbcType=TINYINT}, #{totalPoints,jdbcType=INTEGER}, #{score,jdbcType=INTEGER}, 
+      #{status,jdbcType=TINYINT}, #{createAt,jdbcType=TIMESTAMP}, #{updateAt,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.online.exams.system.core.model.Paper" >
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
@@ -123,8 +127,8 @@
     </selectKey>
     insert into paper
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="uid != null" >
-        uid,
+      <if test="userId != null" >
+        user_id,
       </if>
       <if test="paperId != null" >
         paper_id,
@@ -134,6 +138,9 @@
       </if>
       <if test="difficulty != null" >
         difficulty,
+      </if>
+      <if test="totalPoints != null" >
+        total_points,
       </if>
       <if test="score != null" >
         score,
@@ -149,8 +156,8 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="uid != null" >
-        #{uid,jdbcType=INTEGER},
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
       </if>
       <if test="paperId != null" >
         #{paperId,jdbcType=INTEGER},
@@ -159,13 +166,16 @@
         #{paperType,jdbcType=TINYINT},
       </if>
       <if test="difficulty != null" >
-        #{difficulty,jdbcType=INTEGER},
+        #{difficulty,jdbcType=TINYINT},
+      </if>
+      <if test="totalPoints != null" >
+        #{totalPoints,jdbcType=INTEGER},
       </if>
       <if test="score != null" >
         #{score,jdbcType=INTEGER},
       </if>
       <if test="status != null" >
-        #{status,jdbcType=INTEGER},
+        #{status,jdbcType=TINYINT},
       </if>
       <if test="createAt != null" >
         #{createAt,jdbcType=TIMESTAMP},
@@ -187,8 +197,8 @@
       <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.uid != null" >
-        uid = #{record.uid,jdbcType=INTEGER},
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=INTEGER},
       </if>
       <if test="record.paperId != null" >
         paper_id = #{record.paperId,jdbcType=INTEGER},
@@ -197,13 +207,16 @@
         paper_type = #{record.paperType,jdbcType=TINYINT},
       </if>
       <if test="record.difficulty != null" >
-        difficulty = #{record.difficulty,jdbcType=INTEGER},
+        difficulty = #{record.difficulty,jdbcType=TINYINT},
+      </if>
+      <if test="record.totalPoints != null" >
+        total_points = #{record.totalPoints,jdbcType=INTEGER},
       </if>
       <if test="record.score != null" >
         score = #{record.score,jdbcType=INTEGER},
       </if>
       <if test="record.status != null" >
-        status = #{record.status,jdbcType=INTEGER},
+        status = #{record.status,jdbcType=TINYINT},
       </if>
       <if test="record.createAt != null" >
         create_at = #{record.createAt,jdbcType=TIMESTAMP},
@@ -219,12 +232,13 @@
   <update id="updateByCondition" parameterType="map" >
     update paper
     set id = #{record.id,jdbcType=INTEGER},
-      uid = #{record.uid,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=INTEGER},
       paper_id = #{record.paperId,jdbcType=INTEGER},
       paper_type = #{record.paperType,jdbcType=TINYINT},
-      difficulty = #{record.difficulty,jdbcType=INTEGER},
+      difficulty = #{record.difficulty,jdbcType=TINYINT},
+      total_points = #{record.totalPoints,jdbcType=INTEGER},
       score = #{record.score,jdbcType=INTEGER},
-      status = #{record.status,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=TINYINT},
       create_at = #{record.createAt,jdbcType=TIMESTAMP},
       update_at = #{record.updateAt,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
@@ -234,8 +248,8 @@
   <update id="updateByIdSelective" parameterType="com.online.exams.system.core.model.Paper" >
     update paper
     <set >
-      <if test="uid != null" >
-        uid = #{uid,jdbcType=INTEGER},
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
       </if>
       <if test="paperId != null" >
         paper_id = #{paperId,jdbcType=INTEGER},
@@ -244,13 +258,16 @@
         paper_type = #{paperType,jdbcType=TINYINT},
       </if>
       <if test="difficulty != null" >
-        difficulty = #{difficulty,jdbcType=INTEGER},
+        difficulty = #{difficulty,jdbcType=TINYINT},
+      </if>
+      <if test="totalPoints != null" >
+        total_points = #{totalPoints,jdbcType=INTEGER},
       </if>
       <if test="score != null" >
         score = #{score,jdbcType=INTEGER},
       </if>
       <if test="status != null" >
-        status = #{status,jdbcType=INTEGER},
+        status = #{status,jdbcType=TINYINT},
       </if>
       <if test="createAt != null" >
         create_at = #{createAt,jdbcType=TIMESTAMP},
@@ -263,12 +280,13 @@
   </update>
   <update id="updateById" parameterType="com.online.exams.system.core.model.Paper" >
     update paper
-    set uid = #{uid,jdbcType=INTEGER},
+    set user_id = #{userId,jdbcType=INTEGER},
       paper_id = #{paperId,jdbcType=INTEGER},
       paper_type = #{paperType,jdbcType=TINYINT},
-      difficulty = #{difficulty,jdbcType=INTEGER},
+      difficulty = #{difficulty,jdbcType=TINYINT},
+      total_points = #{totalPoints,jdbcType=INTEGER},
       score = #{score,jdbcType=INTEGER},
-      status = #{status,jdbcType=INTEGER},
+      status = #{status,jdbcType=TINYINT},
       create_at = #{createAt,jdbcType=TIMESTAMP},
       update_at = #{updateAt,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}

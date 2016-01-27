@@ -185,63 +185,63 @@ public class PaperCondition {
             return (Criteria) this;
         }
 
-        public Criteria andUidIsNull() {
-            addCriterion("uid is null");
+        public Criteria andUserIdIsNull() {
+            addCriterion("user_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andUidIsNotNull() {
-            addCriterion("uid is not null");
+        public Criteria andUserIdIsNotNull() {
+            addCriterion("user_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andUidEqualTo(Integer value) {
-            addCriterion("uid =", value, "uid");
+        public Criteria andUserIdEqualTo(Integer value) {
+            addCriterion("user_id =", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUidNotEqualTo(Integer value) {
-            addCriterion("uid <>", value, "uid");
+        public Criteria andUserIdNotEqualTo(Integer value) {
+            addCriterion("user_id <>", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUidGreaterThan(Integer value) {
-            addCriterion("uid >", value, "uid");
+        public Criteria andUserIdGreaterThan(Integer value) {
+            addCriterion("user_id >", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("uid >=", value, "uid");
+        public Criteria andUserIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("user_id >=", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUidLessThan(Integer value) {
-            addCriterion("uid <", value, "uid");
+        public Criteria andUserIdLessThan(Integer value) {
+            addCriterion("user_id <", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUidLessThanOrEqualTo(Integer value) {
-            addCriterion("uid <=", value, "uid");
+        public Criteria andUserIdLessThanOrEqualTo(Integer value) {
+            addCriterion("user_id <=", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUidIn(List<Integer> values) {
-            addCriterion("uid in", values, "uid");
+        public Criteria andUserIdIn(List<Integer> values) {
+            addCriterion("user_id in", values, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUidNotIn(List<Integer> values) {
-            addCriterion("uid not in", values, "uid");
+        public Criteria andUserIdNotIn(List<Integer> values) {
+            addCriterion("user_id not in", values, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUidBetween(Integer value1, Integer value2) {
-            addCriterion("uid between", value1, value2, "uid");
+        public Criteria andUserIdBetween(Integer value1, Integer value2) {
+            addCriterion("user_id between", value1, value2, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUidNotBetween(Integer value1, Integer value2) {
-            addCriterion("uid not between", value1, value2, "uid");
+        public Criteria andUserIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("user_id not between", value1, value2, "userId");
             return (Criteria) this;
         }
 
@@ -422,6 +422,66 @@ public class PaperCondition {
 
         public Criteria andDifficultyNotBetween(Integer value1, Integer value2) {
             addCriterion("difficulty not between", value1, value2, "difficulty");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalPointsIsNull() {
+            addCriterion("total_points is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalPointsIsNotNull() {
+            addCriterion("total_points is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalPointsEqualTo(Integer value) {
+            addCriterion("total_points =", value, "totalPoints");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalPointsNotEqualTo(Integer value) {
+            addCriterion("total_points <>", value, "totalPoints");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalPointsGreaterThan(Integer value) {
+            addCriterion("total_points >", value, "totalPoints");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalPointsGreaterThanOrEqualTo(Integer value) {
+            addCriterion("total_points >=", value, "totalPoints");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalPointsLessThan(Integer value) {
+            addCriterion("total_points <", value, "totalPoints");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalPointsLessThanOrEqualTo(Integer value) {
+            addCriterion("total_points <=", value, "totalPoints");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalPointsIn(List<Integer> values) {
+            addCriterion("total_points in", values, "totalPoints");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalPointsNotIn(List<Integer> values) {
+            addCriterion("total_points not in", values, "totalPoints");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalPointsBetween(Integer value1, Integer value2) {
+            addCriterion("total_points between", value1, value2, "totalPoints");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalPointsNotBetween(Integer value1, Integer value2) {
+            addCriterion("total_points not between", value1, value2, "totalPoints");
             return (Criteria) this;
         }
 

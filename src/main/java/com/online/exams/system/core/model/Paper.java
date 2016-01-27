@@ -7,7 +7,7 @@ import java.util.Date;
  * graduation.paper  
  *
  * @author 36kr
- * @date 2016-1-25
+ * @date 2016-1-27
  *
  */
 public class Paper implements Serializable {
@@ -15,21 +15,24 @@ public class Paper implements Serializable {
     private Integer id;
 
     /** 用户 id */
-    private Integer uid;
+    private Integer userId;
 
     /** 试卷 id */
     private Integer paperId;
 
-    /** 试卷类型 */
+    /** 试卷类型,枚举： */
     private Integer paperType;
 
-    /** 难度系数 */
+    /** 难度系数0-10 */
     private Integer difficulty;
+
+    /** 总分 */
+    private Integer totalPoints;
 
     /** 得分 */
     private Integer score;
 
-    /** 状态 */
+    /** 状态，枚举： */
     private Integer status;
 
     /** 创建时间 */
@@ -48,12 +51,12 @@ public class Paper implements Serializable {
         this.id = id;
     }
 
-    public Integer getUid() {
-        return uid;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setUid(Integer uid) {
-        this.uid = uid;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public Integer getPaperId() {
@@ -78,6 +81,14 @@ public class Paper implements Serializable {
 
     public void setDifficulty(Integer difficulty) {
         this.difficulty = difficulty;
+    }
+
+    public Integer getTotalPoints() {
+        return totalPoints;
+    }
+
+    public void setTotalPoints(Integer totalPoints) {
+        this.totalPoints = totalPoints;
     }
 
     public Integer getScore() {

@@ -7,7 +7,7 @@ import java.util.Date;
  * graduation.tag  
  *
  * @author 36kr
- * @date 2016-1-25
+ * @date 2016-1-27
  *
  */
 public class Tag implements Serializable {
@@ -17,7 +17,7 @@ public class Tag implements Serializable {
     /** 关联 id */
     private Integer refId;
 
-    /** 标签类型 */
+    /** tag类型，枚举：0用户 | 1试题 | 2Java 试题 */
     private Integer type;
 
     /** 标签内容 */

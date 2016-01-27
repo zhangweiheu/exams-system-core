@@ -7,36 +7,39 @@ import java.util.Date;
  * graduation.question_bank  
  *
  * @author 36kr
- * @date 2016-1-25
+ * @date 2016-1-27
  *
  */
 public class QuestionBank implements Serializable {
     /** id */
     private Integer id;
 
-    /** 题目 */
-    private Integer content;
+    /** 试题类型，枚举：0用户 | 1试题 */
+    private Integer type;
 
-    /** 选项 */
-    private Integer options;
+    /** 试题标题 */
+    private String title;
 
-    /** 答案 */
+    /** 试题选项 */
+    private String options;
+
+    /** 试题答案 */
     private String answers;
 
-    /** 难度系数 */
-    private Float difficulty;
+    /** 难度系数0-10 */
+    private Integer difficulty;
+
+    /** 优先级0-10 */
+    private Integer priority;
+
+    /** 题目状态，枚举： */
+    private Integer status;
 
     /** 总完成数 */
     private Integer totalDone;
 
-    /** 做对总数 */
+    /** 总正确数 */
     private Integer totalSuccess;
-
-    /** 优先级 */
-    private Integer priority;
-
-    /** 状态 */
-    private Integer status;
 
     /** 创建时间 */
     private Date createAt;
@@ -54,20 +57,28 @@ public class QuestionBank implements Serializable {
         this.id = id;
     }
 
-    public Integer getContent() {
-        return content;
+    public Integer getType() {
+        return type;
     }
 
-    public void setContent(Integer content) {
-        this.content = content;
+    public void setType(Integer type) {
+        this.type = type;
     }
 
-    public Integer getOptions() {
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title == null ? null : title.trim();
+    }
+
+    public String getOptions() {
         return options;
     }
 
-    public void setOptions(Integer options) {
-        this.options = options;
+    public void setOptions(String options) {
+        this.options = options == null ? null : options.trim();
     }
 
     public String getAnswers() {
@@ -78,28 +89,12 @@ public class QuestionBank implements Serializable {
         this.answers = answers == null ? null : answers.trim();
     }
 
-    public Float getDifficulty() {
+    public Integer getDifficulty() {
         return difficulty;
     }
 
-    public void setDifficulty(Float difficulty) {
+    public void setDifficulty(Integer difficulty) {
         this.difficulty = difficulty;
-    }
-
-    public Integer getTotalDone() {
-        return totalDone;
-    }
-
-    public void setTotalDone(Integer totalDone) {
-        this.totalDone = totalDone;
-    }
-
-    public Integer getTotalSuccess() {
-        return totalSuccess;
-    }
-
-    public void setTotalSuccess(Integer totalSuccess) {
-        this.totalSuccess = totalSuccess;
     }
 
     public Integer getPriority() {
@@ -116,6 +111,22 @@ public class QuestionBank implements Serializable {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Integer getTotalDone() {
+        return totalDone;
+    }
+
+    public void setTotalDone(Integer totalDone) {
+        this.totalDone = totalDone;
+    }
+
+    public Integer getTotalSuccess() {
+        return totalSuccess;
+    }
+
+    public void setTotalSuccess(Integer totalSuccess) {
+        this.totalSuccess = totalSuccess;
     }
 
     public Date getCreateAt() {

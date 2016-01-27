@@ -1,5 +1,6 @@
 package com.online.exams.system.core.service;
 
+import com.online.exams.system.core.model.User;
 import org.springframework.stereotype.Service;
 
 /**
@@ -8,4 +9,6 @@ import org.springframework.stereotype.Service;
 @Service
 public interface UserService {
     Boolean login();
+
+    User findUserByName(String name);
 }

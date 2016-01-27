@@ -185,63 +185,133 @@ public class QuestionBankCondition {
             return (Criteria) this;
         }
 
-        public Criteria andContentIsNull() {
-            addCriterion("content is null");
+        public Criteria andTypeIsNull() {
+            addCriterion("type is null");
             return (Criteria) this;
         }
 
-        public Criteria andContentIsNotNull() {
-            addCriterion("content is not null");
+        public Criteria andTypeIsNotNull() {
+            addCriterion("type is not null");
             return (Criteria) this;
         }
 
-        public Criteria andContentEqualTo(Integer value) {
-            addCriterion("content =", value, "content");
+        public Criteria andTypeEqualTo(Integer value) {
+            addCriterion("type =", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andContentNotEqualTo(Integer value) {
-            addCriterion("content <>", value, "content");
+        public Criteria andTypeNotEqualTo(Integer value) {
+            addCriterion("type <>", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andContentGreaterThan(Integer value) {
-            addCriterion("content >", value, "content");
+        public Criteria andTypeGreaterThan(Integer value) {
+            addCriterion("type >", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andContentGreaterThanOrEqualTo(Integer value) {
-            addCriterion("content >=", value, "content");
+        public Criteria andTypeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("type >=", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andContentLessThan(Integer value) {
-            addCriterion("content <", value, "content");
+        public Criteria andTypeLessThan(Integer value) {
+            addCriterion("type <", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andContentLessThanOrEqualTo(Integer value) {
-            addCriterion("content <=", value, "content");
+        public Criteria andTypeLessThanOrEqualTo(Integer value) {
+            addCriterion("type <=", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andContentIn(List<Integer> values) {
-            addCriterion("content in", values, "content");
+        public Criteria andTypeIn(List<Integer> values) {
+            addCriterion("type in", values, "type");
             return (Criteria) this;
         }
 
-        public Criteria andContentNotIn(List<Integer> values) {
-            addCriterion("content not in", values, "content");
+        public Criteria andTypeNotIn(List<Integer> values) {
+            addCriterion("type not in", values, "type");
             return (Criteria) this;
         }
 
-        public Criteria andContentBetween(Integer value1, Integer value2) {
-            addCriterion("content between", value1, value2, "content");
+        public Criteria andTypeBetween(Integer value1, Integer value2) {
+            addCriterion("type between", value1, value2, "type");
             return (Criteria) this;
         }
 
-        public Criteria andContentNotBetween(Integer value1, Integer value2) {
-            addCriterion("content not between", value1, value2, "content");
+        public Criteria andTypeNotBetween(Integer value1, Integer value2) {
+            addCriterion("type not between", value1, value2, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleIsNull() {
+            addCriterion("title is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleIsNotNull() {
+            addCriterion("title is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleEqualTo(String value) {
+            addCriterion("title =", value, "title");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleNotEqualTo(String value) {
+            addCriterion("title <>", value, "title");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleGreaterThan(String value) {
+            addCriterion("title >", value, "title");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleGreaterThanOrEqualTo(String value) {
+            addCriterion("title >=", value, "title");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleLessThan(String value) {
+            addCriterion("title <", value, "title");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleLessThanOrEqualTo(String value) {
+            addCriterion("title <=", value, "title");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleLike(String value) {
+            addCriterion("title like", value, "title");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleNotLike(String value) {
+            addCriterion("title not like", value, "title");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleIn(List<String> values) {
+            addCriterion("title in", values, "title");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleNotIn(List<String> values) {
+            addCriterion("title not in", values, "title");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleBetween(String value1, String value2) {
+            addCriterion("title between", value1, value2, "title");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleNotBetween(String value1, String value2) {
+            addCriterion("title not between", value1, value2, "title");
             return (Criteria) this;
         }
 
@@ -255,52 +325,62 @@ public class QuestionBankCondition {
             return (Criteria) this;
         }
 
-        public Criteria andOptionsEqualTo(Integer value) {
+        public Criteria andOptionsEqualTo(String value) {
             addCriterion("options =", value, "options");
             return (Criteria) this;
         }
 
-        public Criteria andOptionsNotEqualTo(Integer value) {
+        public Criteria andOptionsNotEqualTo(String value) {
             addCriterion("options <>", value, "options");
             return (Criteria) this;
         }
 
-        public Criteria andOptionsGreaterThan(Integer value) {
+        public Criteria andOptionsGreaterThan(String value) {
             addCriterion("options >", value, "options");
             return (Criteria) this;
         }
 
-        public Criteria andOptionsGreaterThanOrEqualTo(Integer value) {
+        public Criteria andOptionsGreaterThanOrEqualTo(String value) {
             addCriterion("options >=", value, "options");
             return (Criteria) this;
         }
 
-        public Criteria andOptionsLessThan(Integer value) {
+        public Criteria andOptionsLessThan(String value) {
             addCriterion("options <", value, "options");
             return (Criteria) this;
         }
 
-        public Criteria andOptionsLessThanOrEqualTo(Integer value) {
+        public Criteria andOptionsLessThanOrEqualTo(String value) {
             addCriterion("options <=", value, "options");
             return (Criteria) this;
         }
 
-        public Criteria andOptionsIn(List<Integer> values) {
+        public Criteria andOptionsLike(String value) {
+            addCriterion("options like", value, "options");
+            return (Criteria) this;
+        }
+
+        public Criteria andOptionsNotLike(String value) {
+            addCriterion("options not like", value, "options");
+            return (Criteria) this;
+        }
+
+        public Criteria andOptionsIn(List<String> values) {
             addCriterion("options in", values, "options");
             return (Criteria) this;
         }
 
-        public Criteria andOptionsNotIn(List<Integer> values) {
+        public Criteria andOptionsNotIn(List<String> values) {
             addCriterion("options not in", values, "options");
             return (Criteria) this;
         }
 
-        public Criteria andOptionsBetween(Integer value1, Integer value2) {
+        public Criteria andOptionsBetween(String value1, String value2) {
             addCriterion("options between", value1, value2, "options");
             return (Criteria) this;
         }
 
-        public Criteria andOptionsNotBetween(Integer value1, Integer value2) {
+        public Criteria andOptionsNotBetween(String value1, String value2) {
             addCriterion("options not between", value1, value2, "options");
             return (Criteria) this;
         }
@@ -385,173 +465,53 @@ public class QuestionBankCondition {
             return (Criteria) this;
         }
 
-        public Criteria andDifficultyEqualTo(Float value) {
+        public Criteria andDifficultyEqualTo(Integer value) {
             addCriterion("difficulty =", value, "difficulty");
             return (Criteria) this;
         }
 
-        public Criteria andDifficultyNotEqualTo(Float value) {
+        public Criteria andDifficultyNotEqualTo(Integer value) {
             addCriterion("difficulty <>", value, "difficulty");
             return (Criteria) this;
         }
 
-        public Criteria andDifficultyGreaterThan(Float value) {
+        public Criteria andDifficultyGreaterThan(Integer value) {
             addCriterion("difficulty >", value, "difficulty");
             return (Criteria) this;
         }
 
-        public Criteria andDifficultyGreaterThanOrEqualTo(Float value) {
+        public Criteria andDifficultyGreaterThanOrEqualTo(Integer value) {
             addCriterion("difficulty >=", value, "difficulty");
             return (Criteria) this;
         }
 
-        public Criteria andDifficultyLessThan(Float value) {
+        public Criteria andDifficultyLessThan(Integer value) {
             addCriterion("difficulty <", value, "difficulty");
             return (Criteria) this;
         }
 
-        public Criteria andDifficultyLessThanOrEqualTo(Float value) {
+        public Criteria andDifficultyLessThanOrEqualTo(Integer value) {
             addCriterion("difficulty <=", value, "difficulty");
             return (Criteria) this;
         }
 
-        public Criteria andDifficultyIn(List<Float> values) {
+        public Criteria andDifficultyIn(List<Integer> values) {
             addCriterion("difficulty in", values, "difficulty");
             return (Criteria) this;
         }
 
-        public Criteria andDifficultyNotIn(List<Float> values) {
+        public Criteria andDifficultyNotIn(List<Integer> values) {
             addCriterion("difficulty not in", values, "difficulty");
             return (Criteria) this;
         }
 
-        public Criteria andDifficultyBetween(Float value1, Float value2) {
+        public Criteria andDifficultyBetween(Integer value1, Integer value2) {
             addCriterion("difficulty between", value1, value2, "difficulty");
             return (Criteria) this;
         }
 
-        public Criteria andDifficultyNotBetween(Float value1, Float value2) {
+        public Criteria andDifficultyNotBetween(Integer value1, Integer value2) {
             addCriterion("difficulty not between", value1, value2, "difficulty");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalDoneIsNull() {
-            addCriterion("total_done is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalDoneIsNotNull() {
-            addCriterion("total_done is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalDoneEqualTo(Integer value) {
-            addCriterion("total_done =", value, "totalDone");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalDoneNotEqualTo(Integer value) {
-            addCriterion("total_done <>", value, "totalDone");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalDoneGreaterThan(Integer value) {
-            addCriterion("total_done >", value, "totalDone");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalDoneGreaterThanOrEqualTo(Integer value) {
-            addCriterion("total_done >=", value, "totalDone");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalDoneLessThan(Integer value) {
-            addCriterion("total_done <", value, "totalDone");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalDoneLessThanOrEqualTo(Integer value) {
-            addCriterion("total_done <=", value, "totalDone");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalDoneIn(List<Integer> values) {
-            addCriterion("total_done in", values, "totalDone");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalDoneNotIn(List<Integer> values) {
-            addCriterion("total_done not in", values, "totalDone");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalDoneBetween(Integer value1, Integer value2) {
-            addCriterion("total_done between", value1, value2, "totalDone");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalDoneNotBetween(Integer value1, Integer value2) {
-            addCriterion("total_done not between", value1, value2, "totalDone");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalSuccessIsNull() {
-            addCriterion("total_success is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalSuccessIsNotNull() {
-            addCriterion("total_success is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalSuccessEqualTo(Integer value) {
-            addCriterion("total_success =", value, "totalSuccess");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalSuccessNotEqualTo(Integer value) {
-            addCriterion("total_success <>", value, "totalSuccess");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalSuccessGreaterThan(Integer value) {
-            addCriterion("total_success >", value, "totalSuccess");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalSuccessGreaterThanOrEqualTo(Integer value) {
-            addCriterion("total_success >=", value, "totalSuccess");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalSuccessLessThan(Integer value) {
-            addCriterion("total_success <", value, "totalSuccess");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalSuccessLessThanOrEqualTo(Integer value) {
-            addCriterion("total_success <=", value, "totalSuccess");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalSuccessIn(List<Integer> values) {
-            addCriterion("total_success in", values, "totalSuccess");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalSuccessNotIn(List<Integer> values) {
-            addCriterion("total_success not in", values, "totalSuccess");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalSuccessBetween(Integer value1, Integer value2) {
-            addCriterion("total_success between", value1, value2, "totalSuccess");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalSuccessNotBetween(Integer value1, Integer value2) {
-            addCriterion("total_success not between", value1, value2, "totalSuccess");
             return (Criteria) this;
         }
 
@@ -672,6 +632,126 @@ public class QuestionBankCondition {
 
         public Criteria andStatusNotBetween(Integer value1, Integer value2) {
             addCriterion("status not between", value1, value2, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalDoneIsNull() {
+            addCriterion("total_done is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalDoneIsNotNull() {
+            addCriterion("total_done is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalDoneEqualTo(Integer value) {
+            addCriterion("total_done =", value, "totalDone");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalDoneNotEqualTo(Integer value) {
+            addCriterion("total_done <>", value, "totalDone");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalDoneGreaterThan(Integer value) {
+            addCriterion("total_done >", value, "totalDone");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalDoneGreaterThanOrEqualTo(Integer value) {
+            addCriterion("total_done >=", value, "totalDone");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalDoneLessThan(Integer value) {
+            addCriterion("total_done <", value, "totalDone");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalDoneLessThanOrEqualTo(Integer value) {
+            addCriterion("total_done <=", value, "totalDone");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalDoneIn(List<Integer> values) {
+            addCriterion("total_done in", values, "totalDone");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalDoneNotIn(List<Integer> values) {
+            addCriterion("total_done not in", values, "totalDone");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalDoneBetween(Integer value1, Integer value2) {
+            addCriterion("total_done between", value1, value2, "totalDone");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalDoneNotBetween(Integer value1, Integer value2) {
+            addCriterion("total_done not between", value1, value2, "totalDone");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalSuccessIsNull() {
+            addCriterion("total_success is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalSuccessIsNotNull() {
+            addCriterion("total_success is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalSuccessEqualTo(Integer value) {
+            addCriterion("total_success =", value, "totalSuccess");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalSuccessNotEqualTo(Integer value) {
+            addCriterion("total_success <>", value, "totalSuccess");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalSuccessGreaterThan(Integer value) {
+            addCriterion("total_success >", value, "totalSuccess");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalSuccessGreaterThanOrEqualTo(Integer value) {
+            addCriterion("total_success >=", value, "totalSuccess");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalSuccessLessThan(Integer value) {
+            addCriterion("total_success <", value, "totalSuccess");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalSuccessLessThanOrEqualTo(Integer value) {
+            addCriterion("total_success <=", value, "totalSuccess");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalSuccessIn(List<Integer> values) {
+            addCriterion("total_success in", values, "totalSuccess");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalSuccessNotIn(List<Integer> values) {
+            addCriterion("total_success not in", values, "totalSuccess");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalSuccessBetween(Integer value1, Integer value2) {
+            addCriterion("total_success between", value1, value2, "totalSuccess");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalSuccessNotBetween(Integer value1, Integer value2) {
+            addCriterion("total_success not between", value1, value2, "totalSuccess");
             return (Criteria) this;
         }
 

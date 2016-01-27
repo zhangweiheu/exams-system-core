@@ -3,14 +3,15 @@
 <mapper namespace="com.online.exams.system.core.mapper.QuestionBankMapper" >
   <resultMap id="BaseResultMap" type="com.online.exams.system.core.model.QuestionBank" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="content" property="content" jdbcType="INTEGER" />
-    <result column="options" property="options" jdbcType="INTEGER" />
+    <result column="type" property="type" jdbcType="TINYINT" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="options" property="options" jdbcType="VARCHAR" />
     <result column="answers" property="answers" jdbcType="VARCHAR" />
-    <result column="difficulty" property="difficulty" jdbcType="REAL" />
+    <result column="difficulty" property="difficulty" jdbcType="TINYINT" />
+    <result column="priority" property="priority" jdbcType="TINYINT" />
+    <result column="status" property="status" jdbcType="TINYINT" />
     <result column="total_done" property="totalDone" jdbcType="INTEGER" />
     <result column="total_success" property="totalSuccess" jdbcType="INTEGER" />
-    <result column="priority" property="priority" jdbcType="INTEGER" />
-    <result column="status" property="status" jdbcType="TINYINT" />
     <result column="create_at" property="createAt" jdbcType="TIMESTAMP" />
     <result column="update_at" property="updateAt" jdbcType="TIMESTAMP" />
   </resultMap>
@@ -73,7 +74,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, content, options, answers, difficulty, total_done, total_success, priority, status, 
+    id, type, title, options, answers, difficulty, priority, status, total_done, total_success, 
     create_at, update_at
   </sql>
   <select id="selectByCondition" resultMap="BaseResultMap" parameterType="com.online.exams.system.core.model.QuestionBankCondition" >
@@ -113,14 +114,14 @@
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into question_bank (content, options, answers, 
-      difficulty, total_done, total_success, 
-      priority, status, create_at, 
-      update_at)
-    values (#{content,jdbcType=INTEGER}, #{options,jdbcType=INTEGER}, #{answers,jdbcType=VARCHAR}, 
-      #{difficulty,jdbcType=REAL}, #{totalDone,jdbcType=INTEGER}, #{totalSuccess,jdbcType=INTEGER}, 
-      #{priority,jdbcType=INTEGER}, #{status,jdbcType=TINYINT}, #{createAt,jdbcType=TIMESTAMP}, 
-      #{updateAt,jdbcType=TIMESTAMP})
+    insert into question_bank (type, title, options, 
+      answers, difficulty, priority, 
+      status, total_done, total_success, 
+      create_at, update_at)
+    values (#{type,jdbcType=TINYINT}, #{title,jdbcType=VARCHAR}, #{options,jdbcType=VARCHAR}, 
+      #{answers,jdbcType=VARCHAR}, #{difficulty,jdbcType=TINYINT}, #{priority,jdbcType=TINYINT}, 
+      #{status,jdbcType=TINYINT}, #{totalDone,jdbcType=INTEGER}, #{totalSuccess,jdbcType=INTEGER}, 
+      #{createAt,jdbcType=TIMESTAMP}, #{updateAt,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.online.exams.system.core.model.QuestionBank" >
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
@@ -128,8 +129,11 @@
     </selectKey>
     insert into question_bank
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="content != null" >
-        content,
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="title != null" >
+        title,
       </if>
       <if test="options != null" >
         options,
@@ -140,17 +144,17 @@
       <if test="difficulty != null" >
         difficulty,
       </if>
-      <if test="totalDone != null" >
-        total_done,
-      </if>
-      <if test="totalSuccess != null" >
-        total_success,
-      </if>
       <if test="priority != null" >
         priority,
       </if>
       <if test="status != null" >
         status,
+      </if>
+      <if test="totalDone != null" >
+        total_done,
+      </if>
+      <if test="totalSuccess != null" >
+        total_success,
       </if>
       <if test="createAt != null" >
         create_at,
@@ -160,29 +164,32 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="content != null" >
-        #{content,jdbcType=INTEGER},
+      <if test="type != null" >
+        #{type,jdbcType=TINYINT},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
       </if>
       <if test="options != null" >
-        #{options,jdbcType=INTEGER},
+        #{options,jdbcType=VARCHAR},
       </if>
       <if test="answers != null" >
         #{answers,jdbcType=VARCHAR},
       </if>
       <if test="difficulty != null" >
-        #{difficulty,jdbcType=REAL},
+        #{difficulty,jdbcType=TINYINT},
+      </if>
+      <if test="priority != null" >
+        #{priority,jdbcType=TINYINT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
       </if>
       <if test="totalDone != null" >
         #{totalDone,jdbcType=INTEGER},
       </if>
       <if test="totalSuccess != null" >
         #{totalSuccess,jdbcType=INTEGER},
-      </if>
-      <if test="priority != null" >
-        #{priority,jdbcType=INTEGER},
-      </if>
-      <if test="status != null" >
-        #{status,jdbcType=TINYINT},
       </if>
       <if test="createAt != null" >
         #{createAt,jdbcType=TIMESTAMP},
@@ -204,29 +211,32 @@
       <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.content != null" >
-        content = #{record.content,jdbcType=INTEGER},
+      <if test="record.type != null" >
+        type = #{record.type,jdbcType=TINYINT},
+      </if>
+      <if test="record.title != null" >
+        title = #{record.title,jdbcType=VARCHAR},
       </if>
       <if test="record.options != null" >
-        options = #{record.options,jdbcType=INTEGER},
+        options = #{record.options,jdbcType=VARCHAR},
       </if>
       <if test="record.answers != null" >
         answers = #{record.answers,jdbcType=VARCHAR},
       </if>
       <if test="record.difficulty != null" >
-        difficulty = #{record.difficulty,jdbcType=REAL},
+        difficulty = #{record.difficulty,jdbcType=TINYINT},
+      </if>
+      <if test="record.priority != null" >
+        priority = #{record.priority,jdbcType=TINYINT},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=TINYINT},
       </if>
       <if test="record.totalDone != null" >
         total_done = #{record.totalDone,jdbcType=INTEGER},
       </if>
       <if test="record.totalSuccess != null" >
         total_success = #{record.totalSuccess,jdbcType=INTEGER},
-      </if>
-      <if test="record.priority != null" >
-        priority = #{record.priority,jdbcType=INTEGER},
-      </if>
-      <if test="record.status != null" >
-        status = #{record.status,jdbcType=TINYINT},
       </if>
       <if test="record.createAt != null" >
         create_at = #{record.createAt,jdbcType=TIMESTAMP},
@@ -242,14 +252,15 @@
   <update id="updateByCondition" parameterType="map" >
     update question_bank
     set id = #{record.id,jdbcType=INTEGER},
-      content = #{record.content,jdbcType=INTEGER},
-      options = #{record.options,jdbcType=INTEGER},
+      type = #{record.type,jdbcType=TINYINT},
+      title = #{record.title,jdbcType=VARCHAR},
+      options = #{record.options,jdbcType=VARCHAR},
       answers = #{record.answers,jdbcType=VARCHAR},
-      difficulty = #{record.difficulty,jdbcType=REAL},
+      difficulty = #{record.difficulty,jdbcType=TINYINT},
+      priority = #{record.priority,jdbcType=TINYINT},
+      status = #{record.status,jdbcType=TINYINT},
       total_done = #{record.totalDone,jdbcType=INTEGER},
       total_success = #{record.totalSuccess,jdbcType=INTEGER},
-      priority = #{record.priority,jdbcType=INTEGER},
-      status = #{record.status,jdbcType=TINYINT},
       create_at = #{record.createAt,jdbcType=TIMESTAMP},
       update_at = #{record.updateAt,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
@@ -259,29 +270,32 @@
   <update id="updateByIdSelective" parameterType="com.online.exams.system.core.model.QuestionBank" >
     update question_bank
     <set >
-      <if test="content != null" >
-        content = #{content,jdbcType=INTEGER},
+      <if test="type != null" >
+        type = #{type,jdbcType=TINYINT},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
       </if>
       <if test="options != null" >
-        options = #{options,jdbcType=INTEGER},
+        options = #{options,jdbcType=VARCHAR},
       </if>
       <if test="answers != null" >
         answers = #{answers,jdbcType=VARCHAR},
       </if>
       <if test="difficulty != null" >
-        difficulty = #{difficulty,jdbcType=REAL},
+        difficulty = #{difficulty,jdbcType=TINYINT},
+      </if>
+      <if test="priority != null" >
+        priority = #{priority,jdbcType=TINYINT},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
       </if>
       <if test="totalDone != null" >
         total_done = #{totalDone,jdbcType=INTEGER},
       </if>
       <if test="totalSuccess != null" >
         total_success = #{totalSuccess,jdbcType=INTEGER},
-      </if>
-      <if test="priority != null" >
-        priority = #{priority,jdbcType=INTEGER},
-      </if>
-      <if test="status != null" >
-        status = #{status,jdbcType=TINYINT},
       </if>
       <if test="createAt != null" >
         create_at = #{createAt,jdbcType=TIMESTAMP},
@@ -294,14 +308,15 @@
   </update>
   <update id="updateById" parameterType="com.online.exams.system.core.model.QuestionBank" >
     update question_bank
-    set content = #{content,jdbcType=INTEGER},
-      options = #{options,jdbcType=INTEGER},
+    set type = #{type,jdbcType=TINYINT},
+      title = #{title,jdbcType=VARCHAR},
+      options = #{options,jdbcType=VARCHAR},
       answers = #{answers,jdbcType=VARCHAR},
-      difficulty = #{difficulty,jdbcType=REAL},
+      difficulty = #{difficulty,jdbcType=TINYINT},
+      priority = #{priority,jdbcType=TINYINT},
+      status = #{status,jdbcType=TINYINT},
       total_done = #{totalDone,jdbcType=INTEGER},
       total_success = #{totalSuccess,jdbcType=INTEGER},
-      priority = #{priority,jdbcType=INTEGER},
-      status = #{status,jdbcType=TINYINT},
       create_at = #{createAt,jdbcType=TIMESTAMP},
       update_at = #{updateAt,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}

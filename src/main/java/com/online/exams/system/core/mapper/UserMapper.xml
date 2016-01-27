@@ -3,13 +3,16 @@
 <mapper namespace="com.online.exams.system.core.mapper.UserMapper" >
   <resultMap id="BaseResultMap" type="com.online.exams.system.core.model.User" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
     <result column="avatar" property="avatar" jdbcType="VARCHAR" />
     <result column="intro" property="intro" jdbcType="VARCHAR" />
-    <result column="email" property="email" jdbcType="INTEGER" />
-    <result column="phone" property="phone" jdbcType="INTEGER" />
-    <result column="wechat" property="wechat" jdbcType="INTEGER" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="wechat" property="wechat" jdbcType="VARCHAR" />
+    <result column="total_score" property="totalScore" jdbcType="INTEGER" />
+    <result column="total_done" property="totalDone" jdbcType="INTEGER" />
+    <result column="average_score" property="averageScore" jdbcType="INTEGER" />
     <result column="create_at" property="createAt" jdbcType="TIMESTAMP" />
     <result column="update_at" property="updateAt" jdbcType="TIMESTAMP" />
   </resultMap>
@@ -72,7 +75,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, name, password, avatar, intro, email, phone, wechat, create_at, update_at
+    id, username, password, avatar, intro, email, phone, wechat, total_score, total_done, 
+    average_score, create_at, update_at
   </sql>
   <select id="selectByCondition" resultMap="BaseResultMap" parameterType="com.online.exams.system.core.model.UserCondition" >
     select
@@ -111,13 +115,15 @@
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into user (name, password, avatar, 
+    insert into user (username, password, avatar, 
       intro, email, phone, 
-      wechat, create_at, update_at
+      wechat, total_score, total_done, 
+      average_score, create_at, update_at
       )
-    values (#{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{avatar,jdbcType=VARCHAR}, 
-      #{intro,jdbcType=VARCHAR}, #{email,jdbcType=INTEGER}, #{phone,jdbcType=INTEGER}, 
-      #{wechat,jdbcType=INTEGER}, #{createAt,jdbcType=TIMESTAMP}, #{updateAt,jdbcType=TIMESTAMP}
+    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{avatar,jdbcType=VARCHAR}, 
+      #{intro,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{wechat,jdbcType=VARCHAR}, #{totalScore,jdbcType=INTEGER}, #{totalDone,jdbcType=INTEGER}, 
+      #{averageScore,jdbcType=INTEGER}, #{createAt,jdbcType=TIMESTAMP}, #{updateAt,jdbcType=TIMESTAMP}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.online.exams.system.core.model.User" >
@@ -126,8 +132,8 @@
     </selectKey>
     insert into user
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="name != null" >
-        name,
+      <if test="username != null" >
+        username,
       </if>
       <if test="password != null" >
         password,
@@ -147,6 +153,15 @@
       <if test="wechat != null" >
         wechat,
       </if>
+      <if test="totalScore != null" >
+        total_score,
+      </if>
+      <if test="totalDone != null" >
+        total_done,
+      </if>
+      <if test="averageScore != null" >
+        average_score,
+      </if>
       <if test="createAt != null" >
         create_at,
       </if>
@@ -155,8 +170,8 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
       </if>
       <if test="password != null" >
         #{password,jdbcType=VARCHAR},
@@ -168,13 +183,22 @@
         #{intro,jdbcType=VARCHAR},
       </if>
       <if test="email != null" >
-        #{email,jdbcType=INTEGER},
+        #{email,jdbcType=VARCHAR},
       </if>
       <if test="phone != null" >
-        #{phone,jdbcType=INTEGER},
+        #{phone,jdbcType=VARCHAR},
       </if>
       <if test="wechat != null" >
-        #{wechat,jdbcType=INTEGER},
+        #{wechat,jdbcType=VARCHAR},
+      </if>
+      <if test="totalScore != null" >
+        #{totalScore,jdbcType=INTEGER},
+      </if>
+      <if test="totalDone != null" >
+        #{totalDone,jdbcType=INTEGER},
+      </if>
+      <if test="averageScore != null" >
+        #{averageScore,jdbcType=INTEGER},
       </if>
       <if test="createAt != null" >
         #{createAt,jdbcType=TIMESTAMP},
@@ -196,8 +220,8 @@
       <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.name != null" >
-        name = #{record.name,jdbcType=VARCHAR},
+      <if test="record.username != null" >
+        username = #{record.username,jdbcType=VARCHAR},
       </if>
       <if test="record.password != null" >
         password = #{record.password,jdbcType=VARCHAR},
@@ -209,13 +233,22 @@
         intro = #{record.intro,jdbcType=VARCHAR},
       </if>
       <if test="record.email != null" >
-        email = #{record.email,jdbcType=INTEGER},
+        email = #{record.email,jdbcType=VARCHAR},
       </if>
       <if test="record.phone != null" >
-        phone = #{record.phone,jdbcType=INTEGER},
+        phone = #{record.phone,jdbcType=VARCHAR},
       </if>
       <if test="record.wechat != null" >
-        wechat = #{record.wechat,jdbcType=INTEGER},
+        wechat = #{record.wechat,jdbcType=VARCHAR},
+      </if>
+      <if test="record.totalScore != null" >
+        total_score = #{record.totalScore,jdbcType=INTEGER},
+      </if>
+      <if test="record.totalDone != null" >
+        total_done = #{record.totalDone,jdbcType=INTEGER},
+      </if>
+      <if test="record.averageScore != null" >
+        average_score = #{record.averageScore,jdbcType=INTEGER},
       </if>
       <if test="record.createAt != null" >
         create_at = #{record.createAt,jdbcType=TIMESTAMP},
@@ -231,13 +264,16 @@
   <update id="updateByCondition" parameterType="map" >
     update user
     set id = #{record.id,jdbcType=INTEGER},
-      name = #{record.name,jdbcType=VARCHAR},
+      username = #{record.username,jdbcType=VARCHAR},
       password = #{record.password,jdbcType=VARCHAR},
       avatar = #{record.avatar,jdbcType=VARCHAR},
       intro = #{record.intro,jdbcType=VARCHAR},
-      email = #{record.email,jdbcType=INTEGER},
-      phone = #{record.phone,jdbcType=INTEGER},
-      wechat = #{record.wechat,jdbcType=INTEGER},
+      email = #{record.email,jdbcType=VARCHAR},
+      phone = #{record.phone,jdbcType=VARCHAR},
+      wechat = #{record.wechat,jdbcType=VARCHAR},
+      total_score = #{record.totalScore,jdbcType=INTEGER},
+      total_done = #{record.totalDone,jdbcType=INTEGER},
+      average_score = #{record.averageScore,jdbcType=INTEGER},
       create_at = #{record.createAt,jdbcType=TIMESTAMP},
       update_at = #{record.updateAt,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
@@ -247,8 +283,8 @@
   <update id="updateByIdSelective" parameterType="com.online.exams.system.core.model.User" >
     update user
     <set >
-      <if test="name != null" >
-        name = #{name,jdbcType=VARCHAR},
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
       </if>
       <if test="password != null" >
         password = #{password,jdbcType=VARCHAR},
@@ -260,13 +296,22 @@
         intro = #{intro,jdbcType=VARCHAR},
       </if>
       <if test="email != null" >
-        email = #{email,jdbcType=INTEGER},
+        email = #{email,jdbcType=VARCHAR},
       </if>
       <if test="phone != null" >
-        phone = #{phone,jdbcType=INTEGER},
+        phone = #{phone,jdbcType=VARCHAR},
       </if>
       <if test="wechat != null" >
-        wechat = #{wechat,jdbcType=INTEGER},
+        wechat = #{wechat,jdbcType=VARCHAR},
+      </if>
+      <if test="totalScore != null" >
+        total_score = #{totalScore,jdbcType=INTEGER},
+      </if>
+      <if test="totalDone != null" >
+        total_done = #{totalDone,jdbcType=INTEGER},
+      </if>
+      <if test="averageScore != null" >
+        average_score = #{averageScore,jdbcType=INTEGER},
       </if>
       <if test="createAt != null" >
         create_at = #{createAt,jdbcType=TIMESTAMP},
@@ -279,13 +324,16 @@
   </update>
   <update id="updateById" parameterType="com.online.exams.system.core.model.User" >
     update user
-    set name = #{name,jdbcType=VARCHAR},
+    set username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       avatar = #{avatar,jdbcType=VARCHAR},
       intro = #{intro,jdbcType=VARCHAR},
-      email = #{email,jdbcType=INTEGER},
-      phone = #{phone,jdbcType=INTEGER},
-      wechat = #{wechat,jdbcType=INTEGER},
+      email = #{email,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      wechat = #{wechat,jdbcType=VARCHAR},
+      total_score = #{totalScore,jdbcType=INTEGER},
+      total_done = #{totalDone,jdbcType=INTEGER},
+      average_score = #{averageScore,jdbcType=INTEGER},
       create_at = #{createAt,jdbcType=TIMESTAMP},
       update_at = #{updateAt,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
