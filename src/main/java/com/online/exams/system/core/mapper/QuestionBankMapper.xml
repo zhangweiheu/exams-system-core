@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.online.exams.system.core.mapper.QuestionBankMapper" >
+  <resultMap id="BaseResultMap" type="com.online.exams.system.core.model.QuestionBank" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="content" property="content" jdbcType="INTEGER" />
+    <result column="options" property="options" jdbcType="INTEGER" />
+    <result column="answers" property="answers" jdbcType="VARCHAR" />
+    <result column="difficulty" property="difficulty" jdbcType="REAL" />
+    <result column="total_done" property="totalDone" jdbcType="INTEGER" />
+    <result column="total_success" property="totalSuccess" jdbcType="INTEGER" />
+    <result column="priority" property="priority" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="create_at" property="createAt" jdbcType="TIMESTAMP" />
+    <result column="update_at" property="updateAt" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Condition_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Condition_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, content, options, answers, difficulty, total_done, total_success, priority, status, 
+    create_at, update_at
+  </sql>
+  <select id="selectByCondition" resultMap="BaseResultMap" parameterType="com.online.exams.system.core.model.QuestionBankCondition" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from question_bank
+    <if test="_parameter != null" >
+      <include refid="Condition_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="limitOffset >= 0" >
+       limit ${limitOffset} , ${limitSize}
+    </if>
+  </select>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from question_bank
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from question_bank
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByCondition" parameterType="com.online.exams.system.core.model.QuestionBankCondition" >
+    delete from question_bank
+    <if test="_parameter != null" >
+      <include refid="Condition_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.online.exams.system.core.model.QuestionBank" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into question_bank (content, options, answers, 
+      difficulty, total_done, total_success, 
+      priority, status, create_at, 
+      update_at)
+    values (#{content,jdbcType=INTEGER}, #{options,jdbcType=INTEGER}, #{answers,jdbcType=VARCHAR}, 
+      #{difficulty,jdbcType=REAL}, #{totalDone,jdbcType=INTEGER}, #{totalSuccess,jdbcType=INTEGER}, 
+      #{priority,jdbcType=INTEGER}, #{status,jdbcType=TINYINT}, #{createAt,jdbcType=TIMESTAMP}, 
+      #{updateAt,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.online.exams.system.core.model.QuestionBank" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into question_bank
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="options != null" >
+        options,
+      </if>
+      <if test="answers != null" >
+        answers,
+      </if>
+      <if test="difficulty != null" >
+        difficulty,
+      </if>
+      <if test="totalDone != null" >
+        total_done,
+      </if>
+      <if test="totalSuccess != null" >
+        total_success,
+      </if>
+      <if test="priority != null" >
+        priority,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="createAt != null" >
+        create_at,
+      </if>
+      <if test="updateAt != null" >
+        update_at,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="content != null" >
+        #{content,jdbcType=INTEGER},
+      </if>
+      <if test="options != null" >
+        #{options,jdbcType=INTEGER},
+      </if>
+      <if test="answers != null" >
+        #{answers,jdbcType=VARCHAR},
+      </if>
+      <if test="difficulty != null" >
+        #{difficulty,jdbcType=REAL},
+      </if>
+      <if test="totalDone != null" >
+        #{totalDone,jdbcType=INTEGER},
+      </if>
+      <if test="totalSuccess != null" >
+        #{totalSuccess,jdbcType=INTEGER},
+      </if>
+      <if test="priority != null" >
+        #{priority,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createAt != null" >
+        #{createAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateAt != null" >
+        #{updateAt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByCondition" parameterType="com.online.exams.system.core.model.QuestionBankCondition" resultType="java.lang.Integer" >
+    select count(*) from question_bank
+    <if test="_parameter != null" >
+      <include refid="Condition_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByConditionSelective" parameterType="map" >
+    update question_bank
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.content != null" >
+        content = #{record.content,jdbcType=INTEGER},
+      </if>
+      <if test="record.options != null" >
+        options = #{record.options,jdbcType=INTEGER},
+      </if>
+      <if test="record.answers != null" >
+        answers = #{record.answers,jdbcType=VARCHAR},
+      </if>
+      <if test="record.difficulty != null" >
+        difficulty = #{record.difficulty,jdbcType=REAL},
+      </if>
+      <if test="record.totalDone != null" >
+        total_done = #{record.totalDone,jdbcType=INTEGER},
+      </if>
+      <if test="record.totalSuccess != null" >
+        total_success = #{record.totalSuccess,jdbcType=INTEGER},
+      </if>
+      <if test="record.priority != null" >
+        priority = #{record.priority,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=TINYINT},
+      </if>
+      <if test="record.createAt != null" >
+        create_at = #{record.createAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateAt != null" >
+        update_at = #{record.updateAt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Condition_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByCondition" parameterType="map" >
+    update question_bank
+    set id = #{record.id,jdbcType=INTEGER},
+      content = #{record.content,jdbcType=INTEGER},
+      options = #{record.options,jdbcType=INTEGER},
+      answers = #{record.answers,jdbcType=VARCHAR},
+      difficulty = #{record.difficulty,jdbcType=REAL},
+      total_done = #{record.totalDone,jdbcType=INTEGER},
+      total_success = #{record.totalSuccess,jdbcType=INTEGER},
+      priority = #{record.priority,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=TINYINT},
+      create_at = #{record.createAt,jdbcType=TIMESTAMP},
+      update_at = #{record.updateAt,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Condition_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByIdSelective" parameterType="com.online.exams.system.core.model.QuestionBank" >
+    update question_bank
+    <set >
+      <if test="content != null" >
+        content = #{content,jdbcType=INTEGER},
+      </if>
+      <if test="options != null" >
+        options = #{options,jdbcType=INTEGER},
+      </if>
+      <if test="answers != null" >
+        answers = #{answers,jdbcType=VARCHAR},
+      </if>
+      <if test="difficulty != null" >
+        difficulty = #{difficulty,jdbcType=REAL},
+      </if>
+      <if test="totalDone != null" >
+        total_done = #{totalDone,jdbcType=INTEGER},
+      </if>
+      <if test="totalSuccess != null" >
+        total_success = #{totalSuccess,jdbcType=INTEGER},
+      </if>
+      <if test="priority != null" >
+        priority = #{priority,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createAt != null" >
+        create_at = #{createAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateAt != null" >
+        update_at = #{updateAt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateById" parameterType="com.online.exams.system.core.model.QuestionBank" >
+    update question_bank
+    set content = #{content,jdbcType=INTEGER},
+      options = #{options,jdbcType=INTEGER},
+      answers = #{answers,jdbcType=VARCHAR},
+      difficulty = #{difficulty,jdbcType=REAL},
+      total_done = #{totalDone,jdbcType=INTEGER},
+      total_success = #{totalSuccess,jdbcType=INTEGER},
+      priority = #{priority,jdbcType=INTEGER},
+      status = #{status,jdbcType=TINYINT},
+      create_at = #{createAt,jdbcType=TIMESTAMP},
+      update_at = #{updateAt,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
