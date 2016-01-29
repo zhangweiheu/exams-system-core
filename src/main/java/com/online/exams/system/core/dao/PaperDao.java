@@ -5,6 +5,5 @@ import org.springframework.stereotype.Repository;
 /**
  * Created by 36kr on 16/1/25.
  */
-@Repository
 public interface PaperDao {
 }

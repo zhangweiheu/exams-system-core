@@ -5,6 +5,6 @@ import org.springframework.stereotype.Service;
 /**
  * Created by 36kr on 16/1/25.
  */
-@Service
+
 public interface PaperService {
 }
