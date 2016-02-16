@@ -5,6 +5,8 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="username" property="username" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="is_admin" property="isAdmin" jdbcType="TINYINT" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
     <result column="avatar" property="avatar" jdbcType="VARCHAR" />
     <result column="intro" property="intro" jdbcType="VARCHAR" />
     <result column="email" property="email" jdbcType="VARCHAR" />
@@ -75,8 +77,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, username, password, avatar, intro, email, phone, wechat, total_score, total_done, 
-    average_score, create_at, update_at
+    id, username, password, is_admin, is_delete, avatar, intro, email, phone, wechat, 
+    total_score, total_done, average_score, create_at, update_at
   </sql>
   <select id="selectByCondition" resultMap="BaseResultMap" parameterType="com.online.exams.system.core.model.UserCondition" >
     select
@@ -115,16 +117,16 @@
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into user (username, password, avatar, 
-      intro, email, phone, 
-      wechat, total_score, total_done, 
-      average_score, create_at, update_at
-      )
-    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{avatar,jdbcType=VARCHAR}, 
-      #{intro,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
-      #{wechat,jdbcType=VARCHAR}, #{totalScore,jdbcType=INTEGER}, #{totalDone,jdbcType=INTEGER}, 
-      #{averageScore,jdbcType=INTEGER}, #{createAt,jdbcType=TIMESTAMP}, #{updateAt,jdbcType=TIMESTAMP}
-      )
+    insert into user (username, password, is_admin, 
+      is_delete, avatar, intro, 
+      email, phone, wechat, 
+      total_score, total_done, average_score, 
+      create_at, update_at)
+    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{isAdmin,jdbcType=TINYINT}, 
+      #{isDelete,jdbcType=TINYINT}, #{avatar,jdbcType=VARCHAR}, #{intro,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{wechat,jdbcType=VARCHAR}, 
+      #{totalScore,jdbcType=INTEGER}, #{totalDone,jdbcType=INTEGER}, #{averageScore,jdbcType=INTEGER}, 
+      #{createAt,jdbcType=TIMESTAMP}, #{updateAt,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.online.exams.system.core.model.User" >
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
@@ -137,6 +139,12 @@
       </if>
       <if test="password != null" >
         password,
+      </if>
+      <if test="isAdmin != null" >
+        is_admin,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
       </if>
       <if test="avatar != null" >
         avatar,
@@ -175,6 +183,12 @@
       </if>
       <if test="password != null" >
         #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="isAdmin != null" >
+        #{isAdmin,jdbcType=TINYINT},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
       </if>
       <if test="avatar != null" >
         #{avatar,jdbcType=VARCHAR},
@@ -226,6 +240,12 @@
       <if test="record.password != null" >
         password = #{record.password,jdbcType=VARCHAR},
       </if>
+      <if test="record.isAdmin != null" >
+        is_admin = #{record.isAdmin,jdbcType=TINYINT},
+      </if>
+      <if test="record.isDelete != null" >
+        is_delete = #{record.isDelete,jdbcType=TINYINT},
+      </if>
       <if test="record.avatar != null" >
         avatar = #{record.avatar,jdbcType=VARCHAR},
       </if>
@@ -266,6 +286,8 @@
     set id = #{record.id,jdbcType=INTEGER},
       username = #{record.username,jdbcType=VARCHAR},
       password = #{record.password,jdbcType=VARCHAR},
+      is_admin = #{record.isAdmin,jdbcType=TINYINT},
+      is_delete = #{record.isDelete,jdbcType=TINYINT},
       avatar = #{record.avatar,jdbcType=VARCHAR},
       intro = #{record.intro,jdbcType=VARCHAR},
       email = #{record.email,jdbcType=VARCHAR},
@@ -288,6 +310,12 @@
       </if>
       <if test="password != null" >
         password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="isAdmin != null" >
+        is_admin = #{isAdmin,jdbcType=TINYINT},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
       </if>
       <if test="avatar != null" >
         avatar = #{avatar,jdbcType=VARCHAR},
@@ -326,6 +354,8 @@
     update user
     set username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
+      is_admin = #{isAdmin,jdbcType=TINYINT},
+      is_delete = #{isDelete,jdbcType=TINYINT},
       avatar = #{avatar,jdbcType=VARCHAR},
       intro = #{intro,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},

@@ -6,8 +6,8 @@ import java.util.Date;
 /**
  * graduation.question_bank  
  *
- * @author 36kr
- * @date 2016-1-28
+ * @author zhang
+ * @date 2016-2-16
  *
  */
 public class QuestionBank implements Serializable {

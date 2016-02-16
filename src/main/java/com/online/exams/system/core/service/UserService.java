@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
  */
 
 public interface UserService {
-    Boolean login();
-
     User findUserByName(String name);
+    User findUserByUid(Integer uid);
+    boolean deleteUserByUid(int uid);
 }

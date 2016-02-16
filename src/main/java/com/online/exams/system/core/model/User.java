@@ -6,8 +6,8 @@ import java.util.Date;
 /**
  * graduation.user  
  *
- * @author 36kr
- * @date 2016-1-28
+ * @author zhang
+ * @date 2016-2-16
  *
  */
 public class User implements Serializable {
@@ -19,6 +19,12 @@ public class User implements Serializable {
 
     /** 密码 */
     private String password;
+
+    /** 身份标识，普通用户：0|管理员：1 */
+    private Boolean isAdmin;
+
+    /** 是否删除 */
+    private Boolean isDelete;
 
     /** 头像 */
     private String avatar;
@@ -32,16 +38,16 @@ public class User implements Serializable {
     /** 手机号 */
     private String phone;
 
-    /** 微信 */
+    /** 微信号 */
     private String wechat;
 
-    /**  */
+    /** 总得分 */
     private Integer totalScore;
 
-    /**  */
+    /** 总题量 */
     private Integer totalDone;
 
-    /**  */
+    /** 平均得分 */
     private Integer averageScore;
 
     /** 创建时间 */
@@ -74,6 +80,22 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password == null ? null : password.trim();
+    }
+
+    public Boolean getIsAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(Boolean isAdmin) {
+        this.isAdmin = isAdmin;
+    }
+
+    public Boolean getIsDelete() {
+        return isDelete;
+    }
+
+    public void setIsDelete(Boolean isDelete) {
+        this.isDelete = isDelete;
     }
 
     public String getAvatar() {

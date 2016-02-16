@@ -15,12 +15,19 @@ public class UserServiceImpl implements UserService {
     private UserDao userDao;
 
     @Override
-    public Boolean login() {
-        return false;
+    public User findUserByUid(Integer uid) {
+        return (User) userDao.findById(uid);
+    }
+
+    @Override
+    public boolean deleteUserByUid(int uid) {
+        return userDao.deleteById(uid) == 1;
     }
 
     @Override
     public User findUserByName(String name) {
         return userDao.findUserByName(name);
     }
+
+
 }

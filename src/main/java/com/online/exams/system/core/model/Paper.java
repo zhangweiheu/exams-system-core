@@ -6,8 +6,8 @@ import java.util.Date;
 /**
  * graduation.paper  
  *
- * @author 36kr
- * @date 2016-1-28
+ * @author zhang
+ * @date 2016-2-16
  *
  */
 public class Paper implements Serializable {
@@ -32,8 +32,11 @@ public class Paper implements Serializable {
     /** 得分 */
     private Integer score;
 
-    /** 状态，枚举： */
+    /** 状态： */
     private Integer status;
+
+    /** 是否删除 */
+    private Boolean isDelete;
 
     /** 创建时间 */
     private Date createAt;
@@ -105,6 +108,14 @@ public class Paper implements Serializable {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Boolean getIsDelete() {
+        return isDelete;
+    }
+
+    public void setIsDelete(Boolean isDelete) {
+        this.isDelete = isDelete;
     }
 
     public Date getCreateAt() {

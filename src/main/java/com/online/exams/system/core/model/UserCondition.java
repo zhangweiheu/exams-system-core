@@ -325,6 +325,126 @@ public class UserCondition {
             return (Criteria) this;
         }
 
+        public Criteria andIsAdminIsNull() {
+            addCriterion("is_admin is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsAdminIsNotNull() {
+            addCriterion("is_admin is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsAdminEqualTo(Boolean value) {
+            addCriterion("is_admin =", value, "isAdmin");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsAdminNotEqualTo(Boolean value) {
+            addCriterion("is_admin <>", value, "isAdmin");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsAdminGreaterThan(Boolean value) {
+            addCriterion("is_admin >", value, "isAdmin");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsAdminGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("is_admin >=", value, "isAdmin");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsAdminLessThan(Boolean value) {
+            addCriterion("is_admin <", value, "isAdmin");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsAdminLessThanOrEqualTo(Boolean value) {
+            addCriterion("is_admin <=", value, "isAdmin");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsAdminIn(List<Boolean> values) {
+            addCriterion("is_admin in", values, "isAdmin");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsAdminNotIn(List<Boolean> values) {
+            addCriterion("is_admin not in", values, "isAdmin");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsAdminBetween(Boolean value1, Boolean value2) {
+            addCriterion("is_admin between", value1, value2, "isAdmin");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsAdminNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("is_admin not between", value1, value2, "isAdmin");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDeleteIsNull() {
+            addCriterion("is_delete is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDeleteIsNotNull() {
+            addCriterion("is_delete is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDeleteEqualTo(Boolean value) {
+            addCriterion("is_delete =", value, "isDelete");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDeleteNotEqualTo(Boolean value) {
+            addCriterion("is_delete <>", value, "isDelete");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDeleteGreaterThan(Boolean value) {
+            addCriterion("is_delete >", value, "isDelete");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDeleteGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("is_delete >=", value, "isDelete");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDeleteLessThan(Boolean value) {
+            addCriterion("is_delete <", value, "isDelete");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDeleteLessThanOrEqualTo(Boolean value) {
+            addCriterion("is_delete <=", value, "isDelete");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDeleteIn(List<Boolean> values) {
+            addCriterion("is_delete in", values, "isDelete");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDeleteNotIn(List<Boolean> values) {
+            addCriterion("is_delete not in", values, "isDelete");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDeleteBetween(Boolean value1, Boolean value2) {
+            addCriterion("is_delete between", value1, value2, "isDelete");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsDeleteNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("is_delete not between", value1, value2, "isDelete");
+            return (Criteria) this;
+        }
+
         public Criteria andAvatarIsNull() {
             addCriterion("avatar is null");
             return (Criteria) this;

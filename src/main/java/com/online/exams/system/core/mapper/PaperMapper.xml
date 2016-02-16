@@ -10,6 +10,7 @@
     <result column="total_points" property="totalPoints" jdbcType="INTEGER" />
     <result column="score" property="score" jdbcType="INTEGER" />
     <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
     <result column="create_at" property="createAt" jdbcType="TIMESTAMP" />
     <result column="update_at" property="updateAt" jdbcType="TIMESTAMP" />
   </resultMap>
@@ -72,8 +73,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, user_id, paper_id, paper_type, difficulty, total_points, score, status, create_at, 
-    update_at
+    id, user_id, paper_id, paper_type, difficulty, total_points, score, status, is_delete, 
+    create_at, update_at
   </sql>
   <select id="selectByCondition" resultMap="BaseResultMap" parameterType="com.online.exams.system.core.model.PaperCondition" >
     select
@@ -114,12 +115,12 @@
     </selectKey>
     insert into paper (user_id, paper_id, paper_type, 
       difficulty, total_points, score, 
-      status, create_at, update_at
-      )
+      status, is_delete, create_at, 
+      update_at)
     values (#{userId,jdbcType=INTEGER}, #{paperId,jdbcType=INTEGER}, #{paperType,jdbcType=TINYINT}, 
       #{difficulty,jdbcType=TINYINT}, #{totalPoints,jdbcType=INTEGER}, #{score,jdbcType=INTEGER}, 
-      #{status,jdbcType=TINYINT}, #{createAt,jdbcType=TIMESTAMP}, #{updateAt,jdbcType=TIMESTAMP}
-      )
+      #{status,jdbcType=TINYINT}, #{isDelete,jdbcType=TINYINT}, #{createAt,jdbcType=TIMESTAMP}, 
+      #{updateAt,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.online.exams.system.core.model.Paper" >
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
@@ -147,6 +148,9 @@
       </if>
       <if test="status != null" >
         status,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
       </if>
       <if test="createAt != null" >
         create_at,
@@ -176,6 +180,9 @@
       </if>
       <if test="status != null" >
         #{status,jdbcType=TINYINT},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=TINYINT},
       </if>
       <if test="createAt != null" >
         #{createAt,jdbcType=TIMESTAMP},
@@ -218,6 +225,9 @@
       <if test="record.status != null" >
         status = #{record.status,jdbcType=TINYINT},
       </if>
+      <if test="record.isDelete != null" >
+        is_delete = #{record.isDelete,jdbcType=TINYINT},
+      </if>
       <if test="record.createAt != null" >
         create_at = #{record.createAt,jdbcType=TIMESTAMP},
       </if>
@@ -239,6 +249,7 @@
       total_points = #{record.totalPoints,jdbcType=INTEGER},
       score = #{record.score,jdbcType=INTEGER},
       status = #{record.status,jdbcType=TINYINT},
+      is_delete = #{record.isDelete,jdbcType=TINYINT},
       create_at = #{record.createAt,jdbcType=TIMESTAMP},
       update_at = #{record.updateAt,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
@@ -269,6 +280,9 @@
       <if test="status != null" >
         status = #{status,jdbcType=TINYINT},
       </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
       <if test="createAt != null" >
         create_at = #{createAt,jdbcType=TIMESTAMP},
       </if>
@@ -287,6 +301,7 @@
       total_points = #{totalPoints,jdbcType=INTEGER},
       score = #{score,jdbcType=INTEGER},
       status = #{status,jdbcType=TINYINT},
+      is_delete = #{isDelete,jdbcType=TINYINT},
       create_at = #{createAt,jdbcType=TIMESTAMP},
       update_at = #{updateAt,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}

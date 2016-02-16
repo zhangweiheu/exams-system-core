@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * Created by 36kr on 16/1/25.
+ * Created by zhangwei on 16/1/25.
  */
 @Repository
 public class UserDaoImpl implements UserDao {
@@ -23,5 +23,20 @@ public class UserDaoImpl implements UserDao {
         condition.createCriteria().andUsernameEqualTo(name);
         List<User> userList = userMapper.selectByCondition(condition);
         return userList.size() > 0 ? userList.get(0) : null;
+    }
+
+    @Override
+    public Object findById(int uid) {
+        return userMapper.selectById(uid);
+    }
+
+    @Override
+    public List findAll() {
+        return null;
+    }
+
+    @Override
+    public int deleteById(int uid) {
+        return userMapper.deleteById(uid);
     }
 }

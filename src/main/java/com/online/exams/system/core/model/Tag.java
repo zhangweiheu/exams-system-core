@@ -6,8 +6,8 @@ import java.util.Date;
 /**
  * graduation.tag  
  *
- * @author 36kr
- * @date 2016-1-28
+ * @author zhang
+ * @date 2016-2-16
  *
  */
 public class Tag implements Serializable {
@@ -17,11 +17,11 @@ public class Tag implements Serializable {
     /** 关联 id */
     private Integer refId;
 
-    /** tag类型，枚举：0用户 | 1试题 | 2Java 试题 */
-    private Integer type;
+    /** 关联类型，枚举：0用户 | 1试题 | 2试卷 */
+    private Integer refType;
 
-    /** 标签内容 */
-    private String content;
+    /** tag value */
+    private Integer enumValue;
 
     /** 创建时间 */
     private Date createAt;
@@ -47,20 +47,20 @@ public class Tag implements Serializable {
         this.refId = refId;
     }
 
-    public Integer getType() {
-        return type;
+    public Integer getRefType() {
+        return refType;
     }
 
-    public void setType(Integer type) {
-        this.type = type;
+    public void setRefType(Integer refType) {
+        this.refType = refType;
     }
 
-    public String getContent() {
-        return content;
+    public Integer getEnumValue() {
+        return enumValue;
     }
 
-    public void setContent(String content) {
-        this.content = content == null ? null : content.trim();
+    public void setEnumValue(Integer enumValue) {
+        this.enumValue = enumValue;
     }
 
     public Date getCreateAt() {

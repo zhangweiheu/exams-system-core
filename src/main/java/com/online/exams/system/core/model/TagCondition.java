@@ -245,133 +245,123 @@ public class TagCondition {
             return (Criteria) this;
         }
 
-        public Criteria andTypeIsNull() {
-            addCriterion("type is null");
+        public Criteria andRefTypeIsNull() {
+            addCriterion("ref_type is null");
             return (Criteria) this;
         }
 
-        public Criteria andTypeIsNotNull() {
-            addCriterion("type is not null");
+        public Criteria andRefTypeIsNotNull() {
+            addCriterion("ref_type is not null");
             return (Criteria) this;
         }
 
-        public Criteria andTypeEqualTo(Integer value) {
-            addCriterion("type =", value, "type");
+        public Criteria andRefTypeEqualTo(Integer value) {
+            addCriterion("ref_type =", value, "refType");
             return (Criteria) this;
         }
 
-        public Criteria andTypeNotEqualTo(Integer value) {
-            addCriterion("type <>", value, "type");
+        public Criteria andRefTypeNotEqualTo(Integer value) {
+            addCriterion("ref_type <>", value, "refType");
             return (Criteria) this;
         }
 
-        public Criteria andTypeGreaterThan(Integer value) {
-            addCriterion("type >", value, "type");
+        public Criteria andRefTypeGreaterThan(Integer value) {
+            addCriterion("ref_type >", value, "refType");
             return (Criteria) this;
         }
 
-        public Criteria andTypeGreaterThanOrEqualTo(Integer value) {
-            addCriterion("type >=", value, "type");
+        public Criteria andRefTypeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("ref_type >=", value, "refType");
             return (Criteria) this;
         }
 
-        public Criteria andTypeLessThan(Integer value) {
-            addCriterion("type <", value, "type");
+        public Criteria andRefTypeLessThan(Integer value) {
+            addCriterion("ref_type <", value, "refType");
             return (Criteria) this;
         }
 
-        public Criteria andTypeLessThanOrEqualTo(Integer value) {
-            addCriterion("type <=", value, "type");
+        public Criteria andRefTypeLessThanOrEqualTo(Integer value) {
+            addCriterion("ref_type <=", value, "refType");
             return (Criteria) this;
         }
 
-        public Criteria andTypeIn(List<Integer> values) {
-            addCriterion("type in", values, "type");
+        public Criteria andRefTypeIn(List<Integer> values) {
+            addCriterion("ref_type in", values, "refType");
             return (Criteria) this;
         }
 
-        public Criteria andTypeNotIn(List<Integer> values) {
-            addCriterion("type not in", values, "type");
+        public Criteria andRefTypeNotIn(List<Integer> values) {
+            addCriterion("ref_type not in", values, "refType");
             return (Criteria) this;
         }
 
-        public Criteria andTypeBetween(Integer value1, Integer value2) {
-            addCriterion("type between", value1, value2, "type");
+        public Criteria andRefTypeBetween(Integer value1, Integer value2) {
+            addCriterion("ref_type between", value1, value2, "refType");
             return (Criteria) this;
         }
 
-        public Criteria andTypeNotBetween(Integer value1, Integer value2) {
-            addCriterion("type not between", value1, value2, "type");
+        public Criteria andRefTypeNotBetween(Integer value1, Integer value2) {
+            addCriterion("ref_type not between", value1, value2, "refType");
             return (Criteria) this;
         }
 
-        public Criteria andContentIsNull() {
-            addCriterion("content is null");
+        public Criteria andEnumValueIsNull() {
+            addCriterion("enum_value is null");
             return (Criteria) this;
         }
 
-        public Criteria andContentIsNotNull() {
-            addCriterion("content is not null");
+        public Criteria andEnumValueIsNotNull() {
+            addCriterion("enum_value is not null");
             return (Criteria) this;
         }
 
-        public Criteria andContentEqualTo(String value) {
-            addCriterion("content =", value, "content");
+        public Criteria andEnumValueEqualTo(Integer value) {
+            addCriterion("enum_value =", value, "enumValue");
             return (Criteria) this;
         }
 
-        public Criteria andContentNotEqualTo(String value) {
-            addCriterion("content <>", value, "content");
+        public Criteria andEnumValueNotEqualTo(Integer value) {
+            addCriterion("enum_value <>", value, "enumValue");
             return (Criteria) this;
         }
 
-        public Criteria andContentGreaterThan(String value) {
-            addCriterion("content >", value, "content");
+        public Criteria andEnumValueGreaterThan(Integer value) {
+            addCriterion("enum_value >", value, "enumValue");
             return (Criteria) this;
         }
 
-        public Criteria andContentGreaterThanOrEqualTo(String value) {
-            addCriterion("content >=", value, "content");
+        public Criteria andEnumValueGreaterThanOrEqualTo(Integer value) {
+            addCriterion("enum_value >=", value, "enumValue");
             return (Criteria) this;
         }
 
-        public Criteria andContentLessThan(String value) {
-            addCriterion("content <", value, "content");
+        public Criteria andEnumValueLessThan(Integer value) {
+            addCriterion("enum_value <", value, "enumValue");
             return (Criteria) this;
         }
 
-        public Criteria andContentLessThanOrEqualTo(String value) {
-            addCriterion("content <=", value, "content");
+        public Criteria andEnumValueLessThanOrEqualTo(Integer value) {
+            addCriterion("enum_value <=", value, "enumValue");
             return (Criteria) this;
         }
 
-        public Criteria andContentLike(String value) {
-            addCriterion("content like", value, "content");
+        public Criteria andEnumValueIn(List<Integer> values) {
+            addCriterion("enum_value in", values, "enumValue");
             return (Criteria) this;
         }
 
-        public Criteria andContentNotLike(String value) {
-            addCriterion("content not like", value, "content");
+        public Criteria andEnumValueNotIn(List<Integer> values) {
+            addCriterion("enum_value not in", values, "enumValue");
             return (Criteria) this;
         }
 
-        public Criteria andContentIn(List<String> values) {
-            addCriterion("content in", values, "content");
+        public Criteria andEnumValueBetween(Integer value1, Integer value2) {
+            addCriterion("enum_value between", value1, value2, "enumValue");
             return (Criteria) this;
         }
 
-        public Criteria andContentNotIn(List<String> values) {
-            addCriterion("content not in", values, "content");
-            return (Criteria) this;
-        }
-
-        public Criteria andContentBetween(String value1, String value2) {
-            addCriterion("content between", value1, value2, "content");
-            return (Criteria) this;
-        }
-
-        public Criteria andContentNotBetween(String value1, String value2) {
-            addCriterion("content not between", value1, value2, "content");
+        public Criteria andEnumValueNotBetween(Integer value1, Integer value2) {
+            addCriterion("enum_value not between", value1, value2, "enumValue");
             return (Criteria) this;
         }
 
