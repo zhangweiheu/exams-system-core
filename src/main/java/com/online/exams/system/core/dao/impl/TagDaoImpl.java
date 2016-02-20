@@ -36,8 +36,8 @@ public class TagDaoImpl implements TagDao {
     @Override
     public List<Tag> findAllTagByRefid(int refid) {
         TagCondition condition = new TagCondition();
-        condition.createCriteria().andu
-        return tagMapper.;
+        condition.createCriteria().andRefIdEqualTo(refid);
+        return tagMapper.selectByCondition(condition);
     }
 
     @Override
