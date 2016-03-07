@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
  */
 public interface UserDao extends AbstractDao{
     User findUserByName(String name);
+    int saveUser(User user);
 }

@@ -39,4 +39,9 @@ public class UserDaoImpl implements UserDao {
     public int deleteById(int uid) {
         return userMapper.deleteById(uid);
     }
+
+    @Override
+    public int saveUser(User user) {
+        return userMapper.insertSelective(user);
+    }
 }
