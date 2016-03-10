@@ -18,6 +18,14 @@ public class UserDaoImpl implements UserDao {
     private UserMapper userMapper;
 
     @Override
+    public List<User> listAllUser(int offset, int size) {
+        UserCondition condition = new UserCondition();
+        condition.setLimitOffset(offset);
+        condition.setLimitSize(size);
+        return userMapper.selectByCondition(condition);
+    }
+
+    @Override
     public User findUserByName(String name) {
         UserCondition condition = new UserCondition();
         condition.createCriteria().andUsernameEqualTo(name);
@@ -43,5 +51,26 @@ public class UserDaoImpl implements UserDao {
     @Override
     public int saveUser(User user) {
         return userMapper.insertSelective(user);
+    }
+
+    @Override
+    public int updateUser(User user) {
+        return userMapper.updateByIdSelective(user);
+    }
+
+    @Override
+    public int CountByProperty(User user) {
+        UserCondition condition= new UserCondition();
+        UserCondition.Criteria criteria = condition.createCriteria();
+        if(null != user && null != user.getIsAdmin()){
+            criteria.andIsAdminEqualTo(user.getIsAdmin());
+        }
+        if(null != user && null != user.getEmail()){
+            criteria.andEmailEqualTo(user.getEmail());
+        }
+        if(null != user && null != user.getUsername()){
+            criteria.andUsernameEqualTo(user.getUsername());
+        }
+        return userMapper.countByCondition(condition);
     }
 }

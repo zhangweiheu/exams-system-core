@@ -1,6 +1,6 @@
 package com.online.exams.system.core.mongo;
 
-import com.online.exams.system.core.util.Page;
+import com.online.exams.system.core.bean.Page;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 

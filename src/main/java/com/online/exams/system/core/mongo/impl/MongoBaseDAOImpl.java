@@ -1,7 +1,7 @@
 package com.online.exams.system.core.mongo.impl;
 
+import com.online.exams.system.core.bean.Page;
 import com.online.exams.system.core.mongo.MongoBaseDAO;
-import com.online.exams.system.core.util.Page;
 import com.online.exams.system.core.util.mongo.ReflectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

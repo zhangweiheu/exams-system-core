@@ -11,7 +11,7 @@ import java.util.List;
  * 分页通用类
  * 本类实现了Iterable接口，可以用foreach来遍历
  * 
- * @author xianwen.tan
+ * @author
  * @param <T>
  *            分页列表项类型
  */

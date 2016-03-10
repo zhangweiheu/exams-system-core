@@ -6,6 +6,8 @@ import com.online.exams.system.core.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by zhangwei on 16/1/25.
  */
@@ -13,6 +15,16 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserDao userDao;
+
+    @Override
+    public List<User> listAllUser(int offset, int size){
+        return userDao.listAllUser(offset, size);
+    }
+
+    @Override
+    public int getTotalCount() {
+        return userDao.CountByProperty(null);
+    }
 
     @Override
     public User findUserByUid(Integer uid) {
@@ -32,5 +44,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public int saveUser(User user) {
         return userDao.saveUser(user);
+    }
+
+    @Override
+    public int updateUser(User user) {
+        return userDao.updateUser(user);
     }
 }
