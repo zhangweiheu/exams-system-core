@@ -5,27 +5,22 @@ import com.online.exams.system.core.enums.mybatis.IEnumValue;
 import com.online.exams.system.core.enums.mybatis.ParseNameReplaceValue;
 
 @ParseNameReplaceValue
-public enum TagEnum implements IEnumDesc, IEnumValue {
-    JAVA("Java", 0),
-    HTML("HTML", 1),
-    SYSTEM("操作系统", 2),
-    NETWORK("计算机网络", 3),
-    CSS("CSS", 4),
-    SPRING("Spring", 5),
-    HIBERNATE("Hibernate",6),
-    MYSQL("MySQL",7);
+public enum RefTypeEnum implements IEnumDesc, IEnumValue {
+    USER("用户", 0),
+    QUESTION("试题", 1),
+    PAPER("试卷", 2);
 
     private String desc;
     private int value;
 
 
-    TagEnum(String desc, int value) {
+    RefTypeEnum(String desc, int value) {
         this.desc = desc;
         this.value = value;
     }
 
-    public static TagEnum parse(int val) {
-        for (TagEnum cycle : TagEnum.values()) {
+    public static RefTypeEnum parse(int val) {
+        for (RefTypeEnum cycle : RefTypeEnum.values()) {
             if (cycle.value == val) {
                 return cycle;
             }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.online.exams.system.core.mapper.QuestionBankMapper" >
-  <resultMap id="BaseResultMap" type="com.online.exams.system.core.model.QuestionBank" >
+<mapper namespace="com.online.exams.system.core.mapper.QuestionMapper" >
+  <resultMap id="BaseResultMap" type="com.online.exams.system.core.model.Question" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="type" property="type" jdbcType="TINYINT" />
+    <result column="type" property="type" jdbcType="BIT" />
     <result column="title" property="title" jdbcType="VARCHAR" />
     <result column="options" property="options" jdbcType="VARCHAR" />
     <result column="answers" property="answers" jdbcType="VARCHAR" />
@@ -77,13 +77,13 @@
     id, type, title, options, answers, difficulty, priority, status, total_done, total_success, 
     create_at, update_at
   </sql>
-  <select id="selectByCondition" resultMap="BaseResultMap" parameterType="com.online.exams.system.core.model.QuestionBankCondition" >
+  <select id="selectByCondition" resultMap="BaseResultMap" parameterType="com.online.exams.system.core.model.QuestionCondition" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from question_bank
+    from question
     <if test="_parameter != null" >
       <include refid="Condition_Where_Clause" />
     </if>
@@ -97,37 +97,37 @@
   <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from question_bank
+    from question
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteById" parameterType="java.lang.Integer" >
-    delete from question_bank
+    delete from question
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByCondition" parameterType="com.online.exams.system.core.model.QuestionBankCondition" >
-    delete from question_bank
+  <delete id="deleteByCondition" parameterType="com.online.exams.system.core.model.QuestionCondition" >
+    delete from question
     <if test="_parameter != null" >
       <include refid="Condition_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.online.exams.system.core.model.QuestionBank" >
+  <insert id="insert" parameterType="com.online.exams.system.core.model.Question" >
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into question_bank (type, title, options, 
+    insert into question (type, title, options, 
       answers, difficulty, priority, 
       status, total_done, total_success, 
       create_at, update_at)
-    values (#{type,jdbcType=TINYINT}, #{title,jdbcType=VARCHAR}, #{options,jdbcType=VARCHAR}, 
+    values (#{type,jdbcType=BIT}, #{title,jdbcType=VARCHAR}, #{options,jdbcType=VARCHAR}, 
       #{answers,jdbcType=VARCHAR}, #{difficulty,jdbcType=TINYINT}, #{priority,jdbcType=TINYINT}, 
       #{status,jdbcType=TINYINT}, #{totalDone,jdbcType=INTEGER}, #{totalSuccess,jdbcType=INTEGER}, 
       #{createAt,jdbcType=TIMESTAMP}, #{updateAt,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.online.exams.system.core.model.QuestionBank" >
+  <insert id="insertSelective" parameterType="com.online.exams.system.core.model.Question" >
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into question_bank
+    insert into question
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="type != null" >
         type,
@@ -165,7 +165,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="type != null" >
-        #{type,jdbcType=TINYINT},
+        #{type,jdbcType=BIT},
       </if>
       <if test="title != null" >
         #{title,jdbcType=VARCHAR},
@@ -199,20 +199,20 @@
       </if>
     </trim>
   </insert>
-  <select id="countByCondition" parameterType="com.online.exams.system.core.model.QuestionBankCondition" resultType="java.lang.Integer" >
-    select count(*) from question_bank
+  <select id="countByCondition" parameterType="com.online.exams.system.core.model.QuestionCondition" resultType="java.lang.Integer" >
+    select count(*) from question
     <if test="_parameter != null" >
       <include refid="Condition_Where_Clause" />
     </if>
   </select>
   <update id="updateByConditionSelective" parameterType="map" >
-    update question_bank
+    update question
     <set >
       <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
       </if>
       <if test="record.type != null" >
-        type = #{record.type,jdbcType=TINYINT},
+        type = #{record.type,jdbcType=BIT},
       </if>
       <if test="record.title != null" >
         title = #{record.title,jdbcType=VARCHAR},
@@ -250,9 +250,9 @@
     </if>
   </update>
   <update id="updateByCondition" parameterType="map" >
-    update question_bank
+    update question
     set id = #{record.id,jdbcType=INTEGER},
-      type = #{record.type,jdbcType=TINYINT},
+      type = #{record.type,jdbcType=BIT},
       title = #{record.title,jdbcType=VARCHAR},
       options = #{record.options,jdbcType=VARCHAR},
       answers = #{record.answers,jdbcType=VARCHAR},
@@ -267,11 +267,11 @@
       <include refid="Update_By_Condition_Where_Clause" />
     </if>
   </update>
-  <update id="updateByIdSelective" parameterType="com.online.exams.system.core.model.QuestionBank" >
-    update question_bank
+  <update id="updateByIdSelective" parameterType="com.online.exams.system.core.model.Question" >
+    update question
     <set >
       <if test="type != null" >
-        type = #{type,jdbcType=TINYINT},
+        type = #{type,jdbcType=BIT},
       </if>
       <if test="title != null" >
         title = #{title,jdbcType=VARCHAR},
@@ -306,9 +306,9 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateById" parameterType="com.online.exams.system.core.model.QuestionBank" >
-    update question_bank
-    set type = #{type,jdbcType=TINYINT},
+  <update id="updateById" parameterType="com.online.exams.system.core.model.Question" >
+    update question
+    set type = #{type,jdbcType=BIT},
       title = #{title,jdbcType=VARCHAR},
       options = #{options,jdbcType=VARCHAR},
       answers = #{answers,jdbcType=VARCHAR},

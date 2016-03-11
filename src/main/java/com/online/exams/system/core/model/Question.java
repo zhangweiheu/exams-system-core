@@ -1,39 +1,41 @@
 package com.online.exams.system.core.model;
 
+import com.online.exams.system.core.enums.QuestionStatusEnum;
+import com.online.exams.system.core.enums.QuestionTypeEnum;
 import java.io.Serializable;
 import java.util.Date;
 
 /**
- * graduation.question_bank  
+ * graduation.question  
  *
  * @author zhang
- * @date 2016-2-16
+ * @date 2016-3-11
  *
  */
-public class QuestionBank implements Serializable {
+public class Question implements Serializable {
     /** id */
     private Integer id;
 
-    /** 试题类型，枚举：0用户 | 1试题 */
-    private Integer type;
+    /** 试题类型，枚举：0单选 | 1多选 | 2编程题 */
+    private QuestionTypeEnum type;
 
-    /** 试题标题 */
+    /** 试题主干 */
     private String title;
 
     /** 试题选项 */
     private String options;
 
-    /** 试题答案 */
+    /** 试题答案， 编程题：test_case的id； */
     private String answers;
 
-    /** 难度系数0-10 */
+    /** 难度系数1-10 */
     private Integer difficulty;
 
-    /** 优先级0-10 */
+    /** 优先级1-10 */
     private Integer priority;
 
-    /** 题目状态，枚举： */
-    private Integer status;
+    /** 题目状态，枚举：0正常 | 1已删除 | 2有错误 */
+    private QuestionStatusEnum status;
 
     /** 总完成数 */
     private Integer totalDone;
@@ -57,11 +59,11 @@ public class QuestionBank implements Serializable {
         this.id = id;
     }
 
-    public Integer getType() {
+    public QuestionTypeEnum getType() {
         return type;
     }
 
-    public void setType(Integer type) {
+    public void setType(QuestionTypeEnum type) {
         this.type = type;
     }
 
@@ -105,11 +107,11 @@ public class QuestionBank implements Serializable {
         this.priority = priority;
     }
 
-    public Integer getStatus() {
+    public QuestionStatusEnum getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(QuestionStatusEnum status) {
         this.status = status;
     }
 

@@ -1,5 +1,7 @@
 package com.online.exams.system.core.model;
 
+import com.online.exams.system.core.enums.RefTypeEnum;
+import com.online.exams.system.core.enums.TagEnum;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -7,7 +9,7 @@ import java.util.Date;
  * graduation.tag  
  *
  * @author zhang
- * @date 2016-2-16
+ * @date 2016-3-11
  *
  */
 public class Tag implements Serializable {
@@ -18,10 +20,10 @@ public class Tag implements Serializable {
     private Integer refId;
 
     /** 关联类型，枚举：0用户 | 1试题 | 2试卷 */
-    private Integer refType;
+    private RefTypeEnum refType;
 
-    /** tag value */
-    private Integer enumValue;
+    /** tag value： 0java | 1html | 2操作系统｜３计算机网络｜４ＣＳＳ */
+    private TagEnum tagValue;
 
     /** 创建时间 */
     private Date createAt;
@@ -47,20 +49,20 @@ public class Tag implements Serializable {
         this.refId = refId;
     }
 
-    public Integer getRefType() {
+    public RefTypeEnum getRefType() {
         return refType;
     }
 
-    public void setRefType(Integer refType) {
+    public void setRefType(RefTypeEnum refType) {
         this.refType = refType;
     }
 
-    public Integer getEnumValue() {
-        return enumValue;
+    public TagEnum getTagValue() {
+        return tagValue;
     }
 
-    public void setEnumValue(Integer enumValue) {
-        this.enumValue = enumValue;
+    public void setTagValue(TagEnum tagValue) {
+        this.tagValue = tagValue;
     }
 
     public Date getCreateAt() {

@@ -1,5 +1,7 @@
 package com.online.exams.system.core.model;
 
+import com.online.exams.system.core.enums.RefTypeEnum;
+import com.online.exams.system.core.enums.TagEnum;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -255,113 +257,113 @@ public class TagCondition {
             return (Criteria) this;
         }
 
-        public Criteria andRefTypeEqualTo(Integer value) {
+        public Criteria andRefTypeEqualTo(RefTypeEnum value) {
             addCriterion("ref_type =", value, "refType");
             return (Criteria) this;
         }
 
-        public Criteria andRefTypeNotEqualTo(Integer value) {
+        public Criteria andRefTypeNotEqualTo(RefTypeEnum value) {
             addCriterion("ref_type <>", value, "refType");
             return (Criteria) this;
         }
 
-        public Criteria andRefTypeGreaterThan(Integer value) {
+        public Criteria andRefTypeGreaterThan(RefTypeEnum value) {
             addCriterion("ref_type >", value, "refType");
             return (Criteria) this;
         }
 
-        public Criteria andRefTypeGreaterThanOrEqualTo(Integer value) {
+        public Criteria andRefTypeGreaterThanOrEqualTo(RefTypeEnum value) {
             addCriterion("ref_type >=", value, "refType");
             return (Criteria) this;
         }
 
-        public Criteria andRefTypeLessThan(Integer value) {
+        public Criteria andRefTypeLessThan(RefTypeEnum value) {
             addCriterion("ref_type <", value, "refType");
             return (Criteria) this;
         }
 
-        public Criteria andRefTypeLessThanOrEqualTo(Integer value) {
+        public Criteria andRefTypeLessThanOrEqualTo(RefTypeEnum value) {
             addCriterion("ref_type <=", value, "refType");
             return (Criteria) this;
         }
 
-        public Criteria andRefTypeIn(List<Integer> values) {
+        public Criteria andRefTypeIn(List<RefTypeEnum> values) {
             addCriterion("ref_type in", values, "refType");
             return (Criteria) this;
         }
 
-        public Criteria andRefTypeNotIn(List<Integer> values) {
+        public Criteria andRefTypeNotIn(List<RefTypeEnum> values) {
             addCriterion("ref_type not in", values, "refType");
             return (Criteria) this;
         }
 
-        public Criteria andRefTypeBetween(Integer value1, Integer value2) {
+        public Criteria andRefTypeBetween(RefTypeEnum value1, RefTypeEnum value2) {
             addCriterion("ref_type between", value1, value2, "refType");
             return (Criteria) this;
         }
 
-        public Criteria andRefTypeNotBetween(Integer value1, Integer value2) {
+        public Criteria andRefTypeNotBetween(RefTypeEnum value1, RefTypeEnum value2) {
             addCriterion("ref_type not between", value1, value2, "refType");
             return (Criteria) this;
         }
 
-        public Criteria andEnumValueIsNull() {
-            addCriterion("enum_value is null");
+        public Criteria andTagValueIsNull() {
+            addCriterion("tag_value is null");
             return (Criteria) this;
         }
 
-        public Criteria andEnumValueIsNotNull() {
-            addCriterion("enum_value is not null");
+        public Criteria andTagValueIsNotNull() {
+            addCriterion("tag_value is not null");
             return (Criteria) this;
         }
 
-        public Criteria andEnumValueEqualTo(Integer value) {
-            addCriterion("enum_value =", value, "enumValue");
+        public Criteria andTagValueEqualTo(TagEnum value) {
+            addCriterion("tag_value =", value, "tagValue");
             return (Criteria) this;
         }
 
-        public Criteria andEnumValueNotEqualTo(Integer value) {
-            addCriterion("enum_value <>", value, "enumValue");
+        public Criteria andTagValueNotEqualTo(TagEnum value) {
+            addCriterion("tag_value <>", value, "tagValue");
             return (Criteria) this;
         }
 
-        public Criteria andEnumValueGreaterThan(Integer value) {
-            addCriterion("enum_value >", value, "enumValue");
+        public Criteria andTagValueGreaterThan(TagEnum value) {
+            addCriterion("tag_value >", value, "tagValue");
             return (Criteria) this;
         }
 
-        public Criteria andEnumValueGreaterThanOrEqualTo(Integer value) {
-            addCriterion("enum_value >=", value, "enumValue");
+        public Criteria andTagValueGreaterThanOrEqualTo(TagEnum value) {
+            addCriterion("tag_value >=", value, "tagValue");
             return (Criteria) this;
         }
 
-        public Criteria andEnumValueLessThan(Integer value) {
-            addCriterion("enum_value <", value, "enumValue");
+        public Criteria andTagValueLessThan(TagEnum value) {
+            addCriterion("tag_value <", value, "tagValue");
             return (Criteria) this;
         }
 
-        public Criteria andEnumValueLessThanOrEqualTo(Integer value) {
-            addCriterion("enum_value <=", value, "enumValue");
+        public Criteria andTagValueLessThanOrEqualTo(TagEnum value) {
+            addCriterion("tag_value <=", value, "tagValue");
             return (Criteria) this;
         }
 
-        public Criteria andEnumValueIn(List<Integer> values) {
-            addCriterion("enum_value in", values, "enumValue");
+        public Criteria andTagValueIn(List<TagEnum> values) {
+            addCriterion("tag_value in", values, "tagValue");
             return (Criteria) this;
         }
 
-        public Criteria andEnumValueNotIn(List<Integer> values) {
-            addCriterion("enum_value not in", values, "enumValue");
+        public Criteria andTagValueNotIn(List<TagEnum> values) {
+            addCriterion("tag_value not in", values, "tagValue");
             return (Criteria) this;
         }
 
-        public Criteria andEnumValueBetween(Integer value1, Integer value2) {
-            addCriterion("enum_value between", value1, value2, "enumValue");
+        public Criteria andTagValueBetween(TagEnum value1, TagEnum value2) {
+            addCriterion("tag_value between", value1, value2, "tagValue");
             return (Criteria) this;
         }
 
-        public Criteria andEnumValueNotBetween(Integer value1, Integer value2) {
-            addCriterion("enum_value not between", value1, value2, "enumValue");
+        public Criteria andTagValueNotBetween(TagEnum value1, TagEnum value2) {
+            addCriterion("tag_value not between", value1, value2, "tagValue");
             return (Criteria) this;
         }
 

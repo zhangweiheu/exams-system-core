@@ -1,5 +1,6 @@
 package com.online.exams.system.core.model;
 
+import com.online.exams.system.core.enums.PaperTypeEnum;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -7,7 +8,7 @@ import java.util.Date;
  * graduation.paper  
  *
  * @author zhang
- * @date 2016-2-16
+ * @date 2016-3-11
  *
  */
 public class Paper implements Serializable {
@@ -20,8 +21,8 @@ public class Paper implements Serializable {
     /** 试卷 id */
     private Integer paperId;
 
-    /** 试卷类型,枚举： */
-    private Integer paperType;
+    /** 试卷类型,枚举：0单选题 | 1多选题 | 2编程题 | 3单选、多选 | 4单选、编程 | 5多选、编程 */
+    private PaperTypeEnum paperType;
 
     /** 难度系数0-10 */
     private Integer difficulty;
@@ -70,11 +71,11 @@ public class Paper implements Serializable {
         this.paperId = paperId;
     }
 
-    public Integer getPaperType() {
+    public PaperTypeEnum getPaperType() {
         return paperType;
     }
 
-    public void setPaperType(Integer paperType) {
+    public void setPaperType(PaperTypeEnum paperType) {
         this.paperType = paperType;
     }
 

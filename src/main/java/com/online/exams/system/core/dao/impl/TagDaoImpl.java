@@ -1,7 +1,6 @@
 package com.online.exams.system.core.dao.impl;
 
 import com.online.exams.system.core.dao.TagDao;
-import com.online.exams.system.core.enums.TagEnum;
 import com.online.exams.system.core.mapper.TagMapper;
 import com.online.exams.system.core.model.Tag;
 import com.online.exams.system.core.model.TagCondition;
@@ -19,34 +18,70 @@ public class TagDaoImpl implements TagDao {
     TagMapper tagMapper;
 
     @Override
-    public Object findById(int tid) {
-        return tagMapper.selectById(tid);
+    public List<Tag> findAllTagByTagAttr(Tag tag) {
+        return tagMapper.selectByCondition(convertTagAttr2Condition(tag));
+    }
+
+    @Override
+    public int deleteTagByTagAttr(Tag tag) {
+        return tagMapper.deleteByCondition(convertTagAttr2Condition(tag));
+    }
+
+    @Override
+    public int saveTag(Tag tag) {
+        return tagMapper.insert(tag);
+    }
+
+    @Override
+    public int updateTag(Tag tag) {
+        return tagMapper.updateByIdSelective(tag);
+    }
+
+    @Override
+    public Object findById(int id) {
+        return tagMapper.selectById(id);
     }
 
     @Override
     public List findAll() {
-        return null;
+        return tagMapper.selectByCondition(convertTagAttr2Condition(null));
     }
 
     @Override
-    public int deleteById(int tid) {
-        return tagMapper.deleteById(tid);
+    public int deleteById(int id) {
+        return tagMapper.deleteById(id);
     }
 
     @Override
-    public List<Tag> findAllTagByRefid(int refid) {
+    public int deleteTagByListId(List<Integer> list) {
+        int i = 0;
+        for(Integer id : list)
+        {
+            if(tagMapper.deleteById(id) > 0){
+                i++;
+            }
+        }
+        return i;
+    }
+
+    private TagCondition convertTagAttr2Condition(Tag tag) {
         TagCondition condition = new TagCondition();
-        condition.createCriteria().andRefIdEqualTo(refid);
-        return tagMapper.selectByCondition(condition);
-    }
 
-    @Override
-    public boolean deleteTagByUidAndTagType(int uid, TagEnum tagEnum) {
-        return false;
-    }
-
-    @Override
-    public boolean addTagToUser(int uid, TagEnum tagEnum) {
-        return false;
+        if (null == tag) {
+            return condition;
+        }
+        if (null != tag.getId()) {
+            condition.createCriteria().andIdEqualTo(tag.getId());
+        }
+        if (null != tag.getRefId()) {
+            condition.createCriteria().andRefIdEqualTo(tag.getRefId());
+        }
+        if (null != tag.getRefType()) {
+            condition.createCriteria().andRefTypeEqualTo(tag.getRefType());
+        }
+        if (null != tag.getEnumValue()) {
+            condition.createCriteria().andEnumValueEqualTo(tag.getEnumValue());
+        }
+        return condition;
     }
 }

@@ -1,5 +1,6 @@
 package com.online.exams.system.core.model;
 
+import com.online.exams.system.core.enums.PaperTypeEnum;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -315,52 +316,52 @@ public class PaperCondition {
             return (Criteria) this;
         }
 
-        public Criteria andPaperTypeEqualTo(Integer value) {
+        public Criteria andPaperTypeEqualTo(PaperTypeEnum value) {
             addCriterion("paper_type =", value, "paperType");
             return (Criteria) this;
         }
 
-        public Criteria andPaperTypeNotEqualTo(Integer value) {
+        public Criteria andPaperTypeNotEqualTo(PaperTypeEnum value) {
             addCriterion("paper_type <>", value, "paperType");
             return (Criteria) this;
         }
 
-        public Criteria andPaperTypeGreaterThan(Integer value) {
+        public Criteria andPaperTypeGreaterThan(PaperTypeEnum value) {
             addCriterion("paper_type >", value, "paperType");
             return (Criteria) this;
         }
 
-        public Criteria andPaperTypeGreaterThanOrEqualTo(Integer value) {
+        public Criteria andPaperTypeGreaterThanOrEqualTo(PaperTypeEnum value) {
             addCriterion("paper_type >=", value, "paperType");
             return (Criteria) this;
         }
 
-        public Criteria andPaperTypeLessThan(Integer value) {
+        public Criteria andPaperTypeLessThan(PaperTypeEnum value) {
             addCriterion("paper_type <", value, "paperType");
             return (Criteria) this;
         }
 
-        public Criteria andPaperTypeLessThanOrEqualTo(Integer value) {
+        public Criteria andPaperTypeLessThanOrEqualTo(PaperTypeEnum value) {
             addCriterion("paper_type <=", value, "paperType");
             return (Criteria) this;
         }
 
-        public Criteria andPaperTypeIn(List<Integer> values) {
+        public Criteria andPaperTypeIn(List<PaperTypeEnum> values) {
             addCriterion("paper_type in", values, "paperType");
             return (Criteria) this;
         }
 
-        public Criteria andPaperTypeNotIn(List<Integer> values) {
+        public Criteria andPaperTypeNotIn(List<PaperTypeEnum> values) {
             addCriterion("paper_type not in", values, "paperType");
             return (Criteria) this;
         }
 
-        public Criteria andPaperTypeBetween(Integer value1, Integer value2) {
+        public Criteria andPaperTypeBetween(PaperTypeEnum value1, PaperTypeEnum value2) {
             addCriterion("paper_type between", value1, value2, "paperType");
             return (Criteria) this;
         }
 
-        public Criteria andPaperTypeNotBetween(Integer value1, Integer value2) {
+        public Criteria andPaperTypeNotBetween(PaperTypeEnum value1, PaperTypeEnum value2) {
             addCriterion("paper_type not between", value1, value2, "paperType");
             return (Criteria) this;
         }
