@@ -1,11 +1,11 @@
 package com.online.exams.system.core.dao.impl;
 
 import com.online.exams.system.core.dao.PaperDao;
+import com.online.exams.system.core.enums.StatusEnum;
 import com.online.exams.system.core.mapper.PaperMapper;
 import com.online.exams.system.core.model.Paper;
 import com.online.exams.system.core.model.PaperCondition;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -14,24 +14,26 @@ import java.util.List;
  * Created by 36kr on 16/1/25.
  */
 @Repository
-@EnableMongoRepositories
 public class PaperDaoImpl implements PaperDao {
     @Autowired
     PaperMapper paperMapper;
 
     @Override
-    public Object findById(int pid) {
+    public Paper findById(int pid) {
         return paperMapper.selectById(pid);
     }
 
     @Override
-    public List findAll() {
+    public List<Paper> findAll() {
         return paperMapper.selectByCondition(convertPaperAttr2Condition(null));
     }
 
     @Override
     public int deleteById(int pid) {
-        return paperMapper.deleteById(pid);
+        Paper paper = new Paper();
+        paper.setStatus(StatusEnum.DELETE);
+        paper.setId(pid);
+        return paperMapper.updateByIdSelective(paper);
     }
 
     @Override
@@ -41,12 +43,44 @@ public class PaperDaoImpl implements PaperDao {
 
     @Override
     public int deletePaperByAttr(Paper paper) {
-        return paperMapper.deleteByCondition(convertPaperAttr2Condition(paper));
+        paper.setStatus(StatusEnum.DELETE);
+        return paperMapper.updateByIdSelective(paper);
     }
 
     @Override
     public int savePaper(Paper paper) {
         return paperMapper.insertSelective(paper);
+    }
+
+    @Override
+    public List<Paper> listAllPaper(int offset, int pageSize) {
+        PaperCondition condition = new PaperCondition();
+        condition.setLimitOffset(offset);
+        condition.setLimitSize(pageSize);
+        return paperMapper.selectByCondition(condition);
+    }
+
+    @Override
+    public List<Paper> listAllPaper(int offset, int pageSize, int uid) {
+        PaperCondition condition = new PaperCondition();
+        condition.setLimitOffset(offset);
+        condition.setLimitSize(pageSize);
+        condition.createCriteria().andUserIdEqualTo(uid);
+        return paperMapper.selectByCondition(condition);
+    }
+
+    @Override
+    public int countAllPapersByAttr(Paper paper) {
+        return paperMapper.countByCondition(convertPaperAttr2Condition(paper));
+    }
+
+    @Override
+    public Paper findDoingPaperBy(int uid) {
+        PaperCondition condition = new PaperCondition();
+        condition.createCriteria().andUserIdEqualTo(uid);
+        condition.createCriteria().andStatusEqualTo(StatusEnum.NORMAL);
+        List<Paper> list = paperMapper.selectByCondition(condition);
+        return null == list? null :list.get(0);
     }
 
     private PaperCondition convertPaperAttr2Condition(Paper paper) {
@@ -61,8 +95,8 @@ public class PaperDaoImpl implements PaperDao {
         if (null != paper.getUserId()) {
             condition.createCriteria().andUserIdEqualTo(paper.getUserId());
         }
-        if (null != paper.getPaperId()) {
-            condition.createCriteria().andPaperIdEqualTo(paper.getPaperId());
+        if (null != paper.getMongoPaperId()) {
+            condition.createCriteria().andMongoPaperIdEqualTo(paper.getMongoPaperId());
         }
         if (null != paper.getPaperType()) {
             condition.createCriteria().andPaperTypeEqualTo(paper.getPaperType());
@@ -78,9 +112,6 @@ public class PaperDaoImpl implements PaperDao {
         }
         if (null != paper.getStatus()) {
             condition.createCriteria().andStatusEqualTo(paper.getStatus());
-        }
-        if (null != paper.getIsDelete()) {
-            condition.createCriteria().andIsDeleteEqualTo(paper.getIsDelete());
         }
 
         return condition;

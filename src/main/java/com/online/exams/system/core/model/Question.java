@@ -1,7 +1,7 @@
 package com.online.exams.system.core.model;
 
-import com.online.exams.system.core.enums.QuestionStatusEnum;
 import com.online.exams.system.core.enums.QuestionTypeEnum;
+import com.online.exams.system.core.enums.StatusEnum;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -9,7 +9,7 @@ import java.util.Date;
  * graduation.question  
  *
  * @author zhang
- * @date 2016-3-11
+ * @date 2016-3-16
  *
  */
 public class Question implements Serializable {
@@ -17,7 +17,7 @@ public class Question implements Serializable {
     private Integer id;
 
     /** 试题类型，枚举：0单选 | 1多选 | 2编程题 */
-    private QuestionTypeEnum type;
+    private QuestionTypeEnum questionType;
 
     /** 试题主干 */
     private String title;
@@ -35,7 +35,7 @@ public class Question implements Serializable {
     private Integer priority;
 
     /** 题目状态，枚举：0正常 | 1已删除 | 2有错误 */
-    private QuestionStatusEnum status;
+    private StatusEnum status;
 
     /** 总完成数 */
     private Integer totalDone;
@@ -59,12 +59,12 @@ public class Question implements Serializable {
         this.id = id;
     }
 
-    public QuestionTypeEnum getType() {
-        return type;
+    public QuestionTypeEnum getQuestionType() {
+        return questionType;
     }
 
-    public void setType(QuestionTypeEnum type) {
-        this.type = type;
+    public void setQuestionType(QuestionTypeEnum questionType) {
+        this.questionType = questionType;
     }
 
     public String getTitle() {
@@ -107,11 +107,11 @@ public class Question implements Serializable {
         this.priority = priority;
     }
 
-    public QuestionStatusEnum getStatus() {
+    public StatusEnum getStatus() {
         return status;
     }
 
-    public void setStatus(QuestionStatusEnum status) {
+    public void setStatus(StatusEnum status) {
         this.status = status;
     }
 

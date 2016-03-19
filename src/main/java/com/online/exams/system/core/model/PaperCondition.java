@@ -1,6 +1,7 @@
 package com.online.exams.system.core.model;
 
 import com.online.exams.system.core.enums.PaperTypeEnum;
+import com.online.exams.system.core.enums.StatusEnum;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -246,63 +247,63 @@ public class PaperCondition {
             return (Criteria) this;
         }
 
-        public Criteria andPaperIdIsNull() {
-            addCriterion("paper_id is null");
+        public Criteria andMongoPaperIdIsNull() {
+            addCriterion("mongo_paper_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andPaperIdIsNotNull() {
-            addCriterion("paper_id is not null");
+        public Criteria andMongoPaperIdIsNotNull() {
+            addCriterion("mongo_paper_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andPaperIdEqualTo(Integer value) {
-            addCriterion("paper_id =", value, "paperId");
+        public Criteria andMongoPaperIdEqualTo(Integer value) {
+            addCriterion("mongo_paper_id =", value, "mongoPaperId");
             return (Criteria) this;
         }
 
-        public Criteria andPaperIdNotEqualTo(Integer value) {
-            addCriterion("paper_id <>", value, "paperId");
+        public Criteria andMongoPaperIdNotEqualTo(Integer value) {
+            addCriterion("mongo_paper_id <>", value, "mongoPaperId");
             return (Criteria) this;
         }
 
-        public Criteria andPaperIdGreaterThan(Integer value) {
-            addCriterion("paper_id >", value, "paperId");
+        public Criteria andMongoPaperIdGreaterThan(Integer value) {
+            addCriterion("mongo_paper_id >", value, "mongoPaperId");
             return (Criteria) this;
         }
 
-        public Criteria andPaperIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("paper_id >=", value, "paperId");
+        public Criteria andMongoPaperIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("mongo_paper_id >=", value, "mongoPaperId");
             return (Criteria) this;
         }
 
-        public Criteria andPaperIdLessThan(Integer value) {
-            addCriterion("paper_id <", value, "paperId");
+        public Criteria andMongoPaperIdLessThan(Integer value) {
+            addCriterion("mongo_paper_id <", value, "mongoPaperId");
             return (Criteria) this;
         }
 
-        public Criteria andPaperIdLessThanOrEqualTo(Integer value) {
-            addCriterion("paper_id <=", value, "paperId");
+        public Criteria andMongoPaperIdLessThanOrEqualTo(Integer value) {
+            addCriterion("mongo_paper_id <=", value, "mongoPaperId");
             return (Criteria) this;
         }
 
-        public Criteria andPaperIdIn(List<Integer> values) {
-            addCriterion("paper_id in", values, "paperId");
+        public Criteria andMongoPaperIdIn(List<Integer> values) {
+            addCriterion("mongo_paper_id in", values, "mongoPaperId");
             return (Criteria) this;
         }
 
-        public Criteria andPaperIdNotIn(List<Integer> values) {
-            addCriterion("paper_id not in", values, "paperId");
+        public Criteria andMongoPaperIdNotIn(List<Integer> values) {
+            addCriterion("mongo_paper_id not in", values, "mongoPaperId");
             return (Criteria) this;
         }
 
-        public Criteria andPaperIdBetween(Integer value1, Integer value2) {
-            addCriterion("paper_id between", value1, value2, "paperId");
+        public Criteria andMongoPaperIdBetween(Integer value1, Integer value2) {
+            addCriterion("mongo_paper_id between", value1, value2, "mongoPaperId");
             return (Criteria) this;
         }
 
-        public Criteria andPaperIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("paper_id not between", value1, value2, "paperId");
+        public Criteria andMongoPaperIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("mongo_paper_id not between", value1, value2, "mongoPaperId");
             return (Criteria) this;
         }
 
@@ -423,6 +424,66 @@ public class PaperCondition {
 
         public Criteria andDifficultyNotBetween(Integer value1, Integer value2) {
             addCriterion("difficulty not between", value1, value2, "difficulty");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalRightIsNull() {
+            addCriterion("total_right is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalRightIsNotNull() {
+            addCriterion("total_right is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalRightEqualTo(Integer value) {
+            addCriterion("total_right =", value, "totalRight");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalRightNotEqualTo(Integer value) {
+            addCriterion("total_right <>", value, "totalRight");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalRightGreaterThan(Integer value) {
+            addCriterion("total_right >", value, "totalRight");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalRightGreaterThanOrEqualTo(Integer value) {
+            addCriterion("total_right >=", value, "totalRight");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalRightLessThan(Integer value) {
+            addCriterion("total_right <", value, "totalRight");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalRightLessThanOrEqualTo(Integer value) {
+            addCriterion("total_right <=", value, "totalRight");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalRightIn(List<Integer> values) {
+            addCriterion("total_right in", values, "totalRight");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalRightNotIn(List<Integer> values) {
+            addCriterion("total_right not in", values, "totalRight");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalRightBetween(Integer value1, Integer value2) {
+            addCriterion("total_right between", value1, value2, "totalRight");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalRightNotBetween(Integer value1, Integer value2) {
+            addCriterion("total_right not between", value1, value2, "totalRight");
             return (Criteria) this;
         }
 
@@ -556,113 +617,53 @@ public class PaperCondition {
             return (Criteria) this;
         }
 
-        public Criteria andStatusEqualTo(Integer value) {
+        public Criteria andStatusEqualTo(StatusEnum value) {
             addCriterion("status =", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusNotEqualTo(Integer value) {
+        public Criteria andStatusNotEqualTo(StatusEnum value) {
             addCriterion("status <>", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusGreaterThan(Integer value) {
+        public Criteria andStatusGreaterThan(StatusEnum value) {
             addCriterion("status >", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusGreaterThanOrEqualTo(Integer value) {
+        public Criteria andStatusGreaterThanOrEqualTo(StatusEnum value) {
             addCriterion("status >=", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusLessThan(Integer value) {
+        public Criteria andStatusLessThan(StatusEnum value) {
             addCriterion("status <", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusLessThanOrEqualTo(Integer value) {
+        public Criteria andStatusLessThanOrEqualTo(StatusEnum value) {
             addCriterion("status <=", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusIn(List<Integer> values) {
+        public Criteria andStatusIn(List<StatusEnum> values) {
             addCriterion("status in", values, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusNotIn(List<Integer> values) {
+        public Criteria andStatusNotIn(List<StatusEnum> values) {
             addCriterion("status not in", values, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusBetween(Integer value1, Integer value2) {
+        public Criteria andStatusBetween(StatusEnum value1, StatusEnum value2) {
             addCriterion("status between", value1, value2, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusNotBetween(Integer value1, Integer value2) {
+        public Criteria andStatusNotBetween(StatusEnum value1, StatusEnum value2) {
             addCriterion("status not between", value1, value2, "status");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsDeleteIsNull() {
-            addCriterion("is_delete is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsDeleteIsNotNull() {
-            addCriterion("is_delete is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsDeleteEqualTo(Boolean value) {
-            addCriterion("is_delete =", value, "isDelete");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsDeleteNotEqualTo(Boolean value) {
-            addCriterion("is_delete <>", value, "isDelete");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsDeleteGreaterThan(Boolean value) {
-            addCriterion("is_delete >", value, "isDelete");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsDeleteGreaterThanOrEqualTo(Boolean value) {
-            addCriterion("is_delete >=", value, "isDelete");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsDeleteLessThan(Boolean value) {
-            addCriterion("is_delete <", value, "isDelete");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsDeleteLessThanOrEqualTo(Boolean value) {
-            addCriterion("is_delete <=", value, "isDelete");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsDeleteIn(List<Boolean> values) {
-            addCriterion("is_delete in", values, "isDelete");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsDeleteNotIn(List<Boolean> values) {
-            addCriterion("is_delete not in", values, "isDelete");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsDeleteBetween(Boolean value1, Boolean value2) {
-            addCriterion("is_delete between", value1, value2, "isDelete");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsDeleteNotBetween(Boolean value1, Boolean value2) {
-            addCriterion("is_delete not between", value1, value2, "isDelete");
             return (Criteria) this;
         }
 

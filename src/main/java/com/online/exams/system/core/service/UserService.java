@@ -10,10 +10,16 @@ import java.util.List;
 
 public interface UserService {
     int getTotalCount();
+
     User findUserByName(String name);
+
     User findUserByUid(Integer uid);
+
     boolean deleteUserByUid(int uid);
+
     int saveUser(User user);
+
     int updateUser(User user);
-    List<User> listAllUser(int offset, int size);
+
+    List<User> listAllUser(int offset, int pageSize);
 }

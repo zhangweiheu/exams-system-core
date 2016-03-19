@@ -6,7 +6,9 @@ import com.online.exams.system.core.model.Tag;
 import com.online.exams.system.core.model.TagCondition;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.CollectionUtils;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -24,26 +26,30 @@ public class TagDaoImpl implements TagDao {
 
     @Override
     public int deleteTagByTagAttr(Tag tag) {
-        return tagMapper.deleteByCondition(convertTagAttr2Condition(tag));
+        TagCondition tagCondition = convertTagAttr2Condition(tag);
+        return null == tagCondition ? 0 : tagMapper.deleteByCondition(tagCondition);
     }
 
     @Override
     public int saveTag(Tag tag) {
+        tag.setCreateAt(new Date());
+        tag.setUpdateAt(new Date());
         return tagMapper.insert(tag);
     }
 
     @Override
     public int updateTag(Tag tag) {
+        tag.setUpdateAt(new Date());
         return tagMapper.updateByIdSelective(tag);
     }
 
     @Override
-    public Object findById(int id) {
+    public Tag findById(int id) {
         return tagMapper.selectById(id);
     }
 
     @Override
-    public List findAll() {
+    public List<Tag> findAll() {
         return tagMapper.selectByCondition(convertTagAttr2Condition(null));
     }
 
@@ -53,22 +59,50 @@ public class TagDaoImpl implements TagDao {
     }
 
     @Override
-    public int deleteTagByListId(List<Integer> list) {
+    public int deleteTagList(List<Tag> tagList) {
         int i = 0;
-        for(Integer id : list)
-        {
-            if(tagMapper.deleteById(id) > 0){
-                i++;
-            }
+        if(CollectionUtils.isEmpty(tagList)){
+            return i;
+        }
+        for (Tag tag : tagList) {
+
+            TagCondition tagCondition = convertTagAttr2Condition(tag);
+            i += (null == tagCondition ? 0 : tagMapper.deleteByCondition(tagCondition));
         }
         return i;
+    }
+
+    @Override
+    public int saveTagList(List<Tag> tagList) {
+        int i = 0;
+        if(CollectionUtils.isEmpty(tagList)){
+            return i;
+        }
+        for (Tag tag : tagList) {
+            tag.setCreateAt(new Date());
+            tag.setUpdateAt(new Date());
+            i += tagMapper.insertSelective(tag);
+        }
+        return i;
+    }
+
+    @Override
+    public int updateTagList(List<Tag> tagList) {
+        if(CollectionUtils.isEmpty(tagList)){
+            return 0;
+        }
+        Tag tag1 = new Tag();
+        tag1.setRefId(tagList.get(0).getRefId());
+        tag1.setRefType(tagList.get(0).getRefType());
+        deleteTagList(tagMapper.selectByCondition(convertTagAttr2Condition(tag1)));
+        return saveTagList(tagList);
     }
 
     private TagCondition convertTagAttr2Condition(Tag tag) {
         TagCondition condition = new TagCondition();
 
         if (null == tag) {
-            return condition;
+            return null;
         }
         if (null != tag.getId()) {
             condition.createCriteria().andIdEqualTo(tag.getId());
@@ -79,8 +113,8 @@ public class TagDaoImpl implements TagDao {
         if (null != tag.getRefType()) {
             condition.createCriteria().andRefTypeEqualTo(tag.getRefType());
         }
-        if (null != tag.getEnumValue()) {
-            condition.createCriteria().andEnumValueEqualTo(tag.getEnumValue());
+        if (null != tag.getTagValue()) {
+            condition.createCriteria().andTagValueEqualTo(tag.getTagValue());
         }
         return condition;
     }

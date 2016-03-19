@@ -1,6 +1,7 @@
 package com.online.exams.system.core.model;
 
 import com.online.exams.system.core.enums.PaperTypeEnum;
+import com.online.exams.system.core.enums.StatusEnum;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -8,7 +9,7 @@ import java.util.Date;
  * graduation.paper  
  *
  * @author zhang
- * @date 2016-3-11
+ * @date 2016-3-16
  *
  */
 public class Paper implements Serializable {
@@ -18,14 +19,17 @@ public class Paper implements Serializable {
     /** 用户 id */
     private Integer userId;
 
-    /** 试卷 id */
-    private Integer paperId;
+    /** mongo试卷 id */
+    private Integer mongoPaperId;
 
-    /** 试卷类型,枚举：0单选题 | 1多选题 | 2编程题 | 3单选、多选 | 4单选、编程 | 5多选、编程 */
+    /** 试卷类型,枚举：0单选题 | 1多选题 | 2编程题 | 3单选、多选 | 4单选、编程 | 5多选、编程 | 6单选多选和编程题 */
     private PaperTypeEnum paperType;
 
     /** 难度系数0-10 */
     private Integer difficulty;
+
+    /** 总做对题数 */
+    private Integer totalRight;
 
     /** 总分 */
     private Integer totalPoints;
@@ -33,11 +37,8 @@ public class Paper implements Serializable {
     /** 得分 */
     private Integer score;
 
-    /** 状态： */
-    private Integer status;
-
-    /** 是否删除 */
-    private Boolean isDelete;
+    /** 状态：0正常 | 1删除 | 2有错误 | 3关闭 */
+    private StatusEnum status;
 
     /** 创建时间 */
     private Date createAt;
@@ -63,12 +64,12 @@ public class Paper implements Serializable {
         this.userId = userId;
     }
 
-    public Integer getPaperId() {
-        return paperId;
+    public Integer getMongoPaperId() {
+        return mongoPaperId;
     }
 
-    public void setPaperId(Integer paperId) {
-        this.paperId = paperId;
+    public void setMongoPaperId(Integer mongoPaperId) {
+        this.mongoPaperId = mongoPaperId;
     }
 
     public PaperTypeEnum getPaperType() {
@@ -87,6 +88,14 @@ public class Paper implements Serializable {
         this.difficulty = difficulty;
     }
 
+    public Integer getTotalRight() {
+        return totalRight;
+    }
+
+    public void setTotalRight(Integer totalRight) {
+        this.totalRight = totalRight;
+    }
+
     public Integer getTotalPoints() {
         return totalPoints;
     }
@@ -103,20 +112,12 @@ public class Paper implements Serializable {
         this.score = score;
     }
 
-    public Integer getStatus() {
+    public StatusEnum getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(StatusEnum status) {
         this.status = status;
-    }
-
-    public Boolean getIsDelete() {
-        return isDelete;
-    }
-
-    public void setIsDelete(Boolean isDelete) {
-        this.isDelete = isDelete;
     }
 
     public Date getCreateAt() {

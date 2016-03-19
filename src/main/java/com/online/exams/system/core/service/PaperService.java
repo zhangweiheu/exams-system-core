@@ -9,13 +9,21 @@ import java.util.List;
  */
 
 public interface PaperService {
-    List<Paper> listAllPaper();
+    List<Paper> listAllPaper(int offset, int pageSize);
 
-    int updatePaper(Paper paper, String tagList);
+    List<Paper> listAllPaper(int offset, int pageSize,int uid);
+
+    int updatePaper(Paper paper);
 
     int deletePaperById(int pid);
 
     int deletePaperByAttr(Paper paper);
 
-    int savePaper(Paper paper, String tagList);
+    int savePaper(Paper paper);
+
+    Paper findPaperById(int pid);
+
+    int countAllPapersByAttr(Paper paper);
+
+    Paper findDoingPaperBy(int uid);
 }

@@ -7,7 +7,13 @@ import java.util.List;
 /**
  * Created by zhang on 2016/2/15.
  */
-public interface TagDao extends AbstractDao {
+public interface TagDao {
+    List<Tag> findAll();
+
+    Tag findById(int id);
+
+    int deleteById(int id);
+
     List<Tag> findAllTagByTagAttr(Tag tag);
 
     int deleteTagByTagAttr(Tag tag);
@@ -16,5 +22,9 @@ public interface TagDao extends AbstractDao {
 
     int updateTag(Tag tag);
 
-    int deleteTagByListId(List<Integer> list);
+    int deleteTagList(List<Tag> tagList);
+
+    int saveTagList(List<Tag> tagList);
+
+    int updateTagList(List<Tag> tagList);
 }

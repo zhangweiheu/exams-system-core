@@ -18,13 +18,18 @@ public class QuestionDaoImpl implements QuestionDao {
     QuestionMapper questionMapper;
 
     @Override
-    public Object findById(int qid) {
+    public Question findById(int qid) {
         return questionMapper.selectById(qid);
     }
 
     @Override
-    public List findAll() {
+    public List<Question> findAll() {
         return questionMapper.selectByCondition(new QuestionCondition());
+    }
+
+    @Override
+    public List<Question> findQuestionByAttr(Question question) {
+        return questionMapper.selectByCondition(convertQuestionAttr2Condition(question));
     }
 
     @Override
@@ -39,7 +44,9 @@ public class QuestionDaoImpl implements QuestionDao {
 
     @Override
     public int deleteQuestionByAttr(Question question) {
-        return questionMapper.deleteByCondition(convertQuestionAttr2Condition(question));
+        QuestionCondition questionCondition = convertQuestionAttr2Condition(question);
+
+        return null == questionCondition ? 0 : questionMapper.deleteByCondition(questionCondition);
     }
 
     @Override
@@ -47,11 +54,24 @@ public class QuestionDaoImpl implements QuestionDao {
         return questionMapper.insertSelective(question);
     }
 
+    @Override
+    public List<Question> listAllQuestion(int offset, int pageSize) {
+        QuestionCondition condition = new QuestionCondition();
+        condition.setLimitOffset(offset);
+        condition.setLimitSize(pageSize);
+        return questionMapper.selectByCondition(condition);
+    }
+
+    @Override
+    public int getTotalCount(Question question) {
+        return questionMapper.countByCondition(convertQuestionAttr2Condition(question));
+    }
+
     private QuestionCondition convertQuestionAttr2Condition(Question question) {
         QuestionCondition condition = new QuestionCondition();
 
         if (null == question) {
-            return condition;
+            return null;
         }
         if (null != question.getId()) {
             condition.createCriteria().andIdEqualTo(question.getId());
@@ -59,8 +79,8 @@ public class QuestionDaoImpl implements QuestionDao {
         if (null != question.getTitle()) {
             condition.createCriteria().andTitleEqualTo(question.getTitle());
         }
-        if (null != question.getType()) {
-            condition.createCriteria().andTypeEqualTo(question.getType());
+        if (null != question.getQuestionType()) {
+            condition.createCriteria().andQuestionTypeEqualTo(question.getQuestionType());
         }
         if (null != question.getOptions()) {
             condition.createCriteria().andOptionsEqualTo(question.getOptions());

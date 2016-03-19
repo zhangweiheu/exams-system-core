@@ -10,9 +10,10 @@ public enum PaperTypeEnum implements IEnumDesc, IEnumValue {
     SINGLE_SELECTION("单选", 0),
     MULTI_SELECTION("多选", 1),
     PROGRAMMING_QUESTION("编程题", 2),
-    SINGLE_AND_MULTI("单选和多选",3),
-    SINGLE_AND_PROGRAMMING("单选和编程题",4),
-    MULTI_AND_PROGRAMMING("多选和编程题",5);
+    SINGLE_AND_MULTI("单选和多选", 3),
+    SINGLE_AND_PROGRAMMING("单选和编程题", 4),
+    MULTI_AND_PROGRAMMING("多选和编程题", 5),
+    SINGLE_AND_MULTI_PROGRAMMING("单选和多选和编程题", 6);
 
 
     private String desc;

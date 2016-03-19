@@ -1,5 +1,6 @@
 package com.online.exams.system.core.service;
 
+import com.online.exams.system.core.enums.RefTypeEnum;
 import com.online.exams.system.core.model.Tag;
 
 import java.util.List;
@@ -15,4 +16,13 @@ public interface TagService {
     int saveTag(Tag tag);
 
     int updateTag(Tag tag);
+
+    int saveTagList(List<Tag> tagList);
+
+    int updateTagList(List<Tag> tagList);
+
+    int saveTagList(String tagList, int refId, RefTypeEnum refType);
+
+    int updateTagList(String tagList, int refId, RefTypeEnum refType);
+
 }

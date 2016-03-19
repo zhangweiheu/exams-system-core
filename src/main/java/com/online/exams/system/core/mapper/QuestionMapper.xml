@@ -3,7 +3,7 @@
 <mapper namespace="com.online.exams.system.core.mapper.QuestionMapper" >
   <resultMap id="BaseResultMap" type="com.online.exams.system.core.model.Question" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="type" property="type" jdbcType="BIT" />
+    <result column="question_type" property="questionType" jdbcType="BIT" />
     <result column="title" property="title" jdbcType="VARCHAR" />
     <result column="options" property="options" jdbcType="VARCHAR" />
     <result column="answers" property="answers" jdbcType="VARCHAR" />
@@ -74,8 +74,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, type, title, options, answers, difficulty, priority, status, total_done, total_success, 
-    create_at, update_at
+    id, question_type, title, options, answers, difficulty, priority, status, total_done, 
+    total_success, create_at, update_at
   </sql>
   <select id="selectByCondition" resultMap="BaseResultMap" parameterType="com.online.exams.system.core.model.QuestionCondition" >
     select
@@ -114,11 +114,11 @@
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into question (type, title, options, 
+    insert into question (question_type, title, options, 
       answers, difficulty, priority, 
       status, total_done, total_success, 
       create_at, update_at)
-    values (#{type,jdbcType=BIT}, #{title,jdbcType=VARCHAR}, #{options,jdbcType=VARCHAR}, 
+    values (#{questionType,jdbcType=BIT}, #{title,jdbcType=VARCHAR}, #{options,jdbcType=VARCHAR}, 
       #{answers,jdbcType=VARCHAR}, #{difficulty,jdbcType=TINYINT}, #{priority,jdbcType=TINYINT}, 
       #{status,jdbcType=TINYINT}, #{totalDone,jdbcType=INTEGER}, #{totalSuccess,jdbcType=INTEGER}, 
       #{createAt,jdbcType=TIMESTAMP}, #{updateAt,jdbcType=TIMESTAMP})
@@ -129,8 +129,8 @@
     </selectKey>
     insert into question
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="type != null" >
-        type,
+      <if test="questionType != null" >
+        question_type,
       </if>
       <if test="title != null" >
         title,
@@ -164,8 +164,8 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="type != null" >
-        #{type,jdbcType=BIT},
+      <if test="questionType != null" >
+        #{questionType,jdbcType=BIT},
       </if>
       <if test="title != null" >
         #{title,jdbcType=VARCHAR},
@@ -211,8 +211,8 @@
       <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.type != null" >
-        type = #{record.type,jdbcType=BIT},
+      <if test="record.questionType != null" >
+        question_type = #{record.questionType,jdbcType=BIT},
       </if>
       <if test="record.title != null" >
         title = #{record.title,jdbcType=VARCHAR},
@@ -252,7 +252,7 @@
   <update id="updateByCondition" parameterType="map" >
     update question
     set id = #{record.id,jdbcType=INTEGER},
-      type = #{record.type,jdbcType=BIT},
+      question_type = #{record.questionType,jdbcType=BIT},
       title = #{record.title,jdbcType=VARCHAR},
       options = #{record.options,jdbcType=VARCHAR},
       answers = #{record.answers,jdbcType=VARCHAR},
@@ -270,8 +270,8 @@
   <update id="updateByIdSelective" parameterType="com.online.exams.system.core.model.Question" >
     update question
     <set >
-      <if test="type != null" >
-        type = #{type,jdbcType=BIT},
+      <if test="questionType != null" >
+        question_type = #{questionType,jdbcType=BIT},
       </if>
       <if test="title != null" >
         title = #{title,jdbcType=VARCHAR},
@@ -308,7 +308,7 @@
   </update>
   <update id="updateById" parameterType="com.online.exams.system.core.model.Question" >
     update question
-    set type = #{type,jdbcType=BIT},
+    set question_type = #{questionType,jdbcType=BIT},
       title = #{title,jdbcType=VARCHAR},
       options = #{options,jdbcType=VARCHAR},
       answers = #{answers,jdbcType=VARCHAR},

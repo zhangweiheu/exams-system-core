@@ -17,8 +17,8 @@ public class UserServiceImpl implements UserService {
     private UserDao userDao;
 
     @Override
-    public List<User> listAllUser(int offset, int size){
-        return userDao.listAllUser(offset, size);
+    public List<User> listAllUser(int offset, int pageSize){
+        return userDao.listAllUser(offset, pageSize);
     }
 
     @Override

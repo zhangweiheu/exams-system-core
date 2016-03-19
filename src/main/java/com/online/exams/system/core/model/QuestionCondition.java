@@ -1,7 +1,7 @@
 package com.online.exams.system.core.model;
 
-import com.online.exams.system.core.enums.QuestionStatusEnum;
 import com.online.exams.system.core.enums.QuestionTypeEnum;
+import com.online.exams.system.core.enums.StatusEnum;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -187,63 +187,63 @@ public class QuestionCondition {
             return (Criteria) this;
         }
 
-        public Criteria andTypeIsNull() {
-            addCriterion("type is null");
+        public Criteria andQuestionTypeIsNull() {
+            addCriterion("question_type is null");
             return (Criteria) this;
         }
 
-        public Criteria andTypeIsNotNull() {
-            addCriterion("type is not null");
+        public Criteria andQuestionTypeIsNotNull() {
+            addCriterion("question_type is not null");
             return (Criteria) this;
         }
 
-        public Criteria andTypeEqualTo(QuestionTypeEnum value) {
-            addCriterion("type =", value, "type");
+        public Criteria andQuestionTypeEqualTo(QuestionTypeEnum value) {
+            addCriterion("question_type =", value, "questionType");
             return (Criteria) this;
         }
 
-        public Criteria andTypeNotEqualTo(QuestionTypeEnum value) {
-            addCriterion("type <>", value, "type");
+        public Criteria andQuestionTypeNotEqualTo(QuestionTypeEnum value) {
+            addCriterion("question_type <>", value, "questionType");
             return (Criteria) this;
         }
 
-        public Criteria andTypeGreaterThan(QuestionTypeEnum value) {
-            addCriterion("type >", value, "type");
+        public Criteria andQuestionTypeGreaterThan(QuestionTypeEnum value) {
+            addCriterion("question_type >", value, "questionType");
             return (Criteria) this;
         }
 
-        public Criteria andTypeGreaterThanOrEqualTo(QuestionTypeEnum value) {
-            addCriterion("type >=", value, "type");
+        public Criteria andQuestionTypeGreaterThanOrEqualTo(QuestionTypeEnum value) {
+            addCriterion("question_type >=", value, "questionType");
             return (Criteria) this;
         }
 
-        public Criteria andTypeLessThan(QuestionTypeEnum value) {
-            addCriterion("type <", value, "type");
+        public Criteria andQuestionTypeLessThan(QuestionTypeEnum value) {
+            addCriterion("question_type <", value, "questionType");
             return (Criteria) this;
         }
 
-        public Criteria andTypeLessThanOrEqualTo(QuestionTypeEnum value) {
-            addCriterion("type <=", value, "type");
+        public Criteria andQuestionTypeLessThanOrEqualTo(QuestionTypeEnum value) {
+            addCriterion("question_type <=", value, "questionType");
             return (Criteria) this;
         }
 
-        public Criteria andTypeIn(List<QuestionTypeEnum> values) {
-            addCriterion("type in", values, "type");
+        public Criteria andQuestionTypeIn(List<QuestionTypeEnum> values) {
+            addCriterion("question_type in", values, "questionType");
             return (Criteria) this;
         }
 
-        public Criteria andTypeNotIn(List<QuestionTypeEnum> values) {
-            addCriterion("type not in", values, "type");
+        public Criteria andQuestionTypeNotIn(List<QuestionTypeEnum> values) {
+            addCriterion("question_type not in", values, "questionType");
             return (Criteria) this;
         }
 
-        public Criteria andTypeBetween(QuestionTypeEnum value1, QuestionTypeEnum value2) {
-            addCriterion("type between", value1, value2, "type");
+        public Criteria andQuestionTypeBetween(QuestionTypeEnum value1, QuestionTypeEnum value2) {
+            addCriterion("question_type between", value1, value2, "questionType");
             return (Criteria) this;
         }
 
-        public Criteria andTypeNotBetween(QuestionTypeEnum value1, QuestionTypeEnum value2) {
-            addCriterion("type not between", value1, value2, "type");
+        public Criteria andQuestionTypeNotBetween(QuestionTypeEnum value1, QuestionTypeEnum value2) {
+            addCriterion("question_type not between", value1, value2, "questionType");
             return (Criteria) this;
         }
 
@@ -587,52 +587,52 @@ public class QuestionCondition {
             return (Criteria) this;
         }
 
-        public Criteria andStatusEqualTo(QuestionStatusEnum value) {
+        public Criteria andStatusEqualTo(StatusEnum value) {
             addCriterion("status =", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusNotEqualTo(QuestionStatusEnum value) {
+        public Criteria andStatusNotEqualTo(StatusEnum value) {
             addCriterion("status <>", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusGreaterThan(QuestionStatusEnum value) {
+        public Criteria andStatusGreaterThan(StatusEnum value) {
             addCriterion("status >", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusGreaterThanOrEqualTo(QuestionStatusEnum value) {
+        public Criteria andStatusGreaterThanOrEqualTo(StatusEnum value) {
             addCriterion("status >=", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusLessThan(QuestionStatusEnum value) {
+        public Criteria andStatusLessThan(StatusEnum value) {
             addCriterion("status <", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusLessThanOrEqualTo(QuestionStatusEnum value) {
+        public Criteria andStatusLessThanOrEqualTo(StatusEnum value) {
             addCriterion("status <=", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusIn(List<QuestionStatusEnum> values) {
+        public Criteria andStatusIn(List<StatusEnum> values) {
             addCriterion("status in", values, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusNotIn(List<QuestionStatusEnum> values) {
+        public Criteria andStatusNotIn(List<StatusEnum> values) {
             addCriterion("status not in", values, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusBetween(QuestionStatusEnum value1, QuestionStatusEnum value2) {
+        public Criteria andStatusBetween(StatusEnum value1, StatusEnum value2) {
             addCriterion("status between", value1, value2, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusNotBetween(QuestionStatusEnum value1, QuestionStatusEnum value2) {
+        public Criteria andStatusNotBetween(StatusEnum value1, StatusEnum value2) {
             addCriterion("status not between", value1, value2, "status");
             return (Criteria) this;
         }

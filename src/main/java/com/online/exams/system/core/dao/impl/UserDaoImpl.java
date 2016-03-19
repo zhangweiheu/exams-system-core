@@ -34,18 +34,16 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public Object findById(int uid) {
+    public User findById(int uid) {
         return userMapper.selectById(uid);
     }
 
     @Override
-    public List findAll() {
-        return null;
-    }
-
-    @Override
     public int deleteById(int uid) {
-        return userMapper.deleteById(uid);
+        User user = new User();
+        user.setId(uid);
+        user.setIsDelete(true);
+        return userMapper.updateByIdSelective(user);
     }
 
     @Override

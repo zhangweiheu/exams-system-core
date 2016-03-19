@@ -4,13 +4,13 @@
   <resultMap id="BaseResultMap" type="com.online.exams.system.core.model.Paper" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
-    <result column="paper_id" property="paperId" jdbcType="INTEGER" />
+    <result column="mongo_paper_id" property="mongoPaperId" jdbcType="INTEGER" />
     <result column="paper_type" property="paperType" jdbcType="TINYINT" />
     <result column="difficulty" property="difficulty" jdbcType="TINYINT" />
+    <result column="total_right" property="totalRight" jdbcType="INTEGER" />
     <result column="total_points" property="totalPoints" jdbcType="INTEGER" />
     <result column="score" property="score" jdbcType="INTEGER" />
     <result column="status" property="status" jdbcType="TINYINT" />
-    <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
     <result column="create_at" property="createAt" jdbcType="TIMESTAMP" />
     <result column="update_at" property="updateAt" jdbcType="TIMESTAMP" />
   </resultMap>
@@ -73,8 +73,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, user_id, paper_id, paper_type, difficulty, total_points, score, status, is_delete, 
-    create_at, update_at
+    id, user_id, mongo_paper_id, paper_type, difficulty, total_right, total_points, score, 
+    status, create_at, update_at
   </sql>
   <select id="selectByCondition" resultMap="BaseResultMap" parameterType="com.online.exams.system.core.model.PaperCondition" >
     select
@@ -113,13 +113,13 @@
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into paper (user_id, paper_id, paper_type, 
-      difficulty, total_points, score, 
-      status, is_delete, create_at, 
+    insert into paper (user_id, mongo_paper_id, paper_type, 
+      difficulty, total_right, total_points, 
+      score, status, create_at, 
       update_at)
-    values (#{userId,jdbcType=INTEGER}, #{paperId,jdbcType=INTEGER}, #{paperType,jdbcType=TINYINT}, 
-      #{difficulty,jdbcType=TINYINT}, #{totalPoints,jdbcType=INTEGER}, #{score,jdbcType=INTEGER}, 
-      #{status,jdbcType=TINYINT}, #{isDelete,jdbcType=TINYINT}, #{createAt,jdbcType=TIMESTAMP}, 
+    values (#{userId,jdbcType=INTEGER}, #{mongoPaperId,jdbcType=INTEGER}, #{paperType,jdbcType=TINYINT}, 
+      #{difficulty,jdbcType=TINYINT}, #{totalRight,jdbcType=INTEGER}, #{totalPoints,jdbcType=INTEGER}, 
+      #{score,jdbcType=INTEGER}, #{status,jdbcType=TINYINT}, #{createAt,jdbcType=TIMESTAMP}, 
       #{updateAt,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.online.exams.system.core.model.Paper" >
@@ -131,14 +131,17 @@
       <if test="userId != null" >
         user_id,
       </if>
-      <if test="paperId != null" >
-        paper_id,
+      <if test="mongoPaperId != null" >
+        mongo_paper_id,
       </if>
       <if test="paperType != null" >
         paper_type,
       </if>
       <if test="difficulty != null" >
         difficulty,
+      </if>
+      <if test="totalRight != null" >
+        total_right,
       </if>
       <if test="totalPoints != null" >
         total_points,
@@ -148,9 +151,6 @@
       </if>
       <if test="status != null" >
         status,
-      </if>
-      <if test="isDelete != null" >
-        is_delete,
       </if>
       <if test="createAt != null" >
         create_at,
@@ -163,14 +163,17 @@
       <if test="userId != null" >
         #{userId,jdbcType=INTEGER},
       </if>
-      <if test="paperId != null" >
-        #{paperId,jdbcType=INTEGER},
+      <if test="mongoPaperId != null" >
+        #{mongoPaperId,jdbcType=INTEGER},
       </if>
       <if test="paperType != null" >
         #{paperType,jdbcType=TINYINT},
       </if>
       <if test="difficulty != null" >
         #{difficulty,jdbcType=TINYINT},
+      </if>
+      <if test="totalRight != null" >
+        #{totalRight,jdbcType=INTEGER},
       </if>
       <if test="totalPoints != null" >
         #{totalPoints,jdbcType=INTEGER},
@@ -180,9 +183,6 @@
       </if>
       <if test="status != null" >
         #{status,jdbcType=TINYINT},
-      </if>
-      <if test="isDelete != null" >
-        #{isDelete,jdbcType=TINYINT},
       </if>
       <if test="createAt != null" >
         #{createAt,jdbcType=TIMESTAMP},
@@ -207,14 +207,17 @@
       <if test="record.userId != null" >
         user_id = #{record.userId,jdbcType=INTEGER},
       </if>
-      <if test="record.paperId != null" >
-        paper_id = #{record.paperId,jdbcType=INTEGER},
+      <if test="record.mongoPaperId != null" >
+        mongo_paper_id = #{record.mongoPaperId,jdbcType=INTEGER},
       </if>
       <if test="record.paperType != null" >
         paper_type = #{record.paperType,jdbcType=TINYINT},
       </if>
       <if test="record.difficulty != null" >
         difficulty = #{record.difficulty,jdbcType=TINYINT},
+      </if>
+      <if test="record.totalRight != null" >
+        total_right = #{record.totalRight,jdbcType=INTEGER},
       </if>
       <if test="record.totalPoints != null" >
         total_points = #{record.totalPoints,jdbcType=INTEGER},
@@ -224,9 +227,6 @@
       </if>
       <if test="record.status != null" >
         status = #{record.status,jdbcType=TINYINT},
-      </if>
-      <if test="record.isDelete != null" >
-        is_delete = #{record.isDelete,jdbcType=TINYINT},
       </if>
       <if test="record.createAt != null" >
         create_at = #{record.createAt,jdbcType=TIMESTAMP},
@@ -243,13 +243,13 @@
     update paper
     set id = #{record.id,jdbcType=INTEGER},
       user_id = #{record.userId,jdbcType=INTEGER},
-      paper_id = #{record.paperId,jdbcType=INTEGER},
+      mongo_paper_id = #{record.mongoPaperId,jdbcType=INTEGER},
       paper_type = #{record.paperType,jdbcType=TINYINT},
       difficulty = #{record.difficulty,jdbcType=TINYINT},
+      total_right = #{record.totalRight,jdbcType=INTEGER},
       total_points = #{record.totalPoints,jdbcType=INTEGER},
       score = #{record.score,jdbcType=INTEGER},
       status = #{record.status,jdbcType=TINYINT},
-      is_delete = #{record.isDelete,jdbcType=TINYINT},
       create_at = #{record.createAt,jdbcType=TIMESTAMP},
       update_at = #{record.updateAt,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
@@ -262,14 +262,17 @@
       <if test="userId != null" >
         user_id = #{userId,jdbcType=INTEGER},
       </if>
-      <if test="paperId != null" >
-        paper_id = #{paperId,jdbcType=INTEGER},
+      <if test="mongoPaperId != null" >
+        mongo_paper_id = #{mongoPaperId,jdbcType=INTEGER},
       </if>
       <if test="paperType != null" >
         paper_type = #{paperType,jdbcType=TINYINT},
       </if>
       <if test="difficulty != null" >
         difficulty = #{difficulty,jdbcType=TINYINT},
+      </if>
+      <if test="totalRight != null" >
+        total_right = #{totalRight,jdbcType=INTEGER},
       </if>
       <if test="totalPoints != null" >
         total_points = #{totalPoints,jdbcType=INTEGER},
@@ -279,9 +282,6 @@
       </if>
       <if test="status != null" >
         status = #{status,jdbcType=TINYINT},
-      </if>
-      <if test="isDelete != null" >
-        is_delete = #{isDelete,jdbcType=TINYINT},
       </if>
       <if test="createAt != null" >
         create_at = #{createAt,jdbcType=TIMESTAMP},
@@ -295,13 +295,13 @@
   <update id="updateById" parameterType="com.online.exams.system.core.model.Paper" >
     update paper
     set user_id = #{userId,jdbcType=INTEGER},
-      paper_id = #{paperId,jdbcType=INTEGER},
+      mongo_paper_id = #{mongoPaperId,jdbcType=INTEGER},
       paper_type = #{paperType,jdbcType=TINYINT},
       difficulty = #{difficulty,jdbcType=TINYINT},
+      total_right = #{totalRight,jdbcType=INTEGER},
       total_points = #{totalPoints,jdbcType=INTEGER},
       score = #{score,jdbcType=INTEGER},
       status = #{status,jdbcType=TINYINT},
-      is_delete = #{isDelete,jdbcType=TINYINT},
       create_at = #{createAt,jdbcType=TIMESTAMP},
       update_at = #{updateAt,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}

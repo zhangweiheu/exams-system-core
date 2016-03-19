@@ -1,14 +1,15 @@
 package com.online.exams.system.core.mongo.impl;
 
 import com.online.exams.system.core.bean.Page;
-import com.online.exams.system.core.mongo.MongoBaseDAO;
+import com.online.exams.system.core.mongo.MongoBaseDao;
 import com.online.exams.system.core.util.mongo.ReflectionUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -16,19 +17,19 @@ import java.util.List;
 /**
  * Created by zhangwei on 16/1/25.
  */
-@Repository
-public class MongoBaseDAOImpl<T> implements MongoBaseDAO<T> {
+public class MongoBaseDaoImpl<T> implements MongoBaseDao<T> {
+    private static final Logger LOGGER = LoggerFactory.getLogger(MongoBaseDaoImpl.class);
 
     @Autowired
     @Qualifier(value = "mongoTemplate")
     protected MongoTemplate mongoTemplate;
 
-    public void insertRecord(T record) {
+    public void insert(T record) {
         mongoTemplate.insert(record);
     }
 
-    public void deleteByCondition(Query example) {
-        mongoTemplate.remove(example, getEntityClass());
+    public void deleteByCondition(Query query) {
+        mongoTemplate.remove(query, getEntityClass());
     }
 
     public void updateByCondition(Query query, Update update) {
@@ -39,7 +40,7 @@ public class MongoBaseDAOImpl<T> implements MongoBaseDAO<T> {
         return mongoTemplate.find(query, getEntityClass());
     }
 
-    public Page<T> findRecordByPage(Page<T> page, Query query) {
+    public Page<T> findByPage(Page<T> page, Query query) {
         int count = (int) countByCondition(query);
         int pageSize = page.getPageSize();
         page.setTotalCount(count);

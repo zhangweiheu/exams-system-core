@@ -9,17 +9,17 @@ import java.util.List;
 /**
  * Created by 36kr on 16/1/25.
  */
-public interface MongoBaseDAO<T> {
+public interface MongoBaseDao<T> {
 
-    void insertRecord(T record);
+    void insert(T record);
 
-    void deleteByCondition(Query example);
+    void deleteByCondition(Query query);
 
     void updateByCondition(Query query, Update update);
 
     List<T> selectByCondition(Query query);
 
-    Page<T> findRecordByPage(Page<T> page, Query query);
+    Page<T> findByPage(Page<T> page, Query query);
 
     long countByCondition(Query query);
 }
