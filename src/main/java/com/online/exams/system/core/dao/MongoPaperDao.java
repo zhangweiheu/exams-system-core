@@ -15,4 +15,6 @@ public interface MongoPaperDao {
     Page<MongoPaper> findMongoPaperPager(int pageIdx, int pageSize, MongoPaper mongoPaper, Date startDate, Date endDate);
 
     MongoPaper findMongoPaperById(Long id);
+
+    Long updateMongoPaper(MongoPaper mongoPaper);
 }

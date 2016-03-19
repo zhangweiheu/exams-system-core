@@ -26,7 +26,7 @@ public class MongoPaper {
     /**
      * 试卷内容
      */
-    @Field("questionList")
+    @Field("questionMapList")
     private List<QuestionMap> questionMapList;
 
     /**

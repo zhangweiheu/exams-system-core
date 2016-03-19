@@ -24,6 +24,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 /**
  * Created by zhang on 2016/3/12.
  */
@@ -60,6 +61,22 @@ public class MongoPaperDaoImpl extends MongoBaseDaoImpl implements MongoPaperDao
         Query query = Query.query(Criteria.where("_id").is(id));
         List<MongoPaper> mongoPapers= mongoTemplate.find(query, MongoPaper.class);
         return null == mongoPapers ? null : mongoPapers.get(0);
+    }
+
+    @Override
+    public Long updateMongoPaper(MongoPaper mongoPaper) {
+        MongoQueryBuilder builder = new MongoQueryBuilder();
+
+        MongoPaper _mongoPaper = new MongoPaper();
+        _mongoPaper.setId(mongoPaper.getId());
+        builder.buildEqualsQuery(_mongoPaper);
+        Query query = builder.getBaseQuery();
+
+        Update updateVal = new Update();
+        updateVal.set("questionMapList", mongoPaper.getQuestionMapList());
+        updateVal.set("updateAt", new Date());
+        mongoTemplate.updateMulti(query,updateVal,MongoPaper.class);
+        return mongoPaper.getId();
     }
 
     public Long getAutoIncrementId(String serialKey) {

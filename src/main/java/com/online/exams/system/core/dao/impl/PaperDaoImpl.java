@@ -75,7 +75,7 @@ public class PaperDaoImpl implements PaperDao {
     }
 
     @Override
-    public Paper findDoingPaperBy(int uid) {
+    public Paper findDoingPaperByUid(int uid) {
         PaperCondition condition = new PaperCondition();
         condition.createCriteria().andUserIdEqualTo(uid);
         condition.createCriteria().andStatusEqualTo(StatusEnum.NORMAL);

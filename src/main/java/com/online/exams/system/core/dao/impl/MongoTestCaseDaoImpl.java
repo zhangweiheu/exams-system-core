@@ -1,6 +1,5 @@
 package com.online.exams.system.core.dao.impl;
 
-import com.mongodb.DBObject;
 import com.online.exams.system.core.bean.MongoPrimaryKey;
 import com.online.exams.system.core.bean.Page;
 import com.online.exams.system.core.bean.TestCase;
@@ -15,7 +14,6 @@ import org.apache.commons.collections.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.mongodb.core.FindAndModifyOptions;
-import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
@@ -27,7 +25,6 @@ import java.util.Map;
 
 import static org.springframework.data.mongodb.core.query.Criteria.where;
 import static org.springframework.data.mongodb.core.query.Query.query;
-import static org.springframework.data.mongodb.core.query.Update.update;
 
 /**
  * Created by zhang on 2016/3/12.
@@ -92,10 +89,20 @@ public class MongoTestCaseDaoImpl extends MongoBaseDaoImpl implements MongoTestC
 
     @Override
     public long updateTestCaseByTCID(TestCase testCase) {
-        mongoTemplate.updateFirst(query(where("_id").is(testCase.getId())),update("keyValue", testCase.getKeyValue()) , TestCase.class);
-        mongoTemplate.updateFirst(query(where("_id").is(testCase.getId())),update("updateAt", new Date()) , TestCase.class);
-        List<TestCase> testCaseList = mongoTemplate.find(query(where("_id").is(testCase.getId())),TestCase.class);
-        return CollectionUtils.isNotEmpty(testCaseList) ? testCaseList.get(0).getId() : null;
+        MongoQueryBuilder builder = new MongoQueryBuilder();
+
+        TestCase _testCase = new TestCase();
+        _testCase.setId(testCase.getId());
+        builder.buildEqualsQuery(_testCase);
+        Query query = builder.getBaseQuery();
+
+        Update updateVal = new Update();
+        updateVal.set("keyValue", testCase.getKeyValue());
+        updateVal.set("updateAt", new Date());
+
+        mongoTemplate.updateMulti(query, updateVal, TestCase.class);
+
+        return testCase.getId();
     }
 
     private Query bulidTestCaseQuery(TestCase testCase, Date startDate, Date endDate) {

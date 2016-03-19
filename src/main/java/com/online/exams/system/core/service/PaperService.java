@@ -25,5 +25,5 @@ public interface PaperService {
 
     int countAllPapersByAttr(Paper paper);
 
-    Paper findDoingPaperBy(int uid);
+    Paper findDoingPaperByUid(int uid);
 }

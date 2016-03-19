@@ -58,7 +58,7 @@ public class PaperServiceImpl implements PaperService {
     }
 
     @Override
-    public Paper findDoingPaperBy(int uid) {
-        return paperDao.findDoingPaperBy(uid);
+    public Paper findDoingPaperByUid(int uid) {
+        return paperDao.findDoingPaperByUid(uid);
     }
 }
