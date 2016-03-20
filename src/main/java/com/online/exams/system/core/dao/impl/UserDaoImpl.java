@@ -7,6 +7,7 @@ import com.online.exams.system.core.model.UserCondition;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -53,20 +54,21 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public int updateUser(User user) {
+        user.setUpdateAt(new Date());
         return userMapper.updateByIdSelective(user);
     }
 
     @Override
     public int CountByProperty(User user) {
-        UserCondition condition= new UserCondition();
+        UserCondition condition = new UserCondition();
         UserCondition.Criteria criteria = condition.createCriteria();
-        if(null != user && null != user.getIsAdmin()){
+        if (null != user && null != user.getIsAdmin()) {
             criteria.andIsAdminEqualTo(user.getIsAdmin());
         }
-        if(null != user && null != user.getEmail()){
+        if (null != user && null != user.getEmail()) {
             criteria.andEmailEqualTo(user.getEmail());
         }
-        if(null != user && null != user.getUsername()){
+        if (null != user && null != user.getUsername()) {
             criteria.andUsernameEqualTo(user.getUsername());
         }
         return userMapper.countByCondition(condition);

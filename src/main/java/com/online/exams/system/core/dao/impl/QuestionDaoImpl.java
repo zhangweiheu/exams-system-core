@@ -7,6 +7,7 @@ import com.online.exams.system.core.model.QuestionCondition;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -39,6 +40,7 @@ public class QuestionDaoImpl implements QuestionDao {
 
     @Override
     public int updateQestion(Question question) {
+        question.setUpdateAt(new Date());
         return questionMapper.updateByIdSelective(question);
     }
 

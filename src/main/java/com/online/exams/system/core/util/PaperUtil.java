@@ -125,7 +125,7 @@ public class PaperUtil {
         Double p = 0.0;
         Double pn = 0.0;
 
-        if (null != questionList && 0 == questionList.size()) {
+        if (null != questionList && 0 != questionList.size()) {
             for (QuestionMap questionMap : questionList) {
                 if (QuestionTypeEnum.SINGLE_SELECTION == questionMap.getQuestionType() && questionMap.getRight()) {
                     s += questionMap.getDifficulty();
@@ -150,7 +150,7 @@ public class PaperUtil {
 
     public static int calautePaperTotalSuccess(List<QuestionMap> questionList) {
         int total = 0;
-        if (null != questionList && 0 == questionList.size()) {
+        if (null != questionList && 0 != questionList.size()) {
             for (QuestionMap questionMap : questionList) {
                 if (questionMap.getRight()) {
                     total++;
@@ -158,6 +158,5 @@ public class PaperUtil {
             }
         }
         return total;
-
     }
 }

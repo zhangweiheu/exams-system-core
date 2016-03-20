@@ -69,6 +69,7 @@ public class MongoPaperDaoImpl extends MongoBaseDaoImpl implements MongoPaperDao
 
         MongoPaper _mongoPaper = new MongoPaper();
         _mongoPaper.setId(mongoPaper.getId());
+        _mongoPaper.setUserId(mongoPaper.getUserId());
         builder.buildEqualsQuery(_mongoPaper);
         Query query = builder.getBaseQuery();
 

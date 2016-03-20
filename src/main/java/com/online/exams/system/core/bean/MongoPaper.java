@@ -19,6 +19,7 @@ public class MongoPaper {
      */
     @Id
     @Indexed(unique = true)
+    @Field("_id")
     private Long id;
 
     @Field("userId")

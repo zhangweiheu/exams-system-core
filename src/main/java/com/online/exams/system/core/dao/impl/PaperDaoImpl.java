@@ -77,10 +77,9 @@ public class PaperDaoImpl implements PaperDao {
     @Override
     public Paper findDoingPaperByUid(int uid) {
         PaperCondition condition = new PaperCondition();
-        condition.createCriteria().andUserIdEqualTo(uid);
-        condition.createCriteria().andStatusEqualTo(StatusEnum.NORMAL);
+        condition.createCriteria().andUserIdEqualTo(uid).andStatusEqualTo(StatusEnum.NORMAL);
         List<Paper> list = paperMapper.selectByCondition(condition);
-        return null == list? null :list.get(0);
+        return 0 == list.size()? null :list.get(0);
     }
 
     private PaperCondition convertPaperAttr2Condition(Paper paper) {
