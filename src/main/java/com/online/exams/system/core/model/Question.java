@@ -9,7 +9,7 @@ import java.util.Date;
  * graduation.question  
  *
  * @author zhang
- * @date 2016-3-16
+ * @date 2016-3-21
  *
  */
 public class Question implements Serializable {

@@ -9,7 +9,7 @@ import java.util.Date;
  * graduation.paper  
  *
  * @author zhang
- * @date 2016-3-16
+ * @date 2016-3-21
  *
  */
 public class Paper implements Serializable {
@@ -32,12 +32,12 @@ public class Paper implements Serializable {
     private Integer totalRight;
 
     /** 总分 */
-    private Integer totalPoints;
+    private Double totalPoints;
 
     /** 得分 */
-    private Integer score;
+    private Double score;
 
-    /** 状态：0正常 | 1删除 | 2有错误 | 3关闭 */
+    /** 状态：0正常 | 1删除 | 2有错误 | 3关闭，不可修改 */
     private StatusEnum status;
 
     /** 创建时间 */
@@ -96,19 +96,19 @@ public class Paper implements Serializable {
         this.totalRight = totalRight;
     }
 
-    public Integer getTotalPoints() {
+    public Double getTotalPoints() {
         return totalPoints;
     }
 
-    public void setTotalPoints(Integer totalPoints) {
+    public void setTotalPoints(Double totalPoints) {
         this.totalPoints = totalPoints;
     }
 
-    public Integer getScore() {
+    public Double getScore() {
         return score;
     }
 
-    public void setScore(Integer score) {
+    public void setScore(Double score) {
         this.score = score;
     }
 

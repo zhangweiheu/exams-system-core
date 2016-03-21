@@ -115,35 +115,29 @@ public class PaperUtil {
     }
 
 
-    public static int calautePaperScore(List<QuestionMap> questionList) {
+    public static double calautePaperScore(List<QuestionMap> questionList) {
         double difficultyDegree = 0.0;
 
         Double s = 0.0;
-        Double sn = 0.0;
         Double m = 0.0;
-        Double mn = 0.0;
         Double p = 0.0;
-        Double pn = 0.0;
 
         if (null != questionList && 0 != questionList.size()) {
             for (QuestionMap questionMap : questionList) {
                 if (QuestionTypeEnum.SINGLE_SELECTION == questionMap.getQuestionType() && questionMap.getRight()) {
                     s += questionMap.getDifficulty();
-                    sn++;
                 }
                 if (QuestionTypeEnum.MULTI_SELECTION == questionMap.getQuestionType() && questionMap.getRight()) {
                     m += questionMap.getDifficulty();
-                    mn++;
                 }
                 if (QuestionTypeEnum.PROGRAMMING_QUESTION == questionMap.getQuestionType() && questionMap.getRight()) {
                     p += questionMap.getDifficulty();
-                    pn++;
                 }
 
-                difficultyDegree = s / (10 * sn) * (2 * sn) + m / (10 * mn) * (2 * sn) + p / (10 * pn) * (40 * pn);
             }
+            difficultyDegree = s / (10.0) * (2.0) + m / (10.0) * (2.0) + p / (10.0) * (40.0);
         }
-        return (int) difficultyDegree;
+        return difficultyDegree;
     }
 
 
