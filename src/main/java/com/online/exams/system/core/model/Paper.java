@@ -26,7 +26,7 @@ public class Paper implements Serializable {
     private PaperTypeEnum paperType;
 
     /** 难度系数0-10 */
-    private Integer difficulty;
+    private Double difficulty;
 
     /** 总做对题数 */
     private Integer totalRight;
@@ -80,11 +80,11 @@ public class Paper implements Serializable {
         this.paperType = paperType;
     }
 
-    public Integer getDifficulty() {
+    public Double getDifficulty() {
         return difficulty;
     }
 
-    public void setDifficulty(Integer difficulty) {
+    public void setDifficulty(Double difficulty) {
         this.difficulty = difficulty;
     }
 

@@ -24,8 +24,11 @@ public class QuestionDaoImpl implements QuestionDao {
     }
 
     @Override
-    public List<Question> findAll() {
-        return questionMapper.selectByCondition(new QuestionCondition());
+    public List<Question> findAll(int offset, int pageSize) {
+        QuestionCondition questionCondition = new QuestionCondition();
+        questionCondition.setLimitOffset(offset);
+        questionCondition.setLimitSize(pageSize);
+        return questionMapper.selectByCondition(questionCondition);
     }
 
     @Override

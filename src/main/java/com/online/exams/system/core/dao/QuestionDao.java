@@ -8,7 +8,7 @@ import java.util.List;
  * Created by zhang on 2016/2/15.
  */
 public interface QuestionDao {
-    List<Question> findAll();
+    List<Question> findAll(int offset, int pageSize);
 
     Question findById(int id);
 

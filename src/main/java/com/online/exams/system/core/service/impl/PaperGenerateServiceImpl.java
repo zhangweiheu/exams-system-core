@@ -159,9 +159,9 @@ public class PaperGenerateServiceImpl implements PaperGenerateService {
         paper.setUpdateAt(mongoPaper.getUpdateAt());
         paper.setUserId(uid);
         paper.setPaperType(paperTypeEnum);
-        paper.setScore(0);
+        paper.setScore(0.0);
         paper.setTotalRight(0);
-        paper.setDifficulty((int) PaperUtil.calculateAverageDifficultyOfQuestionMap(questionMaps));
+        paper.setDifficulty(PaperUtil.calculateAverageDifficultyOfQuestionMap(questionMaps));
         paper.setStatus(StatusEnum.NORMAL);
         paperDao.savePaper(paper);
 

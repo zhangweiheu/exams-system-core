@@ -24,8 +24,11 @@ public class PaperDaoImpl implements PaperDao {
     }
 
     @Override
-    public List<Paper> findAll() {
-        return paperMapper.selectByCondition(convertPaperAttr2Condition(null));
+    public List<Paper> findAll(int offset, int pageSize) {
+        PaperCondition paperCondition = convertPaperAttr2Condition(null);
+        paperCondition.setLimitOffset(offset);
+        paperCondition.setLimitSize(pageSize);
+        return paperMapper.selectByCondition(paperCondition);
     }
 
     @Override

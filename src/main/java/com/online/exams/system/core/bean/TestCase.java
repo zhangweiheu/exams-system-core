@@ -7,6 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 /**
  * Created by zhang on 2016/3/12.
@@ -25,7 +26,7 @@ public class TestCase {
      * 键值对
      */
     @Field("keyValue")
-    private HashMap<String, String> keyValue;
+    private LinkedHashMap<String, String> keyValue;
 
     /**
      * 创建时间
@@ -47,11 +48,11 @@ public class TestCase {
         this.id = id;
     }
 
-    public HashMap<String, String> getKeyValue() {
+    public LinkedHashMap<String, String> getKeyValue() {
         return keyValue;
     }
 
-    public void setKeyValue(HashMap<String, String> keyValue) {
+    public void setKeyValue(LinkedHashMap<String, String> keyValue) {
         this.keyValue = keyValue;
     }
 

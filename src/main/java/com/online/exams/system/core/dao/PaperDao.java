@@ -12,7 +12,7 @@ public interface PaperDao {
 
     Paper findById(int pid);
 
-    List<Paper> findAll();
+    List<Paper> findAll(int offset, int pageSize);
 
     int updatePaper(Paper paper);
 

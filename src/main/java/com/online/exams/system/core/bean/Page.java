@@ -21,7 +21,7 @@ public class Page<T> implements Iterable<T>, Serializable {
 
     private static final long serialVersionUID = 8102012822572335930L;
     protected int page = 1;
-    protected int pageSize = 13;
+    protected int pageSize = 10;
     // protected String sort;
     protected int totalCount = 0;
     protected List<T> data;

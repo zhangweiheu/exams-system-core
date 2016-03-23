@@ -44,12 +44,15 @@ public class UserDaoImpl implements UserDao {
         User user = new User();
         user.setId(uid);
         user.setIsDelete(true);
+        user.setUpdateAt(new Date());
         return userMapper.updateByIdSelective(user);
     }
 
     @Override
     public int saveUser(User user) {
-        return userMapper.insertSelective(user);
+        user.setCreateAt(new Date());
+        user.setUpdateAt(new Date());
+        return userMapper.insert(user);
     }
 
     @Override

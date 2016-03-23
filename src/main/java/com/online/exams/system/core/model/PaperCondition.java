@@ -377,52 +377,52 @@ public class PaperCondition {
             return (Criteria) this;
         }
 
-        public Criteria andDifficultyEqualTo(Integer value) {
+        public Criteria andDifficultyEqualTo(Double value) {
             addCriterion("difficulty =", value, "difficulty");
             return (Criteria) this;
         }
 
-        public Criteria andDifficultyNotEqualTo(Integer value) {
+        public Criteria andDifficultyNotEqualTo(Double value) {
             addCriterion("difficulty <>", value, "difficulty");
             return (Criteria) this;
         }
 
-        public Criteria andDifficultyGreaterThan(Integer value) {
+        public Criteria andDifficultyGreaterThan(Double value) {
             addCriterion("difficulty >", value, "difficulty");
             return (Criteria) this;
         }
 
-        public Criteria andDifficultyGreaterThanOrEqualTo(Integer value) {
+        public Criteria andDifficultyGreaterThanOrEqualTo(Double value) {
             addCriterion("difficulty >=", value, "difficulty");
             return (Criteria) this;
         }
 
-        public Criteria andDifficultyLessThan(Integer value) {
+        public Criteria andDifficultyLessThan(Double value) {
             addCriterion("difficulty <", value, "difficulty");
             return (Criteria) this;
         }
 
-        public Criteria andDifficultyLessThanOrEqualTo(Integer value) {
+        public Criteria andDifficultyLessThanOrEqualTo(Double value) {
             addCriterion("difficulty <=", value, "difficulty");
             return (Criteria) this;
         }
 
-        public Criteria andDifficultyIn(List<Integer> values) {
+        public Criteria andDifficultyIn(List<Double> values) {
             addCriterion("difficulty in", values, "difficulty");
             return (Criteria) this;
         }
 
-        public Criteria andDifficultyNotIn(List<Integer> values) {
+        public Criteria andDifficultyNotIn(List<Double> values) {
             addCriterion("difficulty not in", values, "difficulty");
             return (Criteria) this;
         }
 
-        public Criteria andDifficultyBetween(Integer value1, Integer value2) {
+        public Criteria andDifficultyBetween(Double value1, Double value2) {
             addCriterion("difficulty between", value1, value2, "difficulty");
             return (Criteria) this;
         }
 
-        public Criteria andDifficultyNotBetween(Integer value1, Integer value2) {
+        public Criteria andDifficultyNotBetween(Double value1, Double value2) {
             addCriterion("difficulty not between", value1, value2, "difficulty");
             return (Criteria) this;
         }

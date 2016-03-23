@@ -18,7 +18,7 @@ public class QuestionServiceImpl implements QuestionService {
     QuestionDao questionDao;
 
     public List<Question> listAllQuestion(int offset, int pageSize) {
-        return questionDao.findAll();
+        return questionDao.findAll(offset, pageSize);
     }
 
     @Override
