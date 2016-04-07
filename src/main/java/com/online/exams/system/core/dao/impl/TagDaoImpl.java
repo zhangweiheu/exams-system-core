@@ -61,7 +61,7 @@ public class TagDaoImpl implements TagDao {
     @Override
     public int deleteTagList(List<Tag> tagList) {
         int i = 0;
-        if(CollectionUtils.isEmpty(tagList)){
+        if (CollectionUtils.isEmpty(tagList)) {
             return i;
         }
         for (Tag tag : tagList) {
@@ -75,7 +75,7 @@ public class TagDaoImpl implements TagDao {
     @Override
     public int saveTagList(List<Tag> tagList) {
         int i = 0;
-        if(CollectionUtils.isEmpty(tagList)){
+        if (CollectionUtils.isEmpty(tagList)) {
             return i;
         }
         for (Tag tag : tagList) {
@@ -88,7 +88,7 @@ public class TagDaoImpl implements TagDao {
 
     @Override
     public int updateTagList(List<Tag> tagList) {
-        if(CollectionUtils.isEmpty(tagList)){
+        if (CollectionUtils.isEmpty(tagList)) {
             return 0;
         }
         Tag tag1 = new Tag();
@@ -100,22 +100,24 @@ public class TagDaoImpl implements TagDao {
 
     private TagCondition convertTagAttr2Condition(Tag tag) {
         TagCondition condition = new TagCondition();
+        TagCondition.Criteria criteria = condition.createCriteria();
 
         if (null == tag) {
-            return null;
+            return condition;
         }
         if (null != tag.getId()) {
-            condition.createCriteria().andIdEqualTo(tag.getId());
+            criteria.andIdEqualTo(tag.getId());
         }
         if (null != tag.getRefId()) {
-            condition.createCriteria().andRefIdEqualTo(tag.getRefId());
+            criteria.andRefIdEqualTo(tag.getRefId());
         }
         if (null != tag.getRefType()) {
-            condition.createCriteria().andRefTypeEqualTo(tag.getRefType());
+            criteria.andRefTypeEqualTo(tag.getRefType());
         }
         if (null != tag.getTagValue()) {
-            condition.createCriteria().andTagValueEqualTo(tag.getTagValue());
+            criteria.andTagValueEqualTo(tag.getTagValue());
         }
+        condition.or(criteria);
         return condition;
     }
 }

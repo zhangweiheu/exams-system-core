@@ -65,6 +65,7 @@ public class UserDaoImpl implements UserDao {
     public int CountByProperty(User user) {
         UserCondition condition = new UserCondition();
         UserCondition.Criteria criteria = condition.createCriteria();
+
         if (null != user && null != user.getIsAdmin()) {
             criteria.andIsAdminEqualTo(user.getIsAdmin());
         }
@@ -74,6 +75,7 @@ public class UserDaoImpl implements UserDao {
         if (null != user && null != user.getUsername()) {
             criteria.andUsernameEqualTo(user.getUsername());
         }
+        condition.or(criteria);
         return userMapper.countByCondition(condition);
     }
 }

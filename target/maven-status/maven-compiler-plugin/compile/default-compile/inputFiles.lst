@@ -31,6 +31,7 @@ D:\GraduationProject\exams-system-core\src\main\java\com\online\exams\system\cor
 D:\GraduationProject\exams-system-core\src\main\java\com\online\exams\system\core\enums\mybatis\IEnumDesc.java
 D:\GraduationProject\exams-system-core\src\main\java\com\online\exams\system\core\bean\TestCase.java
 D:\GraduationProject\exams-system-core\src\main\java\com\online\exams\system\core\dao\PaperGenerateDao.java
+D:\GraduationProject\exams-system-core\src\main\java\com\online\exams\system\core\service\DataService.java
 D:\GraduationProject\exams-system-core\src\main\java\com\online\exams\system\core\service\impl\PaperServiceImpl.java
 D:\GraduationProject\exams-system-core\src\main\java\com\online\exams\system\core\service\TagService.java
 D:\GraduationProject\exams-system-core\src\main\java\com\online\exams\system\core\mapper\Pkg.java
@@ -54,6 +55,7 @@ D:\GraduationProject\exams-system-core\src\main\java\com\online\exams\system\cor
 D:\GraduationProject\exams-system-core\src\main\java\com\online\exams\system\core\dao\MongoTestCaseDao.java
 D:\GraduationProject\exams-system-core\src\main\java\com\online\exams\system\core\dao\UserDao.java
 D:\GraduationProject\exams-system-core\src\main\java\com\online\exams\system\core\mapper\QuestionMapper.java
+D:\GraduationProject\exams-system-core\src\main\java\com\online\exams\system\core\dao\DataDao.java
 D:\GraduationProject\exams-system-core\src\main\java\com\online\exams\system\core\enums\mybatis\EnumValueUtil.java
 D:\GraduationProject\exams-system-core\src\main\java\com\online\exams\system\core\dao\PaperDao.java
 D:\GraduationProject\exams-system-core\src\main\java\com\online\exams\system\core\redis\RedisTemplateSupport.java
@@ -74,8 +76,10 @@ D:\GraduationProject\exams-system-core\src\main\java\com\online\exams\system\cor
 D:\GraduationProject\exams-system-core\src\main\java\com\online\exams\system\core\util\StringUtil.java
 D:\GraduationProject\exams-system-core\src\main\java\com\online\exams\system\core\bean\JsonResponse.java
 D:\GraduationProject\exams-system-core\src\main\java\com\online\exams\system\core\util\mongo\SortOrderType.java
+D:\GraduationProject\exams-system-core\src\main\java\com\online\exams\system\core\dao\impl\DataDaoImpl.java
 D:\GraduationProject\exams-system-core\src\main\java\com\online\exams\system\core\config\CoreDataSourceConfiguration.java
 D:\GraduationProject\exams-system-core\src\main\java\com\online\exams\system\core\service\PaperService.java
+D:\GraduationProject\exams-system-core\src\main\java\com\online\exams\system\core\service\impl\DataServiceImpl.java
 D:\GraduationProject\exams-system-core\src\main\java\com\online\exams\system\core\model\UserCondition.java
 D:\GraduationProject\exams-system-core\src\main\java\com\online\exams\system\core\service\PaperGenerateService.java
 D:\GraduationProject\exams-system-core\src\main\java\com\online\exams\system\core\constants\Constants.java

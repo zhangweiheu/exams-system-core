@@ -82,40 +82,51 @@ public class PaperDaoImpl implements PaperDao {
         PaperCondition condition = new PaperCondition();
         condition.createCriteria().andUserIdEqualTo(uid).andStatusEqualTo(StatusEnum.NORMAL);
         List<Paper> list = paperMapper.selectByCondition(condition);
-        return 0 == list.size()? null :list.get(0);
+        return 0 == list.size() ? null : list.get(0);
+    }
+
+    @Override
+    public List<Paper> findAllDonePaperByUid(int uid) {
+        PaperCondition condition = new PaperCondition();
+        condition.setOrderByClause("update_at");
+        condition.createCriteria().andUserIdEqualTo(uid).andStatusEqualTo(StatusEnum.CLOSE);
+        return paperMapper.selectByCondition(condition);
     }
 
     private PaperCondition convertPaperAttr2Condition(Paper paper) {
         PaperCondition condition = new PaperCondition();
 
+        PaperCondition.Criteria criteria = condition.createCriteria();
+
         if (null == paper) {
             return condition;
         }
+
         if (null != paper.getId()) {
-            condition.createCriteria().andIdEqualTo(paper.getId());
+            criteria.andIdEqualTo(paper.getId());
         }
         if (null != paper.getUserId()) {
-            condition.createCriteria().andUserIdEqualTo(paper.getUserId());
+            criteria.andUserIdEqualTo(paper.getUserId());
         }
         if (null != paper.getMongoPaperId()) {
-            condition.createCriteria().andMongoPaperIdEqualTo(paper.getMongoPaperId());
+            criteria.andMongoPaperIdEqualTo(paper.getMongoPaperId());
         }
         if (null != paper.getPaperType()) {
-            condition.createCriteria().andPaperTypeEqualTo(paper.getPaperType());
+            criteria.andPaperTypeEqualTo(paper.getPaperType());
         }
         if (null != paper.getDifficulty()) {
-            condition.createCriteria().andDifficultyEqualTo(paper.getDifficulty());
+            criteria.andDifficultyEqualTo(paper.getDifficulty());
         }
         if (null != paper.getTotalPoints()) {
-            condition.createCriteria().andTotalPointsEqualTo(paper.getTotalPoints());
+            criteria.andTotalPointsEqualTo(paper.getTotalPoints());
         }
         if (null != paper.getScore()) {
-            condition.createCriteria().andScoreEqualTo(paper.getScore());
+            criteria.andScoreEqualTo(paper.getScore());
         }
         if (null != paper.getStatus()) {
-            condition.createCriteria().andStatusEqualTo(paper.getStatus());
+            criteria.andStatusEqualTo(paper.getStatus());
         }
-
+        condition.or(criteria);
         return condition;
     }
 }

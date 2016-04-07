@@ -27,4 +27,6 @@ public interface PaperDao {
     int countAllPapersByAttr(Paper paper);
 
     Paper findDoingPaperByUid(int uid);
+
+    List<Paper> findAllDonePaperByUid(int uid);
 }

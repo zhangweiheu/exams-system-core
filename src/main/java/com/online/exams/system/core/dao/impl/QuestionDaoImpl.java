@@ -74,28 +74,30 @@ public class QuestionDaoImpl implements QuestionDao {
 
     private QuestionCondition convertQuestionAttr2Condition(Question question) {
         QuestionCondition condition = new QuestionCondition();
+        QuestionCondition.Criteria criteria = condition.createCriteria();
 
         if (null == question) {
-            return null;
+            return condition;
         }
         if (null != question.getId()) {
-            condition.createCriteria().andIdEqualTo(question.getId());
+            criteria.andIdEqualTo(question.getId());
         }
         if (null != question.getTitle()) {
-            condition.createCriteria().andTitleEqualTo(question.getTitle());
+            criteria.andTitleEqualTo(question.getTitle());
         }
         if (null != question.getQuestionType()) {
-            condition.createCriteria().andQuestionTypeEqualTo(question.getQuestionType());
+            criteria.andQuestionTypeEqualTo(question.getQuestionType());
         }
         if (null != question.getOptions()) {
-            condition.createCriteria().andOptionsEqualTo(question.getOptions());
+            criteria.andOptionsEqualTo(question.getOptions());
         }
         if (null != question.getAnswers()) {
-            condition.createCriteria().andAnswersEqualTo(question.getAnswers());
+            criteria.andAnswersEqualTo(question.getAnswers());
         }
         if (null != question.getStatus()) {
-            condition.createCriteria().andStatusEqualTo(question.getStatus());
+            criteria.andStatusEqualTo(question.getStatus());
         }
+        condition.or(criteria);
         return condition;
     }
 }
