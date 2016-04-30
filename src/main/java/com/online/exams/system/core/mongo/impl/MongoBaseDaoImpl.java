@@ -1,7 +1,7 @@
 package com.online.exams.system.core.mongo.impl;
 
 import com.online.exams.system.core.bean.Page;
-import com.online.exams.system.core.mongo.MongoBaseDaoooo;
+import com.online.exams.system.core.mongo.MongoBaseDao;
 import com.online.exams.system.core.util.mongo.ReflectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Created by zhangwei on 16/1/25.
  */
-public abstract class MongoBaseDaoImpl<T> implements MongoBaseDaoooo<T> {
+public abstract class MongoBaseDaoImpl<T> implements MongoBaseDao<T> {
     @Autowired
     @Qualifier(value = "mongoTemplate")
     protected MongoTemplate mongoTemplate;

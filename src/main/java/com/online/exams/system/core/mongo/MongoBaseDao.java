@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by 36kr on 16/1/25.
  */
-public interface MongoBaseDaoooo<T> {
+public interface MongoBaseDao<T> {
     void insert(T record);
 
     void deleteByCondition(Query query);
