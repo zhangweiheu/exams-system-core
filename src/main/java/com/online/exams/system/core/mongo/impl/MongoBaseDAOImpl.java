@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -17,7 +18,7 @@ import java.util.List;
 /**
  * Created by zhangwei on 16/1/25.
  */
-public class MongoBaseDaoImpl<T> implements MongoBaseDao<T> {
+public abstract class MongoBaseDaoImpl<T> implements MongoBaseDao<T> {
     private static final Logger LOGGER = LoggerFactory.getLogger(MongoBaseDaoImpl.class);
 
     @Autowired

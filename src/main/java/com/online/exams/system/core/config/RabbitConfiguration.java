@@ -19,7 +19,8 @@ public class RabbitConfiguration {
         CachingConnectionFactory connectionFactory = new CachingConnectionFactory();
         connectionFactory.setUsername("zhangwei");
         connectionFactory.setPassword("zhangwei");
-        connectionFactory.setAddresses("192.168.1.115");
+        connectionFactory.setAddresses("172.17.0.5");
+//        connectionFactory.setAddresses("192.168.1.115");
 //        connectionFactory.setAddresses("45.32.47.210");
         return connectionFactory;
     }

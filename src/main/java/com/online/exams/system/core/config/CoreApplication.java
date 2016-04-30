@@ -11,6 +11,6 @@ import org.springframework.context.annotation.Import;
 @Configuration
 @EnableAutoConfiguration
 @Import({MyBatisConfiguration.class,MongoConfiguration.class,RabbitConfiguration.class})
-@ComponentScan(basePackageClasses = {com.online.exams.system.core.dao.Pkg.class, com.online.exams.system.core.service.Pkg.class})
+@ComponentScan(basePackageClasses = {com.online.exams.system.core.Pkg.class})
 public class CoreApplication {
 }
