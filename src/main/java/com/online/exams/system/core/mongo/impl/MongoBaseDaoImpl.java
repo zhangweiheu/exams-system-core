@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Created by zhangwei on 16/1/25.
  */
-public abstract class MongoBaseDaoImplr<T> implements MongoBaseDao<T> {
+public abstract class MongoBaseDaoImpl<T> implements MongoBaseDao<T> {
     @Autowired
     @Qualifier(value = "mongoTemplate")
     protected MongoTemplate mongoTemplate;
