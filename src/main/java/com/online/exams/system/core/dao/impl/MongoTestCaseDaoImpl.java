@@ -5,7 +5,7 @@ import com.online.exams.system.core.bean.Page;
 import com.online.exams.system.core.bean.TestCase;
 import com.online.exams.system.core.constants.Constants;
 import com.online.exams.system.core.dao.MongoTestCaseDao;
-import com.online.exams.system.core.mongo.impl.MongoBaseDaoImpl;
+import com.online.exams.system.core.mongo.impl.MongoBaseDaoImplr;
 import com.online.exams.system.core.util.mongo.MongoCompareQueryEnum;
 import com.online.exams.system.core.util.mongo.MongoQueryBuilder;
 import com.online.exams.system.core.util.mongo.MongoSortBuilder;
@@ -30,7 +30,7 @@ import static org.springframework.data.mongodb.core.query.Query.query;
  * Created by zhang on 2016/3/12.
  */
 @Repository
-public class MongoTestCaseDaoImpl extends MongoBaseDaoImpl implements MongoTestCaseDao {
+public class MongoTestCaseDaoImpl extends MongoBaseDaoImplr implements MongoTestCaseDao {
     private static final Logger LOGGER = LoggerFactory.getLogger(MongoTestCaseDaoImpl.class);
 
     @Override

@@ -3,14 +3,11 @@ package com.online.exams.system.core.mongo.impl;
 import com.online.exams.system.core.bean.Page;
 import com.online.exams.system.core.mongo.MongoBaseDao;
 import com.online.exams.system.core.util.mongo.ReflectionUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -18,9 +15,7 @@ import java.util.List;
 /**
  * Created by zhangwei on 16/1/25.
  */
-public abstract class MongoBaseDaoImpl<T> implements MongoBaseDao<T> {
-    private static final Logger LOGGER = LoggerFactory.getLogger(MongoBaseDaoImpl.class);
-
+public abstract class MongoBaseDaoImplr<T> implements MongoBaseDao<T> {
     @Autowired
     @Qualifier(value = "mongoTemplate")
     protected MongoTemplate mongoTemplate;

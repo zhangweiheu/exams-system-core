@@ -5,7 +5,7 @@ import com.online.exams.system.core.bean.MongoPrimaryKey;
 import com.online.exams.system.core.bean.Page;
 import com.online.exams.system.core.constants.Constants;
 import com.online.exams.system.core.dao.MongoPaperDao;
-import com.online.exams.system.core.mongo.impl.MongoBaseDaoImpl;
+import com.online.exams.system.core.mongo.impl.MongoBaseDaoImplr;
 import com.online.exams.system.core.util.mongo.MongoCompareQueryEnum;
 import com.online.exams.system.core.util.mongo.MongoQueryBuilder;
 import com.online.exams.system.core.util.mongo.MongoSortBuilder;
@@ -29,7 +29,7 @@ import java.util.Map;
  * Created by zhang on 2016/3/12.
  */
 @Repository
-public class MongoPaperDaoImpl extends MongoBaseDaoImpl implements MongoPaperDao {
+public class MongoPaperDaoImpl extends MongoBaseDaoImplr implements MongoPaperDao {
     private static final Logger LOGGER = LoggerFactory.getLogger(MongoPaperDaoImpl.class);
 
     @Override
