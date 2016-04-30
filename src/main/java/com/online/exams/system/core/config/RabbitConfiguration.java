@@ -20,6 +20,7 @@ public class RabbitConfiguration {
         connectionFactory.setUsername("zhangwei");
         connectionFactory.setPassword("zhangwei");
         connectionFactory.setAddresses("192.168.1.115");
+//        connectionFactory.setAddresses("45.32.47.210");
         return connectionFactory;
     }
 
@@ -72,8 +73,8 @@ public class RabbitConfiguration {
     private SimpleMessageListenerContainer commonContainer() {
         SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
         container.setConnectionFactory(connectionFactory());
-        //container.setConcurrentConsumers(1);
-        //container.setMaxConcurrentConsumers(100);
+        container.setConcurrentConsumers(1);
+        container.setMaxConcurrentConsumers(100);
         container.setAcknowledgeMode(AcknowledgeMode.AUTO);
         container.setMissingQueuesFatal(false);
         return container;

@@ -35,6 +35,7 @@ public class MongoConfiguration {
     public MongoClient mongoClient() throws UnknownHostException {
         // MongoClientFactoryBean mongo = new MongoClientFactoryBean();
         List<ServerAddress> servers = new ArrayList<>();
+//        servers.add(new ServerAddress("45.32.47.210"));
         servers.add(new ServerAddress("192.168.1.115"));
 
         MongoClientOptions.Builder bd = MongoClientOptions.builder();

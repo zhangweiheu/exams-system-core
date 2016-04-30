@@ -30,7 +30,7 @@ public class CoreDataSourceConfiguration implements TransactionManagementConfigu
             druidDataSource.setUsername("zhangwei");
             druidDataSource.setPassword("zhangwei");
             druidDataSource.setDriverClassName("com.mysql.jdbc.Driver");
-//            druidDataSource.setUrl("jdbc:mysql://45.32.48.131:3306/graduation?autoCommit=true&autoReconnect=true&useUnicode=true&tinyInt1isBit=false&zeroDateTimeBehavior=round&characterEncoding=UTF-8&yearIsDateType=false");
+//            druidDataSource.setUrl("jdbc:mysql://45.32.47.210:3306/graduation?autoCommit=true&autoReconnect=true&useUnicode=true&tinyInt1isBit=false&zeroDateTimeBehavior=round&characterEncoding=UTF-8&yearIsDateType=false");
             druidDataSource.setUrl("jdbc:mysql://192.168.1.115:3306/graduation?autoCommit=true&autoReconnect=true&useUnicode=true&tinyInt1isBit=false&zeroDateTimeBehavior=round&characterEncoding=UTF-8&yearIsDateType=false");
             druidDataSource.setConnectionProperties("druid.stat.mergeSql=true");
             druidDataSource.setFilters("stat,wall"); // 配置监控统计拦截的filters
