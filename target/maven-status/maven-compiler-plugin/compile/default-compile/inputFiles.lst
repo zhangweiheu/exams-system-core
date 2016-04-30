@@ -1,6 +1,5 @@
 D:\GraduationProject\exams-system-core\src\main\java\com\online\exams\system\core\enums\EnumParser.java
 D:\GraduationProject\exams-system-core\src\main\java\com\online\exams\system\core\dao\impl\PaperGenerateDaoImpl.java
-D:\GraduationProject\exams-system-core\src\main\java\com\online\exams\system\core\service\Pkg.java
 D:\GraduationProject\exams-system-core\src\main\java\com\online\exams\system\core\model\Question.java
 D:\GraduationProject\exams-system-core\src\main\java\com\online\exams\system\core\listener\PaperListener.java
 D:\GraduationProject\exams-system-core\src\main\java\com\online\exams\system\core\mongo\MongoBaseDao.java
@@ -41,7 +40,6 @@ D:\GraduationProject\exams-system-core\src\main\java\com\online\exams\system\cor
 D:\GraduationProject\exams-system-core\src\main\java\com\online\exams\system\core\util\PropertyUtil.java
 D:\GraduationProject\exams-system-core\src\main\java\com\online\exams\system\core\dao\impl\PaperDaoImpl.java
 D:\GraduationProject\exams-system-core\src\main\java\com\online\exams\system\core\enums\mybatis\MybatisSqlSessionFactoryBean.java
-D:\GraduationProject\exams-system-core\src\main\java\com\online\exams\system\core\dao\Pkg.java
 D:\GraduationProject\exams-system-core\src\main\java\com\online\exams\system\core\enums\mybatis\ParseNameReplaceValue.java
 D:\GraduationProject\exams-system-core\src\main\java\com\online\exams\system\core\mapper\TagMapper.java
 D:\GraduationProject\exams-system-core\src\main\java\com\online\exams\system\core\util\mongo\ReflectionUtils.java
@@ -77,6 +75,7 @@ D:\GraduationProject\exams-system-core\src\main\java\com\online\exams\system\cor
 D:\GraduationProject\exams-system-core\src\main\java\com\online\exams\system\core\bean\JsonResponse.java
 D:\GraduationProject\exams-system-core\src\main\java\com\online\exams\system\core\util\mongo\SortOrderType.java
 D:\GraduationProject\exams-system-core\src\main\java\com\online\exams\system\core\dao\impl\DataDaoImpl.java
+D:\GraduationProject\exams-system-core\src\main\java\com\online\exams\system\core\Pkg.java
 D:\GraduationProject\exams-system-core\src\main\java\com\online\exams\system\core\config\CoreDataSourceConfiguration.java
 D:\GraduationProject\exams-system-core\src\main\java\com\online\exams\system\core\service\PaperService.java
 D:\GraduationProject\exams-system-core\src\main\java\com\online\exams\system\core\service\impl\DataServiceImpl.java
