@@ -1,6 +1,6 @@
 package com.online.exams.system.core.config;
 
-import com.online.exams.system.core.enums.mybatis.MybatisSqlSessionFactoryBean;
+import com.online.exams.system.core.mybatis.MybatisSqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

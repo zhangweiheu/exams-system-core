@@ -1,7 +1,7 @@
 package com.online.exams.system.core.util;
 
 import com.online.exams.system.core.bean.QuestionMap;
-import com.online.exams.system.core.enums.QuestionTypeEnum;
+import com.online.exams.system.core.mybatis.enums.QuestionTypeEnum;
 import com.online.exams.system.core.model.Question;
 
 import java.util.ArrayList;

@@ -11,7 +11,7 @@ import java.util.List;
 public interface PaperService {
     List<Paper> listAllPaper(int offset, int pageSize);
 
-    List<Paper> listAllPaper(int offset, int pageSize,int uid);
+    List<Paper> listAllPaper(int offset, int pageSize, int uid);
 
     int updatePaper(Paper paper);
 

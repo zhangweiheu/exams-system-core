@@ -1,10 +1,10 @@
 /**
  * 
  */
-package com.online.exams.system.core.enums;
+package com.online.exams.system.core.mybatis.enums;
 
 
-import com.online.exams.system.core.enums.mybatis.ParseNameReplaceValue;
+import com.online.exams.system.core.mybatis.ParseNameReplaceValue;
 
 import java.util.ArrayList;
 import java.util.List;

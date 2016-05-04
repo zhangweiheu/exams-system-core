@@ -3,7 +3,7 @@
  */
 package com.online.exams.system.core.util;
 
-import com.online.exams.system.core.enums.*;
+import com.online.exams.system.core.mybatis.enums.*;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

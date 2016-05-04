@@ -1,7 +1,7 @@
 package com.online.exams.system.core.model;
 
-import com.online.exams.system.core.enums.RefTypeEnum;
-import com.online.exams.system.core.enums.TagEnum;
+import com.online.exams.system.core.mybatis.enums.RefTypeEnum;
+import com.online.exams.system.core.mybatis.enums.TagEnum;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -9,7 +9,7 @@ import java.util.Date;
  * graduation.tag  
  *
  * @author zhang
- * @date 2016-3-21
+ * @date 2016-5-4
  *
  */
 public class Tag implements Serializable {

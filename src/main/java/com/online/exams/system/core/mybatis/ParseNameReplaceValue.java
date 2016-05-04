@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.online.exams.system.core.enums.mybatis;
+package com.online.exams.system.core.mybatis;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

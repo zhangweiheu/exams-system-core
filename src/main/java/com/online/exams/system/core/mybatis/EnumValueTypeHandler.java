@@ -1,4 +1,4 @@
-package com.online.exams.system.core.enums.mybatis;
+package com.online.exams.system.core.mybatis;
 
 import org.apache.ibatis.type.BaseTypeHandler;
 import org.apache.ibatis.type.JdbcType;

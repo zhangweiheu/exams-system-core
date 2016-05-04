@@ -1,8 +1,8 @@
-package com.online.exams.system.core.enums;
+package com.online.exams.system.core.mybatis.enums;
 
-import com.online.exams.system.core.enums.mybatis.IEnumDesc;
-import com.online.exams.system.core.enums.mybatis.IEnumValue;
-import com.online.exams.system.core.enums.mybatis.ParseNameReplaceValue;
+import com.online.exams.system.core.mybatis.IEnumDesc;
+import com.online.exams.system.core.mybatis.IEnumValue;
+import com.online.exams.system.core.mybatis.ParseNameReplaceValue;
 
 @ParseNameReplaceValue
 public enum StatusEnum implements IEnumDesc, IEnumValue {

@@ -65,6 +65,6 @@ public class QuestionServiceImpl implements QuestionService {
     @Override
     public String findQuestionAnswerById(int qid) {
         Question question = findQuestionById(qid);
-        return null == question ? null:question.getAnswers();
+        return null == question ? null : question.getAnswers();
     }
 }

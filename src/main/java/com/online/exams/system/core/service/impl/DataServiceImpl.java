@@ -21,7 +21,7 @@ public class DataServiceImpl implements DataService {
 
     @Override
     public List<User> getAllTotalScoreOrder(int offset, int pageSize) {
-        return dataDao.getAllTotalScoreOrder(offset,pageSize);
+        return dataDao.getAllTotalScoreOrder(offset, pageSize);
     }
 
     @Override

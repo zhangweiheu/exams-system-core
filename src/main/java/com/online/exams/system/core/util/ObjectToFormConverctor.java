@@ -1,6 +1,6 @@
 package com.online.exams.system.core.util;
 
-import com.online.exams.system.core.enums.mybatis.IEnumValue;
+import com.online.exams.system.core.mybatis.IEnumValue;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 

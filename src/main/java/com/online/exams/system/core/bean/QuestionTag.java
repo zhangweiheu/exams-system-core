@@ -1,9 +1,9 @@
 package com.online.exams.system.core.bean;
 
-import com.online.exams.system.core.enums.QuestionTypeEnum;
-import com.online.exams.system.core.enums.RefTypeEnum;
-import com.online.exams.system.core.enums.StatusEnum;
-import com.online.exams.system.core.enums.TagEnum;
+import com.online.exams.system.core.mybatis.enums.QuestionTypeEnum;
+import com.online.exams.system.core.mybatis.enums.RefTypeEnum;
+import com.online.exams.system.core.mybatis.enums.StatusEnum;
+import com.online.exams.system.core.mybatis.enums.TagEnum;
 
 /**
  * Created by zhang on 2016/3/16.

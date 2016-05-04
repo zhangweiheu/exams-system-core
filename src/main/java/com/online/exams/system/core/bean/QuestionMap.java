@@ -1,6 +1,6 @@
 package com.online.exams.system.core.bean;
 
-import com.online.exams.system.core.enums.TagEnum;
+import com.online.exams.system.core.mybatis.enums.TagEnum;
 import com.online.exams.system.core.model.Question;
 
 /**

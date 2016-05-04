@@ -1,7 +1,7 @@
 package com.online.exams.system.core.dao;
 
 import com.online.exams.system.core.bean.QuestionMap;
-import com.online.exams.system.core.enums.TagEnum;
+import com.online.exams.system.core.mybatis.enums.TagEnum;
 
 import java.util.List;
 

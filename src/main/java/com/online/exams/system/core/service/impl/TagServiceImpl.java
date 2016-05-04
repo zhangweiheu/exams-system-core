@@ -1,9 +1,9 @@
 package com.online.exams.system.core.service.impl;
 
 import com.online.exams.system.core.dao.TagDao;
-import com.online.exams.system.core.enums.RefTypeEnum;
-import com.online.exams.system.core.enums.TagEnum;
 import com.online.exams.system.core.model.Tag;
+import com.online.exams.system.core.mybatis.enums.RefTypeEnum;
+import com.online.exams.system.core.mybatis.enums.TagEnum;
 import com.online.exams.system.core.service.PaperService;
 import com.online.exams.system.core.service.QuestionService;
 import com.online.exams.system.core.service.TagService;

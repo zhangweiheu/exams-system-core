@@ -1,8 +1,8 @@
-package com.online.exams.system.core.enums;
+package com.online.exams.system.core.mybatis.enums;
 
 import com.google.common.base.Preconditions;
-import com.online.exams.system.core.enums.mybatis.IEnumDesc;
-import com.online.exams.system.core.enums.mybatis.IEnumValue;
+import com.online.exams.system.core.mybatis.IEnumDesc;
+import com.online.exams.system.core.mybatis.IEnumValue;
 
 /**
  * 装饰一个枚举为一个bean，以便序列化成对象形式

@@ -1,7 +1,7 @@
 package com.online.exams.system.core.model;
 
-import com.online.exams.system.core.enums.PaperTypeEnum;
-import com.online.exams.system.core.enums.StatusEnum;
+import com.online.exams.system.core.mybatis.enums.PaperTypeEnum;
+import com.online.exams.system.core.mybatis.enums.StatusEnum;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;

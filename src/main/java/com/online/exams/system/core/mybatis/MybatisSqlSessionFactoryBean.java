@@ -1,4 +1,4 @@
-package com.online.exams.system.core.enums.mybatis;
+package com.online.exams.system.core.mybatis;
 
 import org.apache.ibatis.builder.xml.XMLMapperBuilder;
 import org.apache.ibatis.executor.ErrorContext;

@@ -37,7 +37,7 @@ public class MongoConfiguration {
         List<ServerAddress> servers = new ArrayList<>();
 //        servers.add(new ServerAddress("45.32.47.210"));
 //        servers.add(new ServerAddress("192.168.1.115"));
-        servers.add(new ServerAddress("172.17.0.5"));
+        servers.add(new ServerAddress("172.17.0.6"));
 
         MongoClientOptions.Builder bd = MongoClientOptions.builder();
         bd.connectTimeout(15000);

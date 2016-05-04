@@ -1,7 +1,7 @@
 package com.online.exams.system.core.service;
 
-import com.online.exams.system.core.enums.RefTypeEnum;
 import com.online.exams.system.core.model.Tag;
+import com.online.exams.system.core.mybatis.enums.RefTypeEnum;
 
 import java.util.List;
 

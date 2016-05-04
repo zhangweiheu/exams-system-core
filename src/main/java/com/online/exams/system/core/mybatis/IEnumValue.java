@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.online.exams.system.core.enums.mybatis;
+package com.online.exams.system.core.mybatis;
 
 /**
  * @author xianwen.tan
