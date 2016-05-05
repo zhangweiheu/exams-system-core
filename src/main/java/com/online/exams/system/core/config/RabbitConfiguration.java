@@ -7,6 +7,7 @@ import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
@@ -14,15 +15,15 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 @Configuration
 public class RabbitConfiguration {
 
+    @Autowired
+    private CoreProperties coreProperties;
+
     @Bean
     public ConnectionFactory connectionFactory() {
         CachingConnectionFactory connectionFactory = new CachingConnectionFactory();
-        connectionFactory.setUsername("zhangwei");
-        connectionFactory.setPassword("zhangwei");
-        connectionFactory.setAddresses("172.17.0.5");
-//        connectionFactory.setPort(32768);
-//        connectionFactory.setAddresses("192.168.1.115");
-//        connectionFactory.setAddresses("45.32.47.210");
+        connectionFactory.setUsername(coreProperties.getRabbitMQUsername());
+        connectionFactory.setPassword(coreProperties.getRabbitMQPassword());
+        connectionFactory.setAddresses(coreProperties.getRabbitMQAddresses());
         return connectionFactory;
     }
 
@@ -43,7 +44,7 @@ public class RabbitConfiguration {
 
     @Bean
     public Queue exams_online_system_paper_queue() {
-        return new Queue("exams_online_system_paper_queue");
+        return new Queue(coreProperties.getRabbitMQQueue());
     }
 
     /*************************** 队列声明 END ***********************/
@@ -53,7 +54,7 @@ public class RabbitConfiguration {
      *********************/
     @Bean
     public TopicExchange exams_online_system_paper_exchange() {
-        return new TopicExchange("exams_online_system_paper_exchange");
+        return new TopicExchange(coreProperties.getRabbitMQExchange());
     }
 
 

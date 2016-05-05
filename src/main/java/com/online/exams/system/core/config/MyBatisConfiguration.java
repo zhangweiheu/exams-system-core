@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Import;
 public class MyBatisConfiguration {
     public static final String SQL_SESSION_FACTORY_NAME = "exams_online_SqlSessionFactory";
 
-    private String enumBasePackages = "com.online.exams.system.core.enums";
+    private String enumBasePackages = "com.online.exams.system.core.mybatis.enums";
 
     @Bean(name = MyBatisConfiguration.SQL_SESSION_FACTORY_NAME)
     public MybatisSqlSessionFactoryBean exams_online_MybatisSqlSessionFactoryBean(CoreDataSourceConfiguration config) {

@@ -6,6 +6,7 @@ package com.online.exams.system.core.config;
 import com.google.common.collect.Lists;
 import com.mongodb.*;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.MongoDbFactory;
@@ -29,28 +30,28 @@ import java.util.List;
  */
 @Configuration
 public class MongoConfiguration {
+    @Autowired
+    private CoreProperties coreProperties;
 
     @SuppressWarnings("deprecation")
     @Bean
     public MongoClient mongoClient() throws UnknownHostException {
         // MongoClientFactoryBean mongo = new MongoClientFactoryBean();
         List<ServerAddress> servers = new ArrayList<>();
-//        servers.add(new ServerAddress("45.32.47.210"));
-//        servers.add(new ServerAddress("192.168.1.115"));
-        servers.add(new ServerAddress("172.17.0.6"));
+        servers.add(new ServerAddress(coreProperties.getMongoReplicaSet()));
 
         MongoClientOptions.Builder bd = MongoClientOptions.builder();
-        bd.connectTimeout(15000);
+        bd.connectTimeout(coreProperties.getMongoConnectTimeout());
         bd.autoConnectRetry(true);
         bd.readPreference(ReadPreference.primaryPreferred());
         bd.connectionsPerHost(100);
-        bd.threadsAllowedToBlockForConnectionMultiplier(50);
-        bd.maxWaitTime(15000);
+        bd.threadsAllowedToBlockForConnectionMultiplier(coreProperties.getMongoThreadsAllowedToBlockForConnectionMultiplier());
+        bd.maxWaitTime(coreProperties.getMongoMaxWaitTime());
         bd.socketKeepAlive(true);
         bd.socketTimeout(15000);
         bd.writeConcern(WriteConcern.FSYNCED);
 
-        List<MongoCredential> cr = getMongoCredential(null, "graduation", null);
+        List<MongoCredential> cr = getMongoCredential(null, coreProperties.getMongoDbName(), null);
         return new MongoClient(servers, cr, bd.build());
     }
 
@@ -85,6 +86,6 @@ public class MongoConfiguration {
 
     @Bean
     public MongoDbFactory mongoDbFactory() throws Exception {
-        return new SimpleMongoDbFactory(mongoClient(), "graduation");
+        return new SimpleMongoDbFactory(mongoClient(), coreProperties.getMongoDbName());
     }
 }
