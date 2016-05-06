@@ -9,8 +9,8 @@
         <result column="answers" property="answers" jdbcType="VARCHAR"/>
         <result column="difficulty" property="difficulty" jdbcType="TINYINT"/>
         <result column="priority" property="priority" jdbcType="TINYINT"/>
-        <result column="status" property="status" jdbcType="TINYINT"/>
-        <result column="tag_value" property="tagValue" jdbcType="TINYINT"/>
+        <result column="status" property="status" jdbcType="TINYINT" typeHandler="com.online.exams.system.core.mybatis.EnumValueTypeHandler"/>
+        <result column="tag_value" property="tagValue" jdbcType="TINYINT" typeHandler="com.online.exams.system.core.mybatis.EnumValueTypeHandler"/>
     </resultMap>
 
     <select id="selectQuestionByQuestionTypeAndTagType" parameterType="com.online.exams.system.core.bean.QuestionTag" resultMap="ResultMap">
