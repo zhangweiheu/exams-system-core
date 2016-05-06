@@ -3,13 +3,13 @@
 <mapper namespace="com.online.exams.system.core.mapper.QuestionMapper" >
   <resultMap id="BaseResultMap" type="com.online.exams.system.core.model.Question" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="question_type" property="questionType" jdbcType="BIT" />
+    <result column="question_type" property="questionType" jdbcType="TINYINT"  typeHandler="com.online.exams.system.core.mybatis.EnumValueTypeHandler"/>
     <result column="title" property="title" jdbcType="VARCHAR" />
     <result column="options" property="options" jdbcType="VARCHAR" />
     <result column="answers" property="answers" jdbcType="VARCHAR" />
     <result column="difficulty" property="difficulty" jdbcType="TINYINT" />
     <result column="priority" property="priority" jdbcType="TINYINT" />
-    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="status" property="status" jdbcType="TINYINT"  typeHandler="com.online.exams.system.core.mybatis.EnumValueTypeHandler"/>
     <result column="total_done" property="totalDone" jdbcType="INTEGER" />
     <result column="total_success" property="totalSuccess" jdbcType="INTEGER" />
     <result column="create_at" property="createAt" jdbcType="TIMESTAMP" />
@@ -118,7 +118,7 @@
       answers, difficulty, priority, 
       status, total_done, total_success, 
       create_at, update_at)
-    values (#{questionType,jdbcType=BIT}, #{title,jdbcType=VARCHAR}, #{options,jdbcType=VARCHAR}, 
+    values (#{questionType,jdbcType=TINYINT}, #{title,jdbcType=VARCHAR}, #{options,jdbcType=VARCHAR}, 
       #{answers,jdbcType=VARCHAR}, #{difficulty,jdbcType=TINYINT}, #{priority,jdbcType=TINYINT}, 
       #{status,jdbcType=TINYINT}, #{totalDone,jdbcType=INTEGER}, #{totalSuccess,jdbcType=INTEGER}, 
       #{createAt,jdbcType=TIMESTAMP}, #{updateAt,jdbcType=TIMESTAMP})
@@ -165,7 +165,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="questionType != null" >
-        #{questionType,jdbcType=BIT},
+        #{questionType,jdbcType=TINYINT},
       </if>
       <if test="title != null" >
         #{title,jdbcType=VARCHAR},
@@ -212,7 +212,7 @@
         id = #{record.id,jdbcType=INTEGER},
       </if>
       <if test="record.questionType != null" >
-        question_type = #{record.questionType,jdbcType=BIT},
+        question_type = #{record.questionType,jdbcType=TINYINT},
       </if>
       <if test="record.title != null" >
         title = #{record.title,jdbcType=VARCHAR},
@@ -252,7 +252,7 @@
   <update id="updateByCondition" parameterType="map" >
     update question
     set id = #{record.id,jdbcType=INTEGER},
-      question_type = #{record.questionType,jdbcType=BIT},
+      question_type = #{record.questionType,jdbcType=TINYINT},
       title = #{record.title,jdbcType=VARCHAR},
       options = #{record.options,jdbcType=VARCHAR},
       answers = #{record.answers,jdbcType=VARCHAR},
@@ -271,7 +271,7 @@
     update question
     <set >
       <if test="questionType != null" >
-        question_type = #{questionType,jdbcType=BIT},
+        question_type = #{questionType,jdbcType=TINYINT},
       </if>
       <if test="title != null" >
         title = #{title,jdbcType=VARCHAR},
@@ -308,7 +308,7 @@
   </update>
   <update id="updateById" parameterType="com.online.exams.system.core.model.Question" >
     update question
-    set question_type = #{questionType,jdbcType=BIT},
+    set question_type = #{questionType,jdbcType=TINYINT},
       title = #{title,jdbcType=VARCHAR},
       options = #{options,jdbcType=VARCHAR},
       answers = #{answers,jdbcType=VARCHAR},

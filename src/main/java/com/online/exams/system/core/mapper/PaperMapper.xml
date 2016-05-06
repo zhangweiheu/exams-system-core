@@ -5,12 +5,12 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="mongo_paper_id" property="mongoPaperId" jdbcType="INTEGER" />
-    <result column="paper_type" property="paperType" jdbcType="TINYINT" />
+    <result column="paper_type" property="paperType" jdbcType="TINYINT" typeHandler="com.online.exams.system.core.mybatis.EnumValueTypeHandler"/>
     <result column="difficulty" property="difficulty" jdbcType="DOUBLE" />
     <result column="total_right" property="totalRight" jdbcType="INTEGER" />
     <result column="total_points" property="totalPoints" jdbcType="DOUBLE" />
     <result column="score" property="score" jdbcType="DOUBLE" />
-    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="status" property="status" jdbcType="TINYINT"  typeHandler="com.online.exams.system.core.mybatis.EnumValueTypeHandler"/>
     <result column="create_at" property="createAt" jdbcType="TIMESTAMP" />
     <result column="update_at" property="updateAt" jdbcType="TIMESTAMP" />
   </resultMap>
