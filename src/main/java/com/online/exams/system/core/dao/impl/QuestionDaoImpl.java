@@ -4,6 +4,7 @@ import com.online.exams.system.core.dao.QuestionDao;
 import com.online.exams.system.core.mapper.QuestionMapper;
 import com.online.exams.system.core.model.Question;
 import com.online.exams.system.core.model.QuestionCondition;
+import com.online.exams.system.core.mybatis.enums.StatusEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -38,7 +39,11 @@ public class QuestionDaoImpl implements QuestionDao {
 
     @Override
     public int deleteById(int qid) {
-        return questionMapper.deleteById(qid);
+        Question question = new Question();
+        question.setId(qid);
+        question.setUpdateAt(new Date());
+        question.setStatus(StatusEnum.DELETE);
+        return questionMapper.updateByIdSelective(question);
     }
 
     @Override

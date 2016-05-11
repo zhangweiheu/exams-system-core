@@ -167,6 +167,7 @@ public class PaperGenerateServiceImpl implements PaperGenerateService {
 
         hashMap.put("questions", questionMaps);
         hashMap.put("pid", paper.getId());
+        hashMap.put("time", paper.getCreateAt());
         return hashMap;
     }
 }

@@ -4,6 +4,7 @@ import com.online.exams.system.core.dao.UserDao;
 import com.online.exams.system.core.mapper.UserMapper;
 import com.online.exams.system.core.model.User;
 import com.online.exams.system.core.model.UserCondition;
+import com.online.exams.system.core.mybatis.enums.UserStatusEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -43,7 +44,7 @@ public class UserDaoImpl implements UserDao {
     public int deleteById(int uid) {
         User user = new User();
         user.setId(uid);
-        user.setIsDelete(true);
+        user.setStatus(UserStatusEnum.DELETED);
         user.setUpdateAt(new Date());
         return userMapper.updateByIdSelective(user);
     }
@@ -66,8 +67,14 @@ public class UserDaoImpl implements UserDao {
         UserCondition condition = new UserCondition();
         UserCondition.Criteria criteria = condition.createCriteria();
 
-        if (null != user && null != user.getIsAdmin()) {
-            criteria.andIsAdminEqualTo(user.getIsAdmin());
+        if (null != user && null != user.getStatus()) {
+            criteria.andStatusEqualTo(user.getStatus());
+        }
+        if (null != user && null != user.getType()) {
+            criteria.andTypeEqualTo(user.getType());
+        }
+        if (null != user && null != user.getPhone()) {
+            criteria.andPhoneEqualTo(user.getPhone());
         }
         if (null != user && null != user.getEmail()) {
             criteria.andEmailEqualTo(user.getEmail());

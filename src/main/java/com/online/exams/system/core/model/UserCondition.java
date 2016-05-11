@@ -1,5 +1,7 @@
 package com.online.exams.system.core.model;
 
+import com.online.exams.system.core.mybatis.enums.UserStatusEnum;
+import com.online.exams.system.core.mybatis.enums.UserTypeEnum;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -325,123 +327,123 @@ public class UserCondition {
             return (Criteria) this;
         }
 
-        public Criteria andIsAdminIsNull() {
-            addCriterion("is_admin is null");
+        public Criteria andTypeIsNull() {
+            addCriterion("type is null");
             return (Criteria) this;
         }
 
-        public Criteria andIsAdminIsNotNull() {
-            addCriterion("is_admin is not null");
+        public Criteria andTypeIsNotNull() {
+            addCriterion("type is not null");
             return (Criteria) this;
         }
 
-        public Criteria andIsAdminEqualTo(Boolean value) {
-            addCriterion("is_admin =", value, "isAdmin");
+        public Criteria andTypeEqualTo(UserTypeEnum value) {
+            addCriterion("type =", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andIsAdminNotEqualTo(Boolean value) {
-            addCriterion("is_admin <>", value, "isAdmin");
+        public Criteria andTypeNotEqualTo(UserTypeEnum value) {
+            addCriterion("type <>", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andIsAdminGreaterThan(Boolean value) {
-            addCriterion("is_admin >", value, "isAdmin");
+        public Criteria andTypeGreaterThan(UserTypeEnum value) {
+            addCriterion("type >", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andIsAdminGreaterThanOrEqualTo(Boolean value) {
-            addCriterion("is_admin >=", value, "isAdmin");
+        public Criteria andTypeGreaterThanOrEqualTo(UserTypeEnum value) {
+            addCriterion("type >=", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andIsAdminLessThan(Boolean value) {
-            addCriterion("is_admin <", value, "isAdmin");
+        public Criteria andTypeLessThan(UserTypeEnum value) {
+            addCriterion("type <", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andIsAdminLessThanOrEqualTo(Boolean value) {
-            addCriterion("is_admin <=", value, "isAdmin");
+        public Criteria andTypeLessThanOrEqualTo(UserTypeEnum value) {
+            addCriterion("type <=", value, "type");
             return (Criteria) this;
         }
 
-        public Criteria andIsAdminIn(List<Boolean> values) {
-            addCriterion("is_admin in", values, "isAdmin");
+        public Criteria andTypeIn(List<UserTypeEnum> values) {
+            addCriterion("type in", values, "type");
             return (Criteria) this;
         }
 
-        public Criteria andIsAdminNotIn(List<Boolean> values) {
-            addCriterion("is_admin not in", values, "isAdmin");
+        public Criteria andTypeNotIn(List<UserTypeEnum> values) {
+            addCriterion("type not in", values, "type");
             return (Criteria) this;
         }
 
-        public Criteria andIsAdminBetween(Boolean value1, Boolean value2) {
-            addCriterion("is_admin between", value1, value2, "isAdmin");
+        public Criteria andTypeBetween(UserTypeEnum value1, UserTypeEnum value2) {
+            addCriterion("type between", value1, value2, "type");
             return (Criteria) this;
         }
 
-        public Criteria andIsAdminNotBetween(Boolean value1, Boolean value2) {
-            addCriterion("is_admin not between", value1, value2, "isAdmin");
+        public Criteria andTypeNotBetween(UserTypeEnum value1, UserTypeEnum value2) {
+            addCriterion("type not between", value1, value2, "type");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeleteIsNull() {
-            addCriterion("is_delete is null");
+        public Criteria andStatusIsNull() {
+            addCriterion("status is null");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeleteIsNotNull() {
-            addCriterion("is_delete is not null");
+        public Criteria andStatusIsNotNull() {
+            addCriterion("status is not null");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeleteEqualTo(Boolean value) {
-            addCriterion("is_delete =", value, "isDelete");
+        public Criteria andStatusEqualTo(UserStatusEnum value) {
+            addCriterion("status =", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeleteNotEqualTo(Boolean value) {
-            addCriterion("is_delete <>", value, "isDelete");
+        public Criteria andStatusNotEqualTo(UserStatusEnum value) {
+            addCriterion("status <>", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeleteGreaterThan(Boolean value) {
-            addCriterion("is_delete >", value, "isDelete");
+        public Criteria andStatusGreaterThan(UserStatusEnum value) {
+            addCriterion("status >", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeleteGreaterThanOrEqualTo(Boolean value) {
-            addCriterion("is_delete >=", value, "isDelete");
+        public Criteria andStatusGreaterThanOrEqualTo(UserStatusEnum value) {
+            addCriterion("status >=", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeleteLessThan(Boolean value) {
-            addCriterion("is_delete <", value, "isDelete");
+        public Criteria andStatusLessThan(UserStatusEnum value) {
+            addCriterion("status <", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeleteLessThanOrEqualTo(Boolean value) {
-            addCriterion("is_delete <=", value, "isDelete");
+        public Criteria andStatusLessThanOrEqualTo(UserStatusEnum value) {
+            addCriterion("status <=", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeleteIn(List<Boolean> values) {
-            addCriterion("is_delete in", values, "isDelete");
+        public Criteria andStatusIn(List<UserStatusEnum> values) {
+            addCriterion("status in", values, "status");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeleteNotIn(List<Boolean> values) {
-            addCriterion("is_delete not in", values, "isDelete");
+        public Criteria andStatusNotIn(List<UserStatusEnum> values) {
+            addCriterion("status not in", values, "status");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeleteBetween(Boolean value1, Boolean value2) {
-            addCriterion("is_delete between", value1, value2, "isDelete");
+        public Criteria andStatusBetween(UserStatusEnum value1, UserStatusEnum value2) {
+            addCriterion("status between", value1, value2, "status");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeleteNotBetween(Boolean value1, Boolean value2) {
-            addCriterion("is_delete not between", value1, value2, "isDelete");
+        public Criteria andStatusNotBetween(UserStatusEnum value1, UserStatusEnum value2) {
+            addCriterion("status not between", value1, value2, "status");
             return (Criteria) this;
         }
 

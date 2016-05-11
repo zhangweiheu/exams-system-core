@@ -4,8 +4,8 @@
   <resultMap id="BaseResultMap" type="com.online.exams.system.core.model.Tag" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="ref_id" property="refId" jdbcType="INTEGER" />
-    <result column="ref_type" property="refType" jdbcType="TINYINT"  typeHandler="com.online.exams.system.core.mybatis.EnumValueTypeHandler"/>
-    <result column="tag_value" property="tagValue" jdbcType="TINYINT" typeHandler="com.online.exams.system.core.mybatis.EnumValueTypeHandler"/>
+    <result column="ref_type" property="refType" jdbcType="TINYINT" />
+    <result column="tag_value" property="tagValue" jdbcType="TINYINT" />
     <result column="create_at" property="createAt" jdbcType="TIMESTAMP" />
     <result column="update_at" property="updateAt" jdbcType="TIMESTAMP" />
   </resultMap>

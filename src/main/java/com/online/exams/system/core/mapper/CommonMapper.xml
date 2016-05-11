@@ -3,14 +3,14 @@
 <mapper namespace="com.online.exams.system.core.mapper.CommonMapper">
     <resultMap id="ResultMap" type="com.online.exams.system.core.bean.QuestionMap">
         <id column="id" property="id" jdbcType="INTEGER"/>
-        <result column="question_type" property="questionType" jdbcType="TINYINT"  typeHandler="com.online.exams.system.core.mybatis.EnumValueTypeHandler"/>
+        <result column="question_type" property="questionType" jdbcType="TINYINT"/>
         <result column="title" property="title" jdbcType="VARCHAR"/>
         <result column="options" property="options" jdbcType="VARCHAR"/>
         <result column="answers" property="answers" jdbcType="VARCHAR"/>
         <result column="difficulty" property="difficulty" jdbcType="TINYINT"/>
         <result column="priority" property="priority" jdbcType="TINYINT"/>
-        <result column="status" property="status" jdbcType="TINYINT" typeHandler="com.online.exams.system.core.mybatis.EnumValueTypeHandler"/>
-        <result column="tag_value" property="tagValue" jdbcType="TINYINT" typeHandler="com.online.exams.system.core.mybatis.EnumValueTypeHandler"/>
+        <result column="status" property="status" jdbcType="TINYINT"/>
+        <result column="tag_value" property="tagValue" jdbcType="TINYINT"/>
     </resultMap>
 
     <select id="selectQuestionByQuestionTypeAndTagType" parameterType="com.online.exams.system.core.bean.QuestionTag" resultMap="ResultMap">

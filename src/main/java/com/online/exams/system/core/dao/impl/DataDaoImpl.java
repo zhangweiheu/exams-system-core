@@ -3,9 +3,7 @@ package com.online.exams.system.core.dao.impl;
 import com.online.exams.system.core.bean.MongoPaper;
 import com.online.exams.system.core.bean.QuestionMap;
 import com.online.exams.system.core.dao.*;
-import com.online.exams.system.core.mybatis.enums.QuestionTypeEnum;
-import com.online.exams.system.core.mybatis.enums.RefTypeEnum;
-import com.online.exams.system.core.mybatis.enums.TagEnum;
+import com.online.exams.system.core.mybatis.enums.*;
 import com.online.exams.system.core.mapper.UserMapper;
 import com.online.exams.system.core.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,14 +39,13 @@ public class DataDaoImpl implements DataDao {
         UserCondition condition = new UserCondition();
         UserCondition.Criteria criteria = condition.createCriteria();
         criteria.andTotalDoneIsNotNull();
-        criteria.andIsDeleteEqualTo(false);
+        criteria.andStatusEqualTo(UserStatusEnum.NORMAL);
         condition.setOrderByClause("total_score");
         condition.or(criteria);
         condition.setLimitOffset(offset);
         condition.setLimitSize(pageSize);
         List<User> userList = userMapper.selectByCondition(condition);
         for (User user : userList) {
-            user.setIsAdmin(null);
             user.setCreateAt(null);
             user.setAvatar(null);
             user.setPassword(null);
@@ -58,7 +55,6 @@ public class DataDaoImpl implements DataDao {
             user.setWechat(null);
             user.setUpdateAt(null);
             user.setId(null);
-            user.setIsDelete(null);
         }
         return userList;
     }

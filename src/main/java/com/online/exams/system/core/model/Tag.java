@@ -9,7 +9,7 @@ import java.util.Date;
  * graduation.tag  
  *
  * @author zhang
- * @date 2016-5-6
+ * @date 2016-5-11
  *
  */
 public class Tag implements Serializable {

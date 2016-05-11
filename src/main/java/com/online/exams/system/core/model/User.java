@@ -1,5 +1,7 @@
 package com.online.exams.system.core.model;
 
+import com.online.exams.system.core.mybatis.enums.UserStatusEnum;
+import com.online.exams.system.core.mybatis.enums.UserTypeEnum;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -7,7 +9,7 @@ import java.util.Date;
  * graduation.user  
  *
  * @author zhang
- * @date 2016-5-6
+ * @date 2016-5-11
  *
  */
 public class User implements Serializable {
@@ -20,11 +22,11 @@ public class User implements Serializable {
     /** 密码 */
     private String password;
 
-    /** 身份标识，普通用户：0|管理员：1 */
-    private Boolean isAdmin;
+    /** 用户类型：0普通用户 | 1管理员 | 2系统管理员 */
+    private UserTypeEnum type;
 
-    /** 是否删除 */
-    private Boolean isDelete;
+    /** 状态:0未审核，1：审核不通过，2审核通过，3已删除，4黑名单 */
+    private UserStatusEnum status;
 
     /** 头像 */
     private String avatar;
@@ -82,20 +84,20 @@ public class User implements Serializable {
         this.password = password == null ? null : password.trim();
     }
 
-    public Boolean getIsAdmin() {
-        return isAdmin;
+    public UserTypeEnum getType() {
+        return type;
     }
 
-    public void setIsAdmin(Boolean isAdmin) {
-        this.isAdmin = isAdmin;
+    public void setType(UserTypeEnum type) {
+        this.type = type;
     }
 
-    public Boolean getIsDelete() {
-        return isDelete;
+    public UserStatusEnum getStatus() {
+        return status;
     }
 
-    public void setIsDelete(Boolean isDelete) {
-        this.isDelete = isDelete;
+    public void setStatus(UserStatusEnum status) {
+        this.status = status;
     }
 
     public String getAvatar() {

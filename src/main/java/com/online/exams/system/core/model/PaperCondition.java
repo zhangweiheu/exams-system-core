@@ -307,6 +307,66 @@ public class PaperCondition {
             return (Criteria) this;
         }
 
+        public Criteria andIsExamIsNull() {
+            addCriterion("is_exam is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsExamIsNotNull() {
+            addCriterion("is_exam is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsExamEqualTo(Boolean value) {
+            addCriterion("is_exam =", value, "isExam");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsExamNotEqualTo(Boolean value) {
+            addCriterion("is_exam <>", value, "isExam");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsExamGreaterThan(Boolean value) {
+            addCriterion("is_exam >", value, "isExam");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsExamGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("is_exam >=", value, "isExam");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsExamLessThan(Boolean value) {
+            addCriterion("is_exam <", value, "isExam");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsExamLessThanOrEqualTo(Boolean value) {
+            addCriterion("is_exam <=", value, "isExam");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsExamIn(List<Boolean> values) {
+            addCriterion("is_exam in", values, "isExam");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsExamNotIn(List<Boolean> values) {
+            addCriterion("is_exam not in", values, "isExam");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsExamBetween(Boolean value1, Boolean value2) {
+            addCriterion("is_exam between", value1, value2, "isExam");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsExamNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("is_exam not between", value1, value2, "isExam");
+            return (Criteria) this;
+        }
+
         public Criteria andPaperTypeIsNull() {
             addCriterion("paper_type is null");
             return (Criteria) this;

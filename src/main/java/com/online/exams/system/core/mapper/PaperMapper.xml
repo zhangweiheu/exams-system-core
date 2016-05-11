@@ -5,12 +5,13 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="mongo_paper_id" property="mongoPaperId" jdbcType="INTEGER" />
-    <result column="paper_type" property="paperType" jdbcType="TINYINT" typeHandler="com.online.exams.system.core.mybatis.EnumValueTypeHandler"/>
+    <result column="is_exam" property="isExam" jdbcType="TINYINT" />
+    <result column="paper_type" property="paperType" jdbcType="TINYINT" />
     <result column="difficulty" property="difficulty" jdbcType="DOUBLE" />
     <result column="total_right" property="totalRight" jdbcType="INTEGER" />
     <result column="total_points" property="totalPoints" jdbcType="DOUBLE" />
     <result column="score" property="score" jdbcType="DOUBLE" />
-    <result column="status" property="status" jdbcType="TINYINT"  typeHandler="com.online.exams.system.core.mybatis.EnumValueTypeHandler"/>
+    <result column="status" property="status" jdbcType="TINYINT" />
     <result column="create_at" property="createAt" jdbcType="TIMESTAMP" />
     <result column="update_at" property="updateAt" jdbcType="TIMESTAMP" />
   </resultMap>
@@ -73,8 +74,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, user_id, mongo_paper_id, paper_type, difficulty, total_right, total_points, score, 
-    status, create_at, update_at
+    id, user_id, mongo_paper_id, is_exam, paper_type, difficulty, total_right, total_points, 
+    score, status, create_at, update_at
   </sql>
   <select id="selectByCondition" resultMap="BaseResultMap" parameterType="com.online.exams.system.core.model.PaperCondition" >
     select
@@ -113,14 +114,14 @@
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into paper (user_id, mongo_paper_id, paper_type, 
-      difficulty, total_right, total_points, 
-      score, status, create_at, 
-      update_at)
-    values (#{userId,jdbcType=INTEGER}, #{mongoPaperId,jdbcType=INTEGER}, #{paperType,jdbcType=TINYINT}, 
-      #{difficulty,jdbcType=DOUBLE}, #{totalRight,jdbcType=INTEGER}, #{totalPoints,jdbcType=DOUBLE}, 
-      #{score,jdbcType=DOUBLE}, #{status,jdbcType=TINYINT}, #{createAt,jdbcType=TIMESTAMP}, 
-      #{updateAt,jdbcType=TIMESTAMP})
+    insert into paper (user_id, mongo_paper_id, is_exam, 
+      paper_type, difficulty, total_right, 
+      total_points, score, status, 
+      create_at, update_at)
+    values (#{userId,jdbcType=INTEGER}, #{mongoPaperId,jdbcType=INTEGER}, #{isExam,jdbcType=TINYINT}, 
+      #{paperType,jdbcType=TINYINT}, #{difficulty,jdbcType=DOUBLE}, #{totalRight,jdbcType=INTEGER}, 
+      #{totalPoints,jdbcType=DOUBLE}, #{score,jdbcType=DOUBLE}, #{status,jdbcType=TINYINT}, 
+      #{createAt,jdbcType=TIMESTAMP}, #{updateAt,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.online.exams.system.core.model.Paper" >
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
@@ -133,6 +134,9 @@
       </if>
       <if test="mongoPaperId != null" >
         mongo_paper_id,
+      </if>
+      <if test="isExam != null" >
+        is_exam,
       </if>
       <if test="paperType != null" >
         paper_type,
@@ -165,6 +169,9 @@
       </if>
       <if test="mongoPaperId != null" >
         #{mongoPaperId,jdbcType=INTEGER},
+      </if>
+      <if test="isExam != null" >
+        #{isExam,jdbcType=TINYINT},
       </if>
       <if test="paperType != null" >
         #{paperType,jdbcType=TINYINT},
@@ -210,6 +217,9 @@
       <if test="record.mongoPaperId != null" >
         mongo_paper_id = #{record.mongoPaperId,jdbcType=INTEGER},
       </if>
+      <if test="record.isExam != null" >
+        is_exam = #{record.isExam,jdbcType=TINYINT},
+      </if>
       <if test="record.paperType != null" >
         paper_type = #{record.paperType,jdbcType=TINYINT},
       </if>
@@ -244,6 +254,7 @@
     set id = #{record.id,jdbcType=INTEGER},
       user_id = #{record.userId,jdbcType=INTEGER},
       mongo_paper_id = #{record.mongoPaperId,jdbcType=INTEGER},
+      is_exam = #{record.isExam,jdbcType=TINYINT},
       paper_type = #{record.paperType,jdbcType=TINYINT},
       difficulty = #{record.difficulty,jdbcType=DOUBLE},
       total_right = #{record.totalRight,jdbcType=INTEGER},
@@ -264,6 +275,9 @@
       </if>
       <if test="mongoPaperId != null" >
         mongo_paper_id = #{mongoPaperId,jdbcType=INTEGER},
+      </if>
+      <if test="isExam != null" >
+        is_exam = #{isExam,jdbcType=TINYINT},
       </if>
       <if test="paperType != null" >
         paper_type = #{paperType,jdbcType=TINYINT},
@@ -296,6 +310,7 @@
     update paper
     set user_id = #{userId,jdbcType=INTEGER},
       mongo_paper_id = #{mongoPaperId,jdbcType=INTEGER},
+      is_exam = #{isExam,jdbcType=TINYINT},
       paper_type = #{paperType,jdbcType=TINYINT},
       difficulty = #{difficulty,jdbcType=DOUBLE},
       total_right = #{totalRight,jdbcType=INTEGER},

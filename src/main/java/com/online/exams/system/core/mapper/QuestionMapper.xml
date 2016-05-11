@@ -3,13 +3,13 @@
 <mapper namespace="com.online.exams.system.core.mapper.QuestionMapper" >
   <resultMap id="BaseResultMap" type="com.online.exams.system.core.model.Question" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="question_type" property="questionType" jdbcType="TINYINT"  typeHandler="com.online.exams.system.core.mybatis.EnumValueTypeHandler"/>
+    <result column="question_type" property="questionType" jdbcType="TINYINT" />
     <result column="title" property="title" jdbcType="VARCHAR" />
     <result column="options" property="options" jdbcType="VARCHAR" />
     <result column="answers" property="answers" jdbcType="VARCHAR" />
     <result column="difficulty" property="difficulty" jdbcType="TINYINT" />
     <result column="priority" property="priority" jdbcType="TINYINT" />
-    <result column="status" property="status" jdbcType="TINYINT"  typeHandler="com.online.exams.system.core.mybatis.EnumValueTypeHandler"/>
+    <result column="status" property="status" jdbcType="TINYINT" />
     <result column="total_done" property="totalDone" jdbcType="INTEGER" />
     <result column="total_success" property="totalSuccess" jdbcType="INTEGER" />
     <result column="create_at" property="createAt" jdbcType="TIMESTAMP" />
