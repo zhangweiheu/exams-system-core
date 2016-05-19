@@ -40,6 +40,7 @@ public class DataDaoImpl implements DataDao {
         UserCondition.Criteria criteria = condition.createCriteria();
         criteria.andTotalDoneIsNotNull();
         criteria.andStatusEqualTo(UserStatusEnum.NORMAL);
+        criteria.andTypeEqualTo(UserTypeEnum.COMMON);
         condition.setOrderByClause("total_score");
         condition.or(criteria);
         condition.setLimitOffset(offset);

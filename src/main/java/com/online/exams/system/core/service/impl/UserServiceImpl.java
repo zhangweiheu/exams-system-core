@@ -2,6 +2,9 @@ package com.online.exams.system.core.service.impl;
 
 import com.online.exams.system.core.dao.UserDao;
 import com.online.exams.system.core.model.User;
+import com.online.exams.system.core.mybatis.enums.StatusEnum;
+import com.online.exams.system.core.mybatis.enums.UserStatusEnum;
+import com.online.exams.system.core.mybatis.enums.UserTypeEnum;
 import com.online.exams.system.core.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +27,14 @@ public class UserServiceImpl implements UserService {
     @Override
     public int getTotalCount() {
         return userDao.CountByProperty(null);
+    }
+
+    @Override
+    public int getTotalCommonUser() {
+        User user = new User();
+        user.setStatus(UserStatusEnum.NORMAL);
+        user.setType(UserTypeEnum.COMMON);
+        return userDao.CountByProperty(user);
     }
 
     @Override

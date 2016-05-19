@@ -11,6 +11,8 @@ import java.util.List;
 public interface UserService {
     int getTotalCount();
 
+    int getTotalCommonUser();
+
     User findUserByName(String name);
 
     User findUserByUid(Integer uid);

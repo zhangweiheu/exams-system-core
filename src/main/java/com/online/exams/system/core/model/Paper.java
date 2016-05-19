@@ -9,12 +9,15 @@ import java.util.Date;
  * graduation.paper  
  *
  * @author zhang
- * @date 2016-5-11
+ * @date 2016-5-18
  *
  */
 public class Paper implements Serializable {
     /** id */
     private Integer id;
+
+    /** 考试主题 */
+    private String title;
 
     /** 用户 id */
     private Integer userId;
@@ -57,6 +60,14 @@ public class Paper implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title == null ? null : title.trim();
     }
 
     public Integer getUserId() {

@@ -3,6 +3,7 @@
 <mapper namespace="com.online.exams.system.core.mapper.PaperMapper" >
   <resultMap id="BaseResultMap" type="com.online.exams.system.core.model.Paper" >
     <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="mongo_paper_id" property="mongoPaperId" jdbcType="INTEGER" />
     <result column="is_exam" property="isExam" jdbcType="TINYINT" />
@@ -74,8 +75,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, user_id, mongo_paper_id, is_exam, paper_type, difficulty, total_right, total_points, 
-    score, status, create_at, update_at
+    id, title, user_id, mongo_paper_id, is_exam, paper_type, difficulty, total_right, 
+    total_points, score, status, create_at, update_at
   </sql>
   <select id="selectByCondition" resultMap="BaseResultMap" parameterType="com.online.exams.system.core.model.PaperCondition" >
     select
@@ -114,14 +115,16 @@
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into paper (user_id, mongo_paper_id, is_exam, 
-      paper_type, difficulty, total_right, 
-      total_points, score, status, 
-      create_at, update_at)
-    values (#{userId,jdbcType=INTEGER}, #{mongoPaperId,jdbcType=INTEGER}, #{isExam,jdbcType=TINYINT}, 
-      #{paperType,jdbcType=TINYINT}, #{difficulty,jdbcType=DOUBLE}, #{totalRight,jdbcType=INTEGER}, 
-      #{totalPoints,jdbcType=DOUBLE}, #{score,jdbcType=DOUBLE}, #{status,jdbcType=TINYINT}, 
-      #{createAt,jdbcType=TIMESTAMP}, #{updateAt,jdbcType=TIMESTAMP})
+    insert into paper (title, user_id, mongo_paper_id, 
+      is_exam, paper_type, difficulty, 
+      total_right, total_points, score, 
+      status, create_at, update_at
+      )
+    values (#{title,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, #{mongoPaperId,jdbcType=INTEGER}, 
+      #{isExam,jdbcType=TINYINT}, #{paperType,jdbcType=TINYINT}, #{difficulty,jdbcType=DOUBLE}, 
+      #{totalRight,jdbcType=INTEGER}, #{totalPoints,jdbcType=DOUBLE}, #{score,jdbcType=DOUBLE}, 
+      #{status,jdbcType=TINYINT}, #{createAt,jdbcType=TIMESTAMP}, #{updateAt,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.online.exams.system.core.model.Paper" >
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
@@ -129,6 +132,9 @@
     </selectKey>
     insert into paper
     <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="title != null" >
+        title,
+      </if>
       <if test="userId != null" >
         user_id,
       </if>
@@ -164,6 +170,9 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
       <if test="userId != null" >
         #{userId,jdbcType=INTEGER},
       </if>
@@ -211,6 +220,9 @@
       <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
       </if>
+      <if test="record.title != null" >
+        title = #{record.title,jdbcType=VARCHAR},
+      </if>
       <if test="record.userId != null" >
         user_id = #{record.userId,jdbcType=INTEGER},
       </if>
@@ -252,6 +264,7 @@
   <update id="updateByCondition" parameterType="map" >
     update paper
     set id = #{record.id,jdbcType=INTEGER},
+      title = #{record.title,jdbcType=VARCHAR},
       user_id = #{record.userId,jdbcType=INTEGER},
       mongo_paper_id = #{record.mongoPaperId,jdbcType=INTEGER},
       is_exam = #{record.isExam,jdbcType=TINYINT},
@@ -270,6 +283,9 @@
   <update id="updateByIdSelective" parameterType="com.online.exams.system.core.model.Paper" >
     update paper
     <set >
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
       <if test="userId != null" >
         user_id = #{userId,jdbcType=INTEGER},
       </if>
@@ -308,7 +324,8 @@
   </update>
   <update id="updateById" parameterType="com.online.exams.system.core.model.Paper" >
     update paper
-    set user_id = #{userId,jdbcType=INTEGER},
+    set title = #{title,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=INTEGER},
       mongo_paper_id = #{mongoPaperId,jdbcType=INTEGER},
       is_exam = #{isExam,jdbcType=TINYINT},
       paper_type = #{paperType,jdbcType=TINYINT},
