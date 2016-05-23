@@ -16,6 +16,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -161,7 +162,7 @@ public class PaperGenerateServiceImpl implements PaperGenerateService {
         paper.setPaperType(paperTypeEnum);
         paper.setScore(0.0);
         paper.setTotalRight(0);
-        paper.setDifficulty(PaperUtil.calculateAverageDifficultyOfQuestionMap(questionMaps));
+        paper.setDifficulty(new BigDecimal(PaperUtil.calculateAverageDifficultyOfQuestionMap(questionMaps)).setScale(0, BigDecimal.ROUND_HALF_UP).doubleValue());
         paper.setStatus(StatusEnum.NORMAL);
         paperDao.savePaper(paper);
 

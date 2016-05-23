@@ -1,5 +1,6 @@
 package com.online.exams.system.core.mybatis;
 
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.ibatis.builder.xml.XMLMapperBuilder;
 import org.apache.ibatis.executor.ErrorContext;
 import org.apache.ibatis.io.ResolverUtil;
@@ -10,9 +11,13 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.apache.ibatis.type.TypeHandlerRegistry;
 import org.mybatis.spring.SqlSessionFactoryBean;
+import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider;
 import org.springframework.core.NestedIOException;
 import org.springframework.core.io.Resource;
+import org.springframework.core.type.filter.AssignableTypeFilter;
+import org.springframework.util.ClassUtils;
 import org.springframework.util.StringUtils;
 
 import java.io.IOException;
@@ -29,8 +34,8 @@ import static org.springframework.util.ObjectUtils.isEmpty;
  */
 public class MybatisSqlSessionFactoryBean extends SqlSessionFactoryBean {
 
-    protected static final ConcurrentHashMap<Class<? extends IEnumValue>, EnumValueTypeHandler<?>> TYPE_HANDLER_CACHE =
-            new ConcurrentHashMap<Class<? extends IEnumValue>, EnumValueTypeHandler<?>>();
+    protected static final ConcurrentHashMap<Class<?>, EnumValueTypeHandler<?>> TYPE_HANDLER_CACHE =
+            new ConcurrentHashMap<Class<?>, EnumValueTypeHandler<?>>();
     private static final Log logger = LogFactory.getLog(MybatisSqlSessionFactoryBean.class);
     /**
      * 指定需扫描的枚举类所在包的前缀，可以指定多个包，会自动扫描所有子包。分隔符与spring的包路径分隔符兼容。
@@ -66,15 +71,21 @@ public class MybatisSqlSessionFactoryBean extends SqlSessionFactoryBean {
         TypeHandlerRegistry registry = configuration.getTypeHandlerRegistry();
         String[] enumPackages = parseEnumBasePackage();
         if (null != enumPackages) {
-            Set<Class<? extends IEnumValue>> enumClasses = doScanEnumClass(enumPackages);
-            if (null != enumClasses) {
-                for (Class<? extends IEnumValue> cls : enumClasses) {
-                    registry.register(cls, getEnumValueTypeHandlerInstance(cls));// 显示注册枚举处理器
-                    if (logger.isDebugEnabled()) {
-                        logger.debug("EnumValueTypeHandler is registered for type " + cls.getName());
+            try {
+                Set<Class<?>> enumClasses = doScanEnumClass(enumPackages);
+                if (null != enumClasses) {
+                    for (Class<?> cls : enumClasses) {
+                        logger.debug("check-EnumValueTypeHandler is registered for type " + cls.getName());
+                        registry.register(cls, getEnumValueTypeHandlerInstance(cls));// 显示注册枚举处理器
+                        if (logger.isDebugEnabled()) {
+                            logger.debug("EnumValueTypeHandler is registered for type " + cls.getName());
+                        }
                     }
                 }
+            }catch (Exception e){
+
             }
+
         }
 
         if (!isEmpty(this.mapperLocations)) {
@@ -112,11 +123,11 @@ public class MybatisSqlSessionFactoryBean extends SqlSessionFactoryBean {
      * @return
      */
     @SuppressWarnings({"unchecked", "rawtypes"})
-    protected EnumValueTypeHandler getEnumValueTypeHandlerInstance(Class<? extends IEnumValue> enumClass) {
+    protected EnumValueTypeHandler getEnumValueTypeHandlerInstance(Class<?> enumClass) {
         if (TYPE_HANDLER_CACHE.containsKey(enumClass)) {
             return TYPE_HANDLER_CACHE.get(enumClass);
         }
-
+        logger.warn("check-getEnumValueTypeHandlerInstance:" + enumClass);
         EnumValueTypeHandler<?> handler = new EnumValueTypeHandler(enumClass);
         TYPE_HANDLER_CACHE.putIfAbsent(enumClass, handler);
         return handler;
@@ -128,23 +139,47 @@ public class MybatisSqlSessionFactoryBean extends SqlSessionFactoryBean {
      * @param enumBasePackages
      * @return
      */
-    protected Set<Class<? extends IEnumValue>> doScanEnumClass(String... enumBasePackages) {
-
-        Set<Class<? extends IEnumValue>> filterdClasses = new HashSet<Class<? extends IEnumValue>>();
-
-        ResolverUtil<IEnumValue> resolverUtil = new ResolverUtil<IEnumValue>();
-        resolverUtil.findImplementations(IEnumValue.class, enumBasePackages);
-        Set<Class<? extends IEnumValue>> handlerSet = resolverUtil.getClasses();
-        for (Class<? extends IEnumValue> type : handlerSet) {
-            if (type.isEnum()) {
-                filterdClasses.add(type);
+    protected Set<Class<?>> doScanEnumClass(String... enumBasePackages) throws ClassNotFoundException {
+//        logger.warn("check-doScanEnumClass:" + Thread.currentThread().getContextClassLoader().getClass().getName());
+//        Set<Class<? extends IEnumValue>> filterdClasses = new HashSet<Class<? extends IEnumValue>>();
+//        ResolverUtil<IEnumValue> resolverUtil = new ResolverUtil<IEnumValue>();
+//        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+//        Thread.currentThread().setContextClassLoader(MybatisSqlSessionFactoryBean.class.getClassLoader());
+//        resolverUtil.findImplementations(IEnumValue.class, enumBasePackages);
+//        Thread.currentThread().setContextClassLoader(classLoader);
+//
+//        Set<Class<? extends IEnumValue>> handlerSet = resolverUtil.getClasses();
+//        for (Class<? extends IEnumValue> type : handlerSet) {
+//            logger.warn("check-doScanEnumClass:"+type);
+//            if (type.isEnum()) {
+//                logger.warn("check-true-doScanEnumClass:"+type);
+//                filterdClasses.add(type);
+//            }
+//        }
+//
+//        return filterdClasses;
+        Set<Class<?>> enumClasses = new HashSet<>();
+        if(ArrayUtils.isEmpty(enumBasePackages)){
+            return enumClasses;
+        }
+        ClassPathScanningCandidateComponentProvider componentProvider = new ClassPathScanningCandidateComponentProvider(false);
+        componentProvider.addIncludeFilter(new AssignableTypeFilter(IEnumValue.class));
+        for(String pkg : enumBasePackages){
+            if(org.apache.commons.lang3.StringUtils.isEmpty(pkg)){
+                continue;
+            }
+            for(BeanDefinition candidate : componentProvider.findCandidateComponents(pkg)){
+                Class<?> cls = ClassUtils.forName(candidate.getBeanClassName(),MybatisSqlSessionFactoryBean.class.getClassLoader());
+                if(cls.isEnum()){
+                    enumClasses.add(cls);
+                }
             }
         }
-
-        return filterdClasses;
+        return enumClasses;
     }
 
     protected String[] parseEnumBasePackage() {
+        logger.warn("check-parseEnumBasePackage:" + this.enumBasePackages);
         return StringUtils.tokenizeToStringArray(this.enumBasePackages, ConfigurableApplicationContext.CONFIG_LOCATION_DELIMITERS);
     }
 

@@ -54,26 +54,25 @@ public class PaperUtil {
         Double m = 0.0;
         Double p = 0.0;
 
-        if (null != questionList && 0 == questionList.size()) {
+        if (null != questionList && questionList.size() > 0) {
             for (QuestionMap questionMap : questionList) {
                 switch (questionMap.getQuestionType()) {
                     case SINGLE_SELECTION:
-                        s += questionMap.getDifficulty();
+                        s += questionMap.getDifficulty().doubleValue()/10.0;
                         break;
                     case MULTI_SELECTION:
-                        m += questionMap.getDifficulty();
+                        m += questionMap.getDifficulty().doubleValue()/10.0;
                         break;
                     case PROGRAMMING_QUESTION:
-                        p += questionMap.getDifficulty();
+                        p += questionMap.getDifficulty().doubleValue()/10.0;
                         break;
                     default:
                         break;
                 }
             }
-            difficultyDegree = s / 10.0*2.0 + m / 10.0*2.0 + p / 10.0*40.0;
         }
-
-        return difficultyDegree / 100.0;
+        difficultyDegree = s+m+p;
+        return difficultyDegree;
     }
 
     public static List<QuestionMap> generateRandomQuestionListByCount(List<QuestionMap> questionList, int count) {
