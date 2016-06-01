@@ -17,7 +17,7 @@ import java.util.List;
 @Repository
 public class QuestionDaoImpl implements QuestionDao {
     @Autowired
-    QuestionMapper questionMapper;
+    private QuestionMapper questionMapper;
 
     @Override
     public Question findById(int qid) {

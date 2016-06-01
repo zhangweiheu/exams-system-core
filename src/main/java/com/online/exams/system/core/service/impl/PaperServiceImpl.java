@@ -14,7 +14,7 @@ import java.util.List;
 @Service
 public class PaperServiceImpl implements PaperService {
     @Autowired
-    PaperDao paperDao;
+    private PaperDao paperDao;
 
     @Override
     public List<Paper> listAllPaper(int offset, int pageSize) {

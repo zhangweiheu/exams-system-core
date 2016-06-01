@@ -15,7 +15,7 @@ import java.util.List;
 @Service
 public class QuestionServiceImpl implements QuestionService {
     @Autowired
-    QuestionDao questionDao;
+    private QuestionDao questionDao;
 
     public List<Question> listAllQuestion(int offset, int pageSize) {
         return questionDao.findAll(offset, pageSize);

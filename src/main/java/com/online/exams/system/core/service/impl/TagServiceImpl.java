@@ -21,16 +21,16 @@ import java.util.List;
 @Service
 public class TagServiceImpl implements TagService {
     @Autowired
-    TagDao tagDao;
+    private TagDao tagDao;
 
     @Autowired
-    QuestionService questionService;
+    private QuestionService questionService;
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @Autowired
-    PaperService paperService;
+    private PaperService paperService;
 
     @Override
     public List<Tag> findAllTagByTagAttr(Tag tag) {

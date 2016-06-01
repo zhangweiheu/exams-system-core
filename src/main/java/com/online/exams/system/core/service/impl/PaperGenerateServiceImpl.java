@@ -30,13 +30,13 @@ public class PaperGenerateServiceImpl implements PaperGenerateService {
     private static final Logger LOGGER = LoggerFactory.getLogger(PaperGenerateServiceImpl.class);
 
     @Autowired
-    PaperGenerateDao paperGenerateDao;
+    private PaperGenerateDao paperGenerateDao;
 
     @Autowired
-    PaperDao paperDao;
+    private PaperDao paperDao;
 
     @Autowired
-    MongoPaperDao mongoPaperDao;
+    private MongoPaperDao mongoPaperDao;
 
     @Override
     public HashMap<String, Object> generateSingleSelection(List<TagEnum> tagEnumList, int uid) {

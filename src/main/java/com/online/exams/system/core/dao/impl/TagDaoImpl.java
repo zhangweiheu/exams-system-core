@@ -17,7 +17,7 @@ import java.util.List;
 @Repository
 public class TagDaoImpl implements TagDao {
     @Autowired
-    TagMapper tagMapper;
+    private TagMapper tagMapper;
 
     @Override
     public List<Tag> findAllTagByTagAttr(Tag tag) {

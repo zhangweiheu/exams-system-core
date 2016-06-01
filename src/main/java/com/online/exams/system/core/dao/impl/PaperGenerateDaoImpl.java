@@ -20,7 +20,7 @@ import java.util.List;
 public class PaperGenerateDaoImpl implements PaperGenerateDao {
 
     @Autowired
-    CommonMapper commonMapper;
+    private CommonMapper commonMapper;
 
     @Override
     public List<QuestionMap> generateSingleSelection(TagEnum tagValue) {

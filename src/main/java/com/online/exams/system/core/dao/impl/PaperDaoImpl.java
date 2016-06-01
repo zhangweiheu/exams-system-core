@@ -16,7 +16,7 @@ import java.util.List;
 @Repository
 public class PaperDaoImpl implements PaperDao {
     @Autowired
-    PaperMapper paperMapper;
+    private PaperMapper paperMapper;
 
     @Override
     public Paper findById(int pid) {

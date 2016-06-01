@@ -20,19 +20,19 @@ import java.util.List;
 @Repository
 public class DataDaoImpl implements DataDao {
     @Autowired
-    UserMapper userMapper;
+    private UserMapper userMapper;
 
     @Autowired
-    MongoPaperDao mongoPaperDao;
+    private MongoPaperDao mongoPaperDao;
 
     @Autowired
-    PaperDao paperDao;
+    private PaperDao paperDao;
 
     @Autowired
-    TagDao tagDao;
+    private TagDao tagDao;
 
     @Autowired
-    QuestionDao questionDao;
+    private QuestionDao questionDao;
 
     @Override
     public List<User> getAllTotalScoreOrder(int offset, int pageSize) {

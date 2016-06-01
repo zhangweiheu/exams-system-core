@@ -17,7 +17,7 @@ import java.util.List;
 public class DataServiceImpl implements DataService {
 
     @Autowired
-    DataDao dataDao;
+    private DataDao dataDao;
 
     @Override
     public List<User> getAllTotalScoreOrder(int offset, int pageSize) {

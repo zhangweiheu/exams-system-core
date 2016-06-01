@@ -2,7 +2,6 @@ package com.online.exams.system.core.service.impl;
 
 import com.online.exams.system.core.dao.UserDao;
 import com.online.exams.system.core.model.User;
-import com.online.exams.system.core.mybatis.enums.StatusEnum;
 import com.online.exams.system.core.mybatis.enums.UserStatusEnum;
 import com.online.exams.system.core.mybatis.enums.UserTypeEnum;
 import com.online.exams.system.core.service.UserService;
@@ -16,11 +15,12 @@ import java.util.List;
  */
 @Service
 public class UserServiceImpl implements UserService {
+
     @Autowired
     private UserDao userDao;
 
     @Override
-    public List<User> listAllUser(int offset, int pageSize){
+    public List<User> listAllUser(int offset, int pageSize) {
         return userDao.listAllUser(offset, pageSize);
     }
 
