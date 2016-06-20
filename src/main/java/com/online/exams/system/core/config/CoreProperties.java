@@ -61,26 +61,25 @@ public class CoreProperties {
     @Value("${spring.rabbitmq.exchange}")
     private String rabbitMQExchange;
 
-
-    //    @Value("${redis.host}")
-    //    private String redisHostName;
-    //    @Value("${redis.password}")
-    //    private String redisPassword;
-    //    @Value("${redis.port}")
-    //    private int redisHostPort;
-    //    @Value("${redis.maxIdle}")
-    //    private int redisMaxIdle;
-    //    @Value("${redis.maxTotal}")
-    //    private int redisMaxTotal;
-    //    @Value("${redis.maxWait}")
-    //    private int redisMaxWaitMillis;
-    //    @Value("${redis.timeout:5000}")
-    //    private int redisTimeout;
-    //    @Value("${redis.testOnBorrow}")
-    //    private boolean redisTestOnBorrow;
-    //    @Value("${redis.database:2}")
-    //    private int redisCacheDatabase;
-
+    //redis配置
+    @Value("${spring.redis.host}")
+    private String redisHostName;
+    @Value("${spring.redis.password}")
+    private String redisPassword;
+    @Value("${spring.redis.port}")
+    private int redisHostPort;
+    @Value("${spring.redis.max-idle:10}")
+    private int redisMaxIdle;
+    @Value("${spring.redis.max-active:100}")
+    private int redisMaxTotal;
+    @Value("${spring.redis.max-wait:10000}")
+    private int redisMaxWaitMillis;
+    @Value("${spring.redis.timeout:5000}")
+    private int redisTimeout;
+    @Value("${spring.redis.testOnBorrow}")
+    private boolean redisTestOnBorrow;
+    @Value("${spring.redis.database}")
+    private int redisCacheDatabase;
 
     public String getJdbcUrl() {
         return jdbcUrl;
@@ -240,5 +239,77 @@ public class CoreProperties {
 
     public void setRabbitMQExchange(String rabbitMQExchange) {
         this.rabbitMQExchange = rabbitMQExchange;
+    }
+
+    public String getRedisHostName() {
+        return redisHostName;
+    }
+
+    public void setRedisHostName(String redisHostName) {
+        this.redisHostName = redisHostName;
+    }
+
+    public String getRedisPassword() {
+        return redisPassword;
+    }
+
+    public void setRedisPassword(String redisPassword) {
+        this.redisPassword = redisPassword;
+    }
+
+    public int getRedisHostPort() {
+        return redisHostPort;
+    }
+
+    public void setRedisHostPort(int redisHostPort) {
+        this.redisHostPort = redisHostPort;
+    }
+
+    public int getRedisMaxIdle() {
+        return redisMaxIdle;
+    }
+
+    public void setRedisMaxIdle(int redisMaxIdle) {
+        this.redisMaxIdle = redisMaxIdle;
+    }
+
+    public int getRedisMaxTotal() {
+        return redisMaxTotal;
+    }
+
+    public void setRedisMaxTotal(int redisMaxTotal) {
+        this.redisMaxTotal = redisMaxTotal;
+    }
+
+    public int getRedisMaxWaitMillis() {
+        return redisMaxWaitMillis;
+    }
+
+    public void setRedisMaxWaitMillis(int redisMaxWaitMillis) {
+        this.redisMaxWaitMillis = redisMaxWaitMillis;
+    }
+
+    public int getRedisTimeout() {
+        return redisTimeout;
+    }
+
+    public void setRedisTimeout(int redisTimeout) {
+        this.redisTimeout = redisTimeout;
+    }
+
+    public boolean isRedisTestOnBorrow() {
+        return redisTestOnBorrow;
+    }
+
+    public void setRedisTestOnBorrow(boolean redisTestOnBorrow) {
+        this.redisTestOnBorrow = redisTestOnBorrow;
+    }
+
+    public int getRedisCacheDatabase() {
+        return redisCacheDatabase;
+    }
+
+    public void setRedisCacheDatabase(int redisCacheDatabase) {
+        this.redisCacheDatabase = redisCacheDatabase;
     }
 }
